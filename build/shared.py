@@ -23,10 +23,10 @@ SHOP = {
 }
 
 CATS = [
-    ("tear", "g", "กรอบทอง", "งานทองตามพิมพ์พระ ขึ้นงานตามงบที่ตั้งไว้"),
-    ("round", "s", "กรอบเงิน", "กรอบเงินลายสวย ใส่ได้ทุกวัน"),
-    ("sema", "n", "กรอบนาก", "สีนากอมชมพู งานละเอียดแบบช่างโบราณ"),
-    ("arch", "p", "กรอบพลาสติกกันน้ำ", "เลี่ยมกันน้ำ ทนทาน ราคาเข้าถึงง่าย"),
+    ("p11.jpg", "g", "กรอบทอง", "งานทองตามพิมพ์พระ ขึ้นงานตามงบที่ตั้งไว้"),
+    ("p18.jpg", "s", "กรอบเงิน", "กรอบเงินลายสวย ใส่ได้ทุกวัน"),
+    ("p19.jpg", "n", "กรอบนาก", "สีนากอมชมพู งานละเอียดแบบช่างโบราณ"),
+    ("p05.jpg", "g", "ลายสั่งทำ", "ออกแบบลายเฉพาะองค์ ทั้งทอง เงิน นาก และเลี่ยมกันน้ำ"),
 ]
 
 STEPS = [
@@ -35,9 +35,10 @@ STEPS = [
     ("ช่างลงมือทำ", "มาส่งพระที่หน้าร้าน หรือส่งพระทางไปรษณีย์ ช่างวัดขนาดแล้วส่งกลับให้ถึงบ้าน"),
 ]
 
-GALLERY = [("arch", "g"), ("tear", "n"), ("round", "s"), ("sema", "g"), ("arch", "p"), ("round", "g")]
+GALLERY = [("p02.jpg", "g"), ("p14.jpg", "g"), ("p12.jpg", "g"), ("p15.jpg", "g"), ("p20.jpg", "g"), ("p07.jpg", "g"), ("p16.jpg", "g"), ("p01.jpg", "g"), ("p17.jpg", "g")]
+REVIEWS = ["r03.jpg", "r17.jpg", "r08.jpg", "r20.jpg", "r16.jpg", "r36.jpg", "r31.jpg", "r06.jpg"]
 
-PH = "ภาพวาดตัวอย่าง · รอรูปจริงจากร้าน"
+PH = "งานจริงจากโต๊ะช่างของร้าน"
 
 
 def svg_defs():
@@ -75,7 +76,10 @@ def svg_defs():
     return "".join(out)
 
 
-def frame(shape, metal, cls="frame", label=None):
+def frame(shape, metal, cls="frame", label=None, eager=False):
+    if shape.endswith(".jpg"):
+        lazy = 'fetchpriority="high"' if eager else 'loading="lazy" decoding="async"'
+        return f'<img class="{cls} photo" src="../assets/img/{shape}" alt="{label or 'งานกรอบพระจากร้าน KT กรอบพระไทยแลนด์'}" {lazy}>'
     lab = f' aria-label="{label}"' if label else ' aria-hidden="true"'
     role = ' role="img"' if label else ''
     return f'<svg class="{cls}" viewBox="0 0 200 260"{role}{lab}><use href="#f-{shape}-{metal}"/></svg>'
@@ -109,5 +113,9 @@ REVEAL_CSS = """
 def draft_bar(n, name, bg, fg):
     return (f'<div style="background:{bg};color:{fg};font:500 13px/1.4 system-ui,sans-serif;padding:8px 16px;'
             f'display:flex;gap:8px 16px;flex-wrap:wrap;justify-content:center;align-items:center;text-align:center">'
-            f'<span>ดราฟต์แบบที่ {n}/3 · {name} · ภาพเป็นภาพวาดตัวอย่าง รอรูปจริงจากร้าน</span>'
+            f'<span>ดราฟต์แบบที่ {n}/3 · {name} · ภาพเป็นงานจริงจากร้าน</span>'
             f'<a href="../" style="color:inherit;text-decoration:underline">ดูแบบอื่น</a></div>')
+
+
+def reviews_html(n=4):
+    return "".join(f'<img class="rv reveal" src="../assets/img/{r}" alt="รีวิวจากลูกค้าร้าน KT กรอบพระไทยแลนด์" loading="lazy" decoding="async">' for r in REVIEWS[:n])

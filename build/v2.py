@@ -115,6 +115,17 @@ section.block{padding-block:96px}
 .contact dd a{text-decoration:none}
 .map{border-radius:8px;overflow:hidden;box-shadow:0 0 0 2px var(--leaf);min-height:380px}
 .map iframe{width:100%;height:100%;min-height:380px;border:0}
+
+.rv{width:100%;display:block;border-radius:8px}
+img.photo{display:block;object-fit:cover}
+
+.gal figure,.strip figure,.cat .pic,.rowc .thumb{position:relative;overflow:hidden}
+.gal .frame.photo,.strip .frame.photo,.cat .pic .frame.photo,.rowc .thumb .frame.photo{position:absolute;inset:0;width:100%;height:100%;max-width:none}
+.niche{overflow:hidden}.niche .frame.photo{width:100%;height:100%;border-radius:200px 200px 8px 8px;padding:12px;filter:none}
+.cat .pic{overflow:hidden}.cat .frame.photo{width:100%;height:100%;border-radius:90px 90px 4px 4px;padding:4px}
+.strip .frame.photo{width:100%;height:100%;border-radius:8px}
+.craftimg{width:100%;aspect-ratio:1;border-radius:8px;border:1px solid var(--leaf-deep)}
+.rvgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 footer{background:var(--lac-deep);padding-block:40px;font-size:14px;color:rgba(245,234,211,.7)}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 """.replace("PRAJAM", PRAJAM)
@@ -128,7 +139,7 @@ def build():
     steps = "".join(
         f'<li class="reveal"><span class="num">{THAI_NUM[i]}</span><div><h3>{t}</h3><p>{d}</p></div></li>'
         for i, (t, d) in enumerate(STEPS))
-    gal = "".join(f'<figure>{frame(s, m)}<figcaption>ภาพตัวอย่าง</figcaption></figure>' for s, m in GALLERY)
+    gal = "".join(f'<figure>{frame(s, m)}</figure>' for s, m in GALLERY)
     clips = "".join(f'<a class="clip reveal" href="{SHOP["tiktok"]}" target="_blank" rel="noopener"><i class="ph-fill ph-play-circle"></i><span>คลิป {i}</span></a>' for i in range(1, 4))
     rev = "".join('<div class="review reveal"><div class="sk"></div><div class="sk"></div><div class="sk s"></div><small>รอรีวิวจริงจากลูกค้าของร้าน</small></div>' for _ in range(3))
 
@@ -161,7 +172,7 @@ def build():
       <a class="btn btn-ghost" href="#products">ดูสินค้า</a>
     </div>
   </div>
-  <div class="niche" aria-hidden="true">{frame("tear", "g")}<small>ภาพวาดตัวอย่าง</small></div>
+  <div class="niche" aria-hidden="true">{frame("p16.jpg", "g", "frame", "กรอบพระทองลายไทย งานจากร้าน KT", True)}</div>
 </div></section>
 <div class="band" aria-hidden="true"></div>
 
@@ -190,12 +201,12 @@ def build():
     <p><span class="todo">ประวัติร้านและจุดเด่นของช่าง รอข้อมูลจากร้าน</span></p>
     <a class="btn btn-ghost" href="{SHOP["fb"]}" target="_blank" rel="noopener"><i class="ph ph-facebook-logo"></i>ดูเพจ Facebook</a>
   </div>
-  <div class="photo reveal"><div><i class="ph ph-hammer"></i>รูปทีมช่าง (รอรูปจริงจากร้าน)</div></div>
+  <img class="photo reveal craftimg" src="../assets/img/p06.jpg" alt="อะไหล่กรอบพระและห่วงบนโต๊ะช่าง" loading="lazy" decoding="async">
 </div></section>
 
 <section class="block light"><div class="wrap social">
   <div><h3 class="reveal">คลิปงานจาก TikTok</h3><div class="clips">{clips}</div></div>
-  <div><h3 class="reveal">รีวิวจากลูกค้า</h3>{rev}</div>
+  <div><h3 class="reveal">รีวิวจากลูกค้า</h3><div class="rvgrid">{reviews_html(4)}</div></div>
 </div></section>
 <div class="band" aria-hidden="true"></div>
 

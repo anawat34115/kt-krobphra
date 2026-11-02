@@ -123,8 +123,27 @@ section.block{padding-block:96px;border-top:1px solid var(--line)}
 
 footer{border-top:1px solid var(--line);padding-block:40px;color:var(--muted);font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+.rv{width:100%;display:block;border-radius:8px}
+img.photo{display:block;object-fit:cover}
+
+.gal figure,.strip figure,.cat .pic,.rowc .thumb{position:relative;overflow:hidden}
+.gal .frame.photo,.strip .frame.photo,.cat .pic .frame.photo,.rowc .thumb .frame.photo{position:absolute;inset:0;width:100%;height:100%;max-width:none}
+.case .frame.photo{position:absolute;left:12%;width:76%;top:4%;height:84%;border-radius:8px;border:1px solid var(--gold-deep);filter:none;box-shadow:0 24px 48px rgba(0,0,0,.6)}
+.cat .pic .frame.photo{width:100%;height:100%}.cat:hover .frame.photo{transform:scale(1.04)}
+.gal .frame.photo{width:100%;height:100%}
+.craftimg{width:100%;aspect-ratio:4/5;border-radius:8px;border:1px solid var(--line)}
+.reviews{grid-template-columns:repeat(2,1fr)}
 .fab{position:fixed;right:16px;bottom:16px;z-index:30;width:56px;height:56px;border-radius:50%;background:var(--gold);color:#16120A;display:grid;place-items:center;font-size:26px;box-shadow:0 8px 24px rgba(0,0,0,.5)}
-@media(min-width:861px){.fab{display:none}}
+@media(min-width:861px){
+.rv{width:100%;display:block;border-radius:8px}
+img.photo{display:block;object-fit:cover}
+.case .frame.photo{position:absolute;left:12%;width:76%;top:4%;height:84%;border-radius:8px;border:1px solid var(--gold-deep);filter:none;box-shadow:0 24px 48px rgba(0,0,0,.6)}
+.cat .pic .frame.photo{width:100%;height:100%}.cat:hover .frame.photo{transform:scale(1.04)}
+.gal .frame.photo{width:100%;height:100%}
+.craftimg{width:100%;aspect-ratio:4/5;border-radius:8px;border:1px solid var(--line)}
+.reviews{grid-template-columns:repeat(2,1fr)}
+.fab{display:none}}
 """
 
 def build():
@@ -135,7 +154,7 @@ def build():
     steps = "".join(
         f'<li class="reveal"><span class="n">ขั้นที่ {i+1}</span><h3>{t}</h3><p>{d}</p></li>'
         for i, (t, d) in enumerate(STEPS))
-    gal = "".join(f'<figure class="reveal">{frame(s, m)}<figcaption>ภาพตัวอย่าง</figcaption></figure>' for s, m in GALLERY)
+    gal = "".join(f'<figure class="reveal">{frame(s, m)}</figure>' for s, m in GALLERY[:6])
     clips = "".join(f'<a class="clip reveal" href="{SHOP["tiktok"]}" target="_blank" rel="noopener"><i class="ph-fill ph-play-circle"></i><span>คลิป TikTok {i}</span></a>' for i in range(1, 5))
     rev = "".join('<div class="review reveal"><div class="sk"></div><div class="sk"></div><div class="sk s"></div><small>รอรีวิวจริงจากลูกค้าของร้าน</small></div>' for _ in range(3))
 
@@ -170,8 +189,8 @@ def build():
   </div>
   <div class="case" aria-hidden="true">
     <div class="glow"></div><div class="shelf"></div>
-    {frame("arch", "g")}
-    <div class="tag"><b>งานทองตามพิมพ์</b>ภาพวาดตัวอย่าง</div>
+    {frame("p02.jpg", "g", "frame", "กรอบพระเงินลายไทย งานจากร้าน KT", True)}
+    <div class="tag"><b>งานจริงจากร้าน</b>ทุกงานซ่อม ลายสั่งทำ</div>
   </div>
 </div></section>
 
@@ -192,7 +211,7 @@ def build():
 </div></section>
 
 <section class="block" id="about"><div class="wrap craft">
-  <div class="photo reveal"><div><i class="ph ph-hammer"></i>รูปทีมช่างที่โต๊ะทำงาน<br>(รอรูปจริงจากร้าน)</div></div>
+  <img class="photo reveal craftimg" src="../assets/img/p06.jpg" alt="อะไหล่กรอบพระและห่วงบนโต๊ะช่าง" loading="lazy" decoding="async">
   <div class="reveal">
     <p class="eyebrow">เกี่ยวกับเรา</p>
     <h2>ทีมช่างทองหลวง</h2>
@@ -204,7 +223,7 @@ def build():
 
 <section class="block"><div class="wrap social">
   <div><h3 class="reveal"><i class="ph ph-tiktok-logo"></i>คลิปงานจาก TikTok</h3><div class="clips">{clips}</div></div>
-  <div><h3 class="reveal"><i class="ph ph-chat-circle-text"></i>รีวิวจากลูกค้า</h3><div class="reviews">{rev}</div></div>
+  <div><h3 class="reveal"><i class="ph ph-chat-circle-text"></i>รีวิวจากลูกค้า</h3><div class="reviews">{reviews_html(4)}</div></div>
 </div></section>
 
 <section class="block" id="contact"><div class="wrap contact">

@@ -40,7 +40,7 @@ footer{color:var(--muted);font-size:14px;margin-top:48px}
 DEFS
 <div class="wrap">
   <h1>KT กรอบพระไทยแลนด์ · แบบหน้าแรก 3 แบบ</h1>
-  <p class="sub">ทุกแบบใช้โครงหน้าเดียวกัน ต่างกันที่อารมณ์และการจัดวาง ภาพกรอบพระในดราฟต์เป็นภาพวาดตัวอย่าง จะเปลี่ยนเป็นรูปจริงของร้านเมื่อได้รับรูปแล้ว</p>
+  <p class="sub">ทุกแบบใช้โครงหน้าเดียวกัน ต่างกันที่อารมณ์และการจัดวาง ภาพสินค้าและรีวิวเป็นของจริงที่ร้านส่งมา</p>
   <div class="grid">
     <a class="opt" href="v1-showcase/"><div class="sw" style="background:radial-gradient(60% 70% at 50% 30%,rgba(214,176,106,.25),#0E0C09)">F1<div class="chips"><i style="background:#0E0C09"></i><i style="background:#D6B06A"></i><i style="background:#EFE7D6"></i></div></div>
       <div class="body"><span class="tag">แนะนำ</span><b>1 · ตู้โชว์ร้านทอง</b><span>พื้นดำ ไฟส่องสีทอง กรอบพระเด่นเหมือนวางในตู้กระจก ตรงกับโทนเพจของร้าน</span><span class="go">ดูแบบนี้ →</span></div></a>

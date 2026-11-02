@@ -102,6 +102,17 @@ section.block{padding-block:120px}
 .contact dd{margin:0}.contact dd a{text-decoration:none}
 .map{min-height:380px;filter:grayscale(1) contrast(.9)}
 .map iframe{width:100%;height:100%;min-height:380px;border:0}
+
+.rv{width:100%;display:block;border-radius:8px}
+img.photo{display:block;object-fit:cover}
+
+.gal figure,.strip figure,.cat .pic,.rowc .thumb{position:relative;overflow:hidden}
+.gal .frame.photo,.strip .frame.photo,.cat .pic .frame.photo,.rowc .thumb .frame.photo{position:absolute;inset:0;width:100%;height:100%;max-width:none}
+.hero .art .frame.photo{width:100%;aspect-ratio:3/4;filter:none}
+.rowc .thumb .frame.photo{width:100%;height:100%}
+.gal .frame.photo{width:100%;height:100%}
+.craftimg{width:100%;aspect-ratio:4/5}
+.rvgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
 footer{padding-block:40px;border-top:1px solid #26251F;color:var(--stone);font-size:13px}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 """
@@ -115,7 +126,7 @@ def build():
     steps = "".join(
         f'<li class="reveal"><span class="n">{i+1}</span><h3>{t}</h3><p>{d}</p></li>'
         for i, (t, d) in enumerate(STEPS))
-    gal = "".join(f'<figure class="reveal">{frame(s, m)}<figcaption>ภาพตัวอย่าง</figcaption></figure>' for s, m in GALLERY)
+    gal = "".join(f'<figure class="reveal">{frame(s, m)}</figure>' for s, m in GALLERY)
     clips = "".join(f'<a class="clip reveal" href="{SHOP["tiktok"]}" target="_blank" rel="noopener"><i class="ph ph-play"></i><span>คลิป {i}</span></a>' for i in range(1, 5))
     rev = "".join('<div class="review reveal"><div class="sk"></div><div class="sk"></div><div class="sk s"></div><small>รอรีวิวจริงจากลูกค้าของร้าน</small></div>' for _ in range(3))
 
@@ -139,7 +150,7 @@ def build():
 
 <main id="main">
 <section class="hero"><div class="wrap">
-  <div class="art" aria-hidden="true">{frame("sema", "g")}<small>ภาพวาดตัวอย่าง</small></div>
+  <div class="art" aria-hidden="true">{frame("p07.jpg", "g", "frame", "กรอบพระเงินทรงใบโพธิ์ งานจากร้าน KT", True)}</div>
   <div class="stagger">
     <p class="label">ทอง · เงิน · นาก · กันน้ำ · สั่งทำ</p>
     <h1 class="big">กรอบพระ<br><b>งานช่าง</b><br>ทองหลวง</h1>
@@ -168,7 +179,7 @@ def build():
 </div></section>
 
 <section class="block" id="about"><div class="wrap craft">
-  <div class="photo reveal"><div><i class="ph ph-hammer"></i>รูปทีมช่าง<br>(รอรูปจริงจากร้าน)</div></div>
+  <img class="photo reveal craftimg" src="../assets/img/p06.jpg" alt="อะไหล่กรอบพระและห่วงบนโต๊ะช่าง" loading="lazy" decoding="async">
   <div class="reveal">
     <p class="label">เกี่ยวกับเรา</p>
     <p class="q">ทุกงานซ่อม ลายสั่งทำ<br>โดย<b>ทีมช่างทองหลวง</b></p>
@@ -179,7 +190,7 @@ def build():
 
 <section class="block light"><div class="wrap social">
   <div><h3 class="reveal">TikTok</h3><div class="clips">{clips}</div></div>
-  <div><h3 class="reveal">รีวิวจากลูกค้า</h3>{rev}</div>
+  <div><h3 class="reveal">รีวิวจากลูกค้า</h3><div class="rvgrid">{reviews_html(4)}</div></div>
 </div></section>
 
 <section class="block" id="contact"><div class="wrap contact">
