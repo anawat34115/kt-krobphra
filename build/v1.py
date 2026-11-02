@@ -213,7 +213,7 @@ def build():
     <h2 style="font-size:clamp(28px,3.4vw,40px);margin-bottom:40px">มาที่ร้าน หรือทักแชทได้เลย</h2>
     <dl>
       <div><dt>ที่อยู่</dt><dd>{SHOP["addr"]}</dd></div>
-      <div><dt>โทร</dt><dd><a href="{SHOP["tel_href"]}">{SHOP["tel"]}</a> · <a href="{SHOP["tel2_href"]}">{SHOP["tel2"]}</a></dd></div>
+      <div><dt>โทร</dt><dd><a href="{SHOP["tel_href"]}">{SHOP["tel"]}</a> · <a href="{SHOP["tel2_href"]}">{SHOP["tel2"]}</a> · <a href="{SHOP["tel3_href"]}">{SHOP["tel3"]}</a></dd></div>
       <div><dt>เวลาเปิด</dt><dd>{SHOP["hours"]}</dd></div>
       <div><dt>หน้าร้าน</dt><dd><a href="{SHOP["gmaps"]}" target="_blank" rel="noopener">{SHOP["store"]}</a></dd></div>
     </dl>

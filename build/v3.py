@@ -188,7 +188,7 @@ def build():
     <h2>แวะมาที่ร้าน หรือทักแชทได้เลย</h2>
     <dl>
       <dt>ที่อยู่</dt><dd>{SHOP["addr"]}</dd>
-      <dt>โทร</dt><dd><a href="{SHOP["tel_href"]}">{SHOP["tel"]}</a> · <a href="{SHOP["tel2_href"]}">{SHOP["tel2"]}</a></dd>
+      <dt>โทร</dt><dd><a href="{SHOP["tel_href"]}">{SHOP["tel"]}</a> · <a href="{SHOP["tel2_href"]}">{SHOP["tel2"]}</a> · <a href="{SHOP["tel3_href"]}">{SHOP["tel3"]}</a></dd>
       <dt>เวลาเปิด</dt><dd>{SHOP["hours"]}</dd>
       <dt>หน้าร้าน</dt><dd><a href="{SHOP["gmaps"]}" target="_blank" rel="noopener">{SHOP["store"]}</a></dd>
       <dt>ออนไลน์</dt><dd><a href="{SHOP["fb"]}" target="_blank" rel="noopener">Facebook</a> · <a href="#" data-link="shopee">Shopee</a> · <a href="{SHOP["tiktok"]}" target="_blank" rel="noopener">TikTok</a></dd>

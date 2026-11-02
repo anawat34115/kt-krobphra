@@ -204,7 +204,7 @@ def build():
     <p class="kicker">ติดต่อร้าน</p>
     <dl>
       <div><dt>ที่อยู่</dt><dd>{SHOP["addr"]}</dd></div>
-      <div><dt>โทร</dt><dd><a href="{SHOP["tel_href"]}">{SHOP["tel"]}</a> · <a href="{SHOP["tel2_href"]}">{SHOP["tel2"]}</a></dd></div>
+      <div><dt>โทร</dt><dd><a href="{SHOP["tel_href"]}">{SHOP["tel"]}</a> · <a href="{SHOP["tel2_href"]}">{SHOP["tel2"]}</a> · <a href="{SHOP["tel3_href"]}">{SHOP["tel3"]}</a></dd></div>
       <div><dt>เวลาเปิด</dt><dd>{SHOP["hours"]}</dd></div>
       <div><dt>หน้าร้าน</dt><dd><a href="{SHOP["gmaps"]}" target="_blank" rel="noopener">{SHOP["store"]}</a></dd></div>
     </dl>
