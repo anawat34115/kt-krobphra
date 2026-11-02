@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="th"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:NST;src:url(fonts/NotoSerifThai.ttf)}
+@font-face{font-family:Chon;src:url(fonts/Chonburi.ttf)}
+@font-face{font-family:BJL;src:url(fonts/BaiJamjuree-Light.ttf)}
+@font-face{font-family:BJM;src:url(fonts/BaiJamjuree-Medium.ttf)}
+@font-face{font-family:Cinzel;src:url(fonts/Cinzel.ttf)}
+@font-face{font-family:Sar;src:url(fonts/Sarabun-Medium.ttf)}
+*{box-sizing:border-box}body{margin:0;background:#222}
+.sheet{width:1600px;height:900px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto 1fr 150px;font-family:Sar}
+.top{grid-column:1/3;display:flex;justify-content:space-between;align-items:center;padding:28px 48px;font-size:22px}
+.top b{font-size:30px}
+.pane{display:grid;place-items:center}
+.foot{grid-column:1/3;display:flex;gap:48px;align-items:center;padding:0 48px}
+.chip{width:96px;height:96px;border-radius:24px;display:grid;place-items:center;overflow:hidden}
+.sw{display:flex;gap:12px;align-items:center;font-size:18px}
+.sw i{width:40px;height:40px;border-radius:50%;display:inline-block;border:1px solid rgba(0,0,0,.15)}
+.note{margin-left:auto;font-size:20px;max-width:620px;line-height:1.5}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6E3A1"/><stop offset=".45" stop-color="#D1A24A"/><stop offset=".7" stop-color="#A47A30"/><stop offset="1" stop-color="#E8CB80"/></linearGradient>
+  <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F3D58A"/><stop offset=".6" stop-color="#D9AE52"/><stop offset="1" stop-color="#B8903A"/></linearGradient>
+
+  <!-- A: arch frame + KT -->
+  <symbol id="markA" viewBox="0 0 200 260">
+    <circle cx="100" cy="22" r="13" fill="none" stroke="url(#gold)" stroke-width="5"/>
+    <path d="M36 250 L36 104 Q36 36 100 36 Q164 36 164 104 L164 250 Z" fill="none" stroke="url(#gold)" stroke-width="7"/>
+    <path d="M50 238 L50 106 Q50 50 100 50 Q150 50 150 106 L150 238 Z" fill="none" stroke="url(#gold)" stroke-width="2"/>
+    <text x="100" y="178" text-anchor="middle" font-family="Cinzel" font-weight="700" font-size="64" fill="url(#gold)" letter-spacing="2">KT</text>
+    <path d="M74 200 H126" stroke="url(#gold)" stroke-width="2"/>
+  </symbol>
+
+  <!-- B: seal -->
+  <symbol id="petal" viewBox="-11 -11 22 22"><g fill="currentColor"><ellipse cx="0" cy="-5" rx="2.4" ry="4.4"/><ellipse cx="0" cy="5" rx="2.4" ry="4.4"/><ellipse cx="-5" cy="0" rx="4.4" ry="2.4"/><ellipse cx="5" cy="0" rx="4.4" ry="2.4"/></g></symbol>
+  <path id="arcTop" d="M32 100 A68 68 0 0 1 168 100"/><path id="arcBot" d="M20 100 A80 80 0 0 0 180 100"/>
+  <symbol id="markB" viewBox="0 0 200 200">
+    <circle cx="100" cy="100" r="96" fill="none" stroke="url(#leaf)" stroke-width="4"/>
+    <circle cx="100" cy="100" r="88" fill="none" stroke="url(#leaf)" stroke-width="1.5"/>
+    <circle cx="100" cy="100" r="50" fill="none" stroke="url(#leaf)" stroke-width="1.5"/>
+    <text font-family="Chon" font-size="18" fill="#E4BC62" letter-spacing="1" text-anchor="middle"><textPath href="#arcTop" startOffset="50%">กรอบพระไทยแลนด์</textPath></text><text font-family="Chon" font-size="15" fill="#E4BC62" letter-spacing="1.5" text-anchor="middle"><textPath href="#arcBot" startOffset="50%">ช่างทองหลวง</textPath></text><use href="#petal" x="12" y="91" width="18" height="18" style="color:#E4BC62"/><use href="#petal" x="170" y="91" width="18" height="18" style="color:#E4BC62"/>
+    <text x="100" y="117" text-anchor="middle" font-family="Chon" font-size="46" fill="url(#leaf)">KT</text>
+    
+  </symbol>
+
+  <!-- C: single-line teardrop -->
+  <symbol id="markC" viewBox="0 0 200 260">
+    <circle cx="100" cy="24" r="12" fill="none" stroke="currentColor" stroke-width="3"/>
+    <path d="M100 40 C150 104 172 166 166 204 Q158 252 100 252 Q42 252 34 204 C28 166 50 104 100 40 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+    <text x="100" y="192" text-anchor="middle" font-family="BJM" font-size="54" fill="currentColor" letter-spacing="6">KT</text>
+  </symbol>
+</defs></svg>
+
+<!-- ===== A ===== -->
+<section class="sheet" id="A" style="background:#F4EFE4;color:#16120A">
+  <div class="top"><b>แบบ A · ซุ้มกรอบทอง</b><span>เข้าคู่กับเว็บแบบ 1 ตู้โชว์ร้านทอง</span></div>
+  <div class="pane" style="background:#0E0C09">
+    <div style="display:flex;align-items:center;gap:36px">
+      <svg width="190" height="247"><use href="#markA"/></svg>
+      <div>
+        <div style="font:600 64px/1.2 NST;color:#EFE7D6">KT <span style="color:#D6B06A">กรอบพระ</span></div>
+        <div style="font:600 52px/1.2 NST;color:#EFE7D6">ไทยแลนด์</div>
+        <div style="font:600 16px Cinzel;letter-spacing:.42em;color:#D6B06A;margin-top:12px">THAI AMULET FRAMES</div>
+      </div>
+    </div>
+  </div>
+  <div class="pane" style="background:#F4EFE4">
+    <div style="text-align:center">
+      <svg width="150" height="195" style="filter:brightness(.82)"><use href="#markA"/></svg>
+      <div style="font:600 46px/1.3 NST;color:#16120A;margin-top:12px">KT กรอบพระไทยแลนด์</div>
+      <div style="font:600 14px Cinzel;letter-spacing:.42em;color:#9C7A3C">THAI AMULET FRAMES</div>
+    </div>
+  </div>
+  <div class="foot">
+    <div class="chip" style="background:#0E0C09"><svg width="64" height="83"><use href="#markA"/></svg></div>
+    <div class="chip" style="background:#0E0C09;border-radius:50%"><svg width="58" height="75"><use href="#markA"/></svg></div>
+    <div class="sw"><i style="background:#0E0C09"></i><i style="background:#D6B06A"></i><i style="background:#EFE7D6"></i></div>
+    <div class="note">รูปทรงซุ้มกรอบพระคล้องห่วง ล้อมอักษร KT แบบตัวจารึก ดูหรู ใช้ต่อจากโทนดำ-ทองเดิมได้ทันที</div>
+  </div>
+</section>
+
+<!-- ===== B ===== -->
+<section class="sheet" id="B" style="background:#F5EAD3;color:#2A1A12">
+  <div class="top"><b>แบบ B · ตราช่างหลวง</b><span>เข้าคู่กับเว็บแบบ 2 ช่างหลวง</span></div>
+  <div class="pane" style="background:#4A0F12">
+    <div style="display:flex;align-items:center;gap:40px">
+      <svg width="230" height="230"><use href="#markB"/></svg>
+      <div>
+        <div style="font:56px/1.35 Chon;color:#F5EAD3">กรอบพระ</div>
+        <div style="font:56px/1.35 Chon;color:#E4BC62">ไทยแลนด์</div>
+        <div style="font:500 20px Sar;color:#F5EAD3;opacity:.8;margin-top:4px">งานช่างทองหลวง · KT</div>
+      </div>
+    </div>
+  </div>
+  <div class="pane" style="background:#F5EAD3">
+    <div style="text-align:center">
+      <svg width="200" height="200" style="filter:brightness(.75) saturate(1.2)"><use href="#markB"/></svg>
+      <div style="font:44px/1.4 Chon;color:#4A0F12;margin-top:12px">กรอบพระไทยแลนด์</div>
+    </div>
+  </div>
+  <div class="foot">
+    <div class="chip" style="background:#4A0F12"><svg width="84" height="84"><use href="#markB"/></svg></div>
+    <div class="chip" style="background:#2E0709;border-radius:50%"><svg width="84" height="84"><use href="#markB"/></svg></div>
+    <div class="sw"><i style="background:#4A0F12"></i><i style="background:#E4BC62"></i><i style="background:#F5EAD3"></i></div>
+    <div class="note">ตราวงกลมแบบตราประทับช่างโบราณ มีลายประจำยามและชื่อร้านรอบวง ให้ความรู้สึกเก่าแก่ น่าเชื่อถือ</div>
+  </div>
+</section>
+
+<!-- ===== C ===== -->
+<section class="sheet" id="C" style="background:#F3EFE8;color:#151412">
+  <div class="top"><b>แบบ C · เส้นเดียว</b><span>เข้าคู่กับเว็บแบบ 3 จิวเวลรีสมัยใหม่</span></div>
+  <div class="pane" style="background:#0B0B0C;color:#CBB58C">
+    <div style="display:flex;align-items:center;gap:40px">
+      <svg width="170" height="221" style="color:#CBB58C"><use href="#markC"/></svg>
+      <div>
+        <div style="font:96px/1 BJL;color:#F3EFE8;letter-spacing:.06em">KT</div>
+        <div style="font:40px/1.3 BJL;color:#CBB58C;margin-top:8px">กรอบพระไทยแลนด์</div>
+        <div style="font:15px BJM;letter-spacing:.4em;color:#8D877C;margin-top:10px">THAI AMULET FRAMES</div>
+      </div>
+    </div>
+  </div>
+  <div class="pane" style="background:#F3EFE8">
+    <div style="display:flex;align-items:center;gap:28px">
+      <svg width="120" height="156" style="color:#151412"><use href="#markC"/></svg>
+      <div>
+        <div style="font:72px/1 BJL;color:#151412;letter-spacing:.06em">KT</div>
+        <div style="font:32px/1.3 BJL;color:#8C7650;margin-top:6px">กรอบพระไทยแลนด์</div>
+      </div>
+    </div>
+  </div>
+  <div class="foot">
+    <div class="chip" style="background:#0B0B0C"><svg width="60" height="78" style="color:#CBB58C"><use href="#markC"/></svg></div>
+    <div class="chip" style="background:#CBB58C;border-radius:50%"><svg width="56" height="73" style="color:#0B0B0C"><use href="#markC"/></svg></div>
+    <div class="sw"><i style="background:#0B0B0C"></i><i style="background:#CBB58C"></i><i style="background:#F3EFE8"></i></div>
+    <div class="note">กรอบพระทรงหยดน้ำวาดด้วยเส้นบางเส้นเดียว เรียบ ทันสมัย อ่านง่ายแม้ย่อเล็กเป็นไอคอนแอปหรือรูปโปรไฟล์</div>
+  </div>
+</section>
+</body></html>
