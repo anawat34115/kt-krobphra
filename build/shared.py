@@ -1,0 +1,103 @@
+# Shared content + SVG illustrations for the 3 KT drafts.
+
+SHOP = {
+    "name": "KT กรอบพระไทยแลนด์",
+    "tag": "ทุกงานซ่อม ลายสั่งทำ โดยทีมช่างทองหลวง",
+    "addr": "1324/2 ต.ตลาด อ.กระทุ่มแบน จ.สมุทรสาคร",
+    "tel": "062 589 9383",
+    "tel_href": "tel:0625899383",
+    "fb": "https://www.facebook.com/krobphrathailand",
+    "chat": "https://m.me/krobphrathailand",
+    "tiktok": "https://www.tiktok.com/@lhimbing",
+    "map_embed": "https://www.google.com/maps?q=1324/2+%E0%B8%95.%E0%B8%95%E0%B8%A5%E0%B8%B2%E0%B8%94+%E0%B8%AD.%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%97%E0%B8%B8%E0%B9%88%E0%B8%A1%E0%B9%81%E0%B8%9A%E0%B8%99+%E0%B8%AA%E0%B8%A1%E0%B8%B8%E0%B8%97%E0%B8%A3%E0%B8%AA%E0%B8%B2%E0%B8%84%E0%B8%A3&output=embed",
+}
+
+CATS = [
+    ("arch", "g", "กรอบพระ", "เลี่ยมพระทุกพิมพ์ พร้อมใช้งาน"),
+    ("round", "s", "กรอบเงิน", "กรอบเงินลายสวย ใส่ได้ทุกวัน"),
+    ("tear", "g", "กรอบทอง", "งานทองตามพิมพ์พระ เลือกลายได้"),
+    ("sema", "g", "ลายสั่งทำ", "ออกแบบลายเฉพาะองค์ โดยทีมช่าง"),
+]
+
+STEPS = [
+    ("ส่งรูปพระ", "ถ่ายรูปพระด้านหน้า-หลัง แล้วส่งทางแชท Facebook หรือ TikTok"),
+    ("ช่างประเมินราคา", "ช่างดูพิมพ์และขนาด แล้วแจ้งราคา ลาย และระยะเวลาให้ก่อนเริ่มงาน"),
+    ("ยืนยันแล้วเริ่มงาน", "ช่างลงมือทำ แล้วแจ้งเมื่องานเสร็จตามวันที่นัด"),
+]
+
+GALLERY = [("arch", "g"), ("tear", "g"), ("round", "s"), ("sema", "g"), ("arch", "s"), ("round", "g")]
+
+PH = "ภาพวาดตัวอย่าง · รอรูปจริงจากร้าน"
+
+
+def svg_defs():
+    """Gradients + one <symbol> per frame shape and metal."""
+    shapes = {
+        "arch": "M40 250 L40 96 Q40 26 100 26 Q160 26 160 96 L160 250 Z",
+        "tear": "M100 22 C146 84 170 150 166 196 Q160 250 100 250 Q40 250 34 196 C30 150 54 84 100 22 Z",
+        "round": "M100 46 A102 102 0 1 1 99.9 46 Z",
+        "sema": "M100 24 Q150 46 164 116 Q172 184 140 250 L60 250 Q28 184 36 116 Q50 46 100 24 Z",
+    }
+    # round: circle centered (100,148) r=102 -> use circle element instead of path
+    out = ['<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>',
+           '<linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7E6A8"/><stop offset=".35" stop-color="#D1A24A"/><stop offset=".62" stop-color="#8E6526"/><stop offset="1" stop-color="#E8CB80"/></linearGradient>',
+           '<linearGradient id="ms" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F5F5F3"/><stop offset=".4" stop-color="#B4B4B6"/><stop offset=".65" stop-color="#6F6F74"/><stop offset="1" stop-color="#DCDCDF"/></linearGradient>',
+           '<radialGradient id="clay" cx=".45" cy=".35" r=".8"><stop offset="0" stop-color="#6A5A45"/><stop offset=".7" stop-color="#3A3127"/><stop offset="1" stop-color="#211C16"/></radialGradient>',
+           '</defs>']
+    figure = ('<g fill="#8A7558" opacity=".55">'
+              '<circle cx="100" cy="98" r="11"/><circle cx="100" cy="83" r="5"/>'
+              '<ellipse cx="100" cy="138" rx="26" ry="30"/><ellipse cx="100" cy="166" rx="42" ry="12"/>'
+              '<rect x="62" y="182" width="76" height="8" rx="2"/><rect x="56" y="194" width="88" height="8" rx="2"/><rect x="50" y="206" width="100" height="8" rx="2"/></g>')
+    for name, d in shapes.items():
+        for m, grad in (("g", "mg"), ("s", "ms")):
+            if name == "round":
+                outer = f'<circle cx="100" cy="148" r="100" fill="url(#{grad})"/>'
+                inner = '<circle cx="100" cy="148" r="84" fill="url(#clay)"/>'
+                fig = f'<g transform="translate(18 14) scale(.82)">{figure}</g>'
+            else:
+                outer = f'<path d="{d}" fill="url(#{grad})"/>'
+                inner = f'<path d="{d}" fill="url(#clay)" transform="translate(100 140) scale(.84) translate(-100 -140)"/>'
+                fig = figure
+            ring = f'<circle cx="100" cy="{40 if name=="round" else 14}" r="11" fill="none" stroke="url(#{grad})" stroke-width="6"/>'
+            out.append(f'<symbol id="f-{name}-{m}" viewBox="0 0 200 260">{ring}{outer}{inner}{fig}'
+                       f'<path d="M70 60 Q100 40 130 60" stroke="#fff" stroke-opacity=".25" stroke-width="3" fill="none"/></symbol>')
+    out.append('</svg>')
+    return "".join(out)
+
+
+def frame(shape, metal, cls="frame", label=None):
+    lab = f' aria-label="{label}"' if label else ' aria-hidden="true"'
+    role = ' role="img"' if label else ''
+    return f'<svg class="{cls}" viewBox="0 0 200 260"{role}{lab}><use href="#f-{shape}-{metal}"/></svg>'
+
+
+HEAD_COMMON = """<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="description" content="KT กรอบพระไทยแลนด์ รับเลี่ยมกรอบพระ กรอบทอง กรอบเงิน งานซ่อมและลายสั่งทำ โดยทีมช่างทองหลวง กระทุ่มแบน สมุทรสาคร">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>"""
+
+REVEAL_JS = """<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) return;
+  document.documentElement.classList.add('js-reveal');
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); }, {rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+</script>"""
+
+REVEAL_CSS = """
+.js-reveal .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.js-reveal .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+"""
+
+
+def draft_bar(n, name, bg, fg):
+    return (f'<div style="background:{bg};color:{fg};font:500 13px/1.4 system-ui,sans-serif;padding:8px 16px;'
+            f'display:flex;gap:8px 16px;flex-wrap:wrap;justify-content:center;align-items:center;text-align:center">'
+            f'<span>ดราฟต์แบบที่ {n}/3 · {name} · ภาพเป็นภาพวาดตัวอย่าง รอรูปจริงจากร้าน</span>'
+            f'<a href="../" style="color:inherit;text-decoration:underline">ดูแบบอื่น</a></div>')
