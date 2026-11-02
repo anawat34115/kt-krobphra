@@ -109,7 +109,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 def build():
     rows = "".join(
-        f'<a class="rowc reveal" href="#" data-link="shopee"><span class="no">0{i+1}</span><h3>{t}</h3><p>{d}</p>'
+        f'<a class="rowc reveal" href="{SHOP["shopee"]}" target="_blank" rel="noopener"><span class="no">0{i+1}</span><h3>{t}</h3><p>{d}</p>'
         f'<span class="thumb">{frame(s, m)}</span><i class="ph ph-arrow-up-right"></i></a>'
         for i, (s, m, t, d) in enumerate(CATS))
     steps = "".join(
@@ -191,7 +191,7 @@ def build():
       <dt>โทร</dt><dd><a href="{SHOP["tel_href"]}">{SHOP["tel"]}</a> · <a href="{SHOP["tel2_href"]}">{SHOP["tel2"]}</a> · <a href="{SHOP["tel3_href"]}">{SHOP["tel3"]}</a></dd>
       <dt>เวลาเปิด</dt><dd>{SHOP["hours"]}</dd>
       <dt>หน้าร้าน</dt><dd><a href="{SHOP["gmaps"]}" target="_blank" rel="noopener">{SHOP["store"]}</a></dd>
-      <dt>ออนไลน์</dt><dd><a href="{SHOP["fb"]}" target="_blank" rel="noopener">Facebook</a> · <a href="#" data-link="shopee">Shopee</a> · <a href="{SHOP["tiktok"]}" target="_blank" rel="noopener">TikTok</a></dd>
+      <dt>ออนไลน์</dt><dd><a href="{SHOP["fb"]}" target="_blank" rel="noopener">Facebook</a> · <a href="{SHOP["shopee"]}" target="_blank" rel="noopener">Shopee</a> · <a href="{SHOP["tiktok"]}" target="_blank" rel="noopener">TikTok</a></dd>
     </dl>
     <a class="btn btn-champ" href="{SHOP["chat"]}" target="_blank" rel="noopener">ทักแชท Facebook <i class="ph ph-arrow-right"></i></a>
   </div>

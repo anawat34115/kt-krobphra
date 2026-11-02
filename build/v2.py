@@ -122,7 +122,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 def build():
     cats = "".join(
-        f'<a class="cat reveal" href="#" data-link="shopee"><div class="pic">{frame(s, m)}</div>'
+        f'<a class="cat reveal" href="{SHOP["shopee"]}" target="_blank" rel="noopener"><div class="pic">{frame(s, m)}</div>'
         f'<div><h3>{t}</h3><p>{d}</p><span class="go">ดูใน Shopee <i class="ph ph-arrow-right"></i></span></div></a>'
         for s, m, t, d in CATS)
     steps = "".join(
@@ -210,7 +210,7 @@ def build():
     </dl>
     <div style="display:flex;flex-wrap:wrap;gap:16px">
       <a class="btn btn-leaf" href="{SHOP["chat"]}" target="_blank" rel="noopener"><i class="ph ph-messenger-logo"></i>ทักแชท</a>
-      <a class="btn btn-ghost" href="#" data-link="shopee">Shopee</a>
+      <a class="btn btn-ghost" href="{SHOP["shopee"]}" target="_blank" rel="noopener">Shopee</a>
       <a class="btn btn-ghost" href="{SHOP["tiktok"]}" target="_blank" rel="noopener">TikTok</a>
     </div>
   </div>

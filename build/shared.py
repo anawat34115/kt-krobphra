@@ -17,6 +17,7 @@ SHOP = {
     "tel_href": "tel:0625899383",
     "fb": "https://www.facebook.com/krobphrathailand",
     "chat": "https://m.me/krobphrathailand",
+    "shopee": "https://shopee.co.th/lhim5555",
     "tiktok": "https://www.tiktok.com/@lhimbing",
     "map_embed": "https://maps.google.com/maps?q=13.6534902,100.2648441&z=17&output=embed",
 }
