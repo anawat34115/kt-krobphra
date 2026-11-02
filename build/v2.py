@@ -155,7 +155,7 @@ def build():
   <div class="stagger">
     <p class="kicker">ร้านกรอบพระ กระทุ่มแบน สมุทรสาคร</p>
     <h1>กรอบพระงานช่าง<br><span>ทองหลวง</span><br>ทุกองค์ทำด้วยมือ</h1>
-    <p class="lead">รับเลี่ยมกรอบพระ กรอบทอง กรอบเงิน งานซ่อม และลายสั่งทำ ส่งรูปพระมาให้ช่างดู แจ้งราคาก่อนเริ่มงานทุกครั้ง</p>
+    <p class="lead">กรอบพระงานพรีเมี่ยม {SHOP["services"]} ส่งรูปพระมาให้ช่างดู แจ้งราคาก่อนเริ่มงานทุกครั้ง</p>
     <div class="ctas">
       <a class="btn btn-leaf" href="{SHOP["chat"]}" target="_blank" rel="noopener"><i class="ph ph-camera"></i>ส่งรูปพระ ขอประเมินราคา</a>
       <a class="btn btn-ghost" href="#products">ดูสินค้า</a>
@@ -204,8 +204,9 @@ def build():
     <p class="kicker">ติดต่อร้าน</p>
     <dl>
       <div><dt>ที่อยู่</dt><dd>{SHOP["addr"]}</dd></div>
-      <div><dt>โทร</dt><dd><a href="{SHOP["tel_href"]}">{SHOP["tel"]}</a></dd></div>
-      <div><dt>เวลาเปิด</dt><dd><span class="todo">รอข้อมูลเวลาเปิด-ปิด</span></dd></div>
+      <div><dt>โทร</dt><dd><a href="{SHOP["tel_href"]}">{SHOP["tel"]}</a> · <a href="{SHOP["tel2_href"]}">{SHOP["tel2"]}</a></dd></div>
+      <div><dt>เวลาเปิด</dt><dd>{SHOP["hours"]}</dd></div>
+      <div><dt>หน้าร้าน</dt><dd><a href="{SHOP["gmaps"]}" target="_blank" rel="noopener">{SHOP["store"]}</a></dd></div>
     </dl>
     <div style="display:flex;flex-wrap:wrap;gap:16px">
       <a class="btn btn-leaf" href="{SHOP["chat"]}" target="_blank" rel="noopener"><i class="ph ph-messenger-logo"></i>ทักแชท</a>

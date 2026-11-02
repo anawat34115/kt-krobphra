@@ -141,11 +141,11 @@ def build():
 <section class="hero"><div class="wrap">
   <div class="art" aria-hidden="true">{frame("sema", "g")}<small>ภาพวาดตัวอย่าง</small></div>
   <div class="stagger">
-    <p class="label">กรอบพระ · ทอง · เงิน · สั่งทำ</p>
+    <p class="label">ทอง · เงิน · นาก · กันน้ำ · สั่งทำ</p>
     <h1 class="big">กรอบพระ<br><b>งานช่าง</b><br>ทองหลวง</h1>
   </div>
   <div class="row reveal">
-    <p>รับเลี่ยมกรอบพระทุกพิมพ์ งานซ่อม และลายสั่งทำเฉพาะองค์ ที่กระทุ่มแบน สมุทรสาคร ส่งรูปพระมาให้ช่างดู แจ้งราคาก่อนเริ่มงานทุกครั้ง</p>
+    <p>กรอบพระงานพรีเมี่ยม {SHOP["services"]} ส่งรูปพระมาให้ช่างดู แจ้งราคาก่อนเริ่มงานทุกครั้ง</p>
     <div class="ctas"><a class="btn btn-champ" href="{SHOP["chat"]}" target="_blank" rel="noopener">ส่งรูปพระ ขอประเมินราคา <i class="ph ph-arrow-right"></i></a></div>
   </div>
 </div></section>
@@ -188,8 +188,9 @@ def build():
     <h2>แวะมาที่ร้าน หรือทักแชทได้เลย</h2>
     <dl>
       <dt>ที่อยู่</dt><dd>{SHOP["addr"]}</dd>
-      <dt>โทร</dt><dd><a href="{SHOP["tel_href"]}">{SHOP["tel"]}</a></dd>
-      <dt>เวลาเปิด</dt><dd><span class="todo">รอข้อมูลเวลาเปิด-ปิด</span></dd>
+      <dt>โทร</dt><dd><a href="{SHOP["tel_href"]}">{SHOP["tel"]}</a> · <a href="{SHOP["tel2_href"]}">{SHOP["tel2"]}</a></dd>
+      <dt>เวลาเปิด</dt><dd>{SHOP["hours"]}</dd>
+      <dt>หน้าร้าน</dt><dd><a href="{SHOP["gmaps"]}" target="_blank" rel="noopener">{SHOP["store"]}</a></dd>
       <dt>ออนไลน์</dt><dd><a href="{SHOP["fb"]}" target="_blank" rel="noopener">Facebook</a> · <a href="#" data-link="shopee">Shopee</a> · <a href="{SHOP["tiktok"]}" target="_blank" rel="noopener">TikTok</a></dd>
     </dl>
     <a class="btn btn-champ" href="{SHOP["chat"]}" target="_blank" rel="noopener">ทักแชท Facebook <i class="ph ph-arrow-right"></i></a>

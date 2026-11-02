@@ -3,29 +3,36 @@
 SHOP = {
     "name": "KT กรอบพระไทยแลนด์",
     "tag": "ทุกงานซ่อม ลายสั่งทำ โดยทีมช่างทองหลวง",
-    "addr": "1324/2 ต.ตลาด อ.กระทุ่มแบน จ.สมุทรสาคร",
+    "addr": "1324/2 ต.ตลาดกระทุ่มแบน อ.กระทุ่มแบน จ.สมุทรสาคร 74110",
+    "store": "หน้าร้าน ตี๋เล็กเลี่ยมพระ ตลาดกระทุ่มแบน",
+    "tel2": "098 793 9353",
+    "tel2_href": "tel:0987939353",
+    "hours": "เปิดทุกวัน 08:00–20:00 น.",
+    "fb2": "https://www.facebook.com/tlr168",
+    "gmaps": "https://maps.app.goo.gl/PxamyNC1pdzEWy1V8",
+    "services": "รับสั่งทำ ซื้อ ซ่อม กรอบพระ ทอง เงิน นาก พลาสติก และเครื่องประดับทุกชนิด",
     "tel": "062 589 9383",
     "tel_href": "tel:0625899383",
     "fb": "https://www.facebook.com/krobphrathailand",
     "chat": "https://m.me/krobphrathailand",
     "tiktok": "https://www.tiktok.com/@lhimbing",
-    "map_embed": "https://www.google.com/maps?q=1324/2+%E0%B8%95.%E0%B8%95%E0%B8%A5%E0%B8%B2%E0%B8%94+%E0%B8%AD.%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%97%E0%B8%B8%E0%B9%88%E0%B8%A1%E0%B9%81%E0%B8%9A%E0%B8%99+%E0%B8%AA%E0%B8%A1%E0%B8%B8%E0%B8%97%E0%B8%A3%E0%B8%AA%E0%B8%B2%E0%B8%84%E0%B8%A3&output=embed",
+    "map_embed": "https://maps.google.com/maps?q=13.6534902,100.2648441&z=17&output=embed",
 }
 
 CATS = [
-    ("arch", "g", "กรอบพระ", "เลี่ยมพระทุกพิมพ์ พร้อมใช้งาน"),
+    ("tear", "g", "กรอบทอง", "งานทองตามพิมพ์พระ ขึ้นงานตามงบที่ตั้งไว้"),
     ("round", "s", "กรอบเงิน", "กรอบเงินลายสวย ใส่ได้ทุกวัน"),
-    ("tear", "g", "กรอบทอง", "งานทองตามพิมพ์พระ เลือกลายได้"),
-    ("sema", "g", "ลายสั่งทำ", "ออกแบบลายเฉพาะองค์ โดยทีมช่าง"),
+    ("sema", "n", "กรอบนาก", "สีนากอมชมพู งานละเอียดแบบช่างโบราณ"),
+    ("arch", "p", "กรอบพลาสติกกันน้ำ", "เลี่ยมกันน้ำ ทนทาน ราคาเข้าถึงง่าย"),
 ]
 
 STEPS = [
-    ("ส่งรูปพระ", "ถ่ายรูปพระด้านหน้า-หลัง แล้วส่งทางแชท Facebook หรือ TikTok"),
-    ("ช่างประเมินราคา", "ช่างดูพิมพ์และขนาด แล้วแจ้งราคา ลาย และระยะเวลาให้ก่อนเริ่มงาน"),
-    ("ยืนยันแล้วเริ่มงาน", "ช่างลงมือทำ แล้วแจ้งเมื่องานเสร็จตามวันที่นัด"),
+    ("ส่งรูปพระ", "ถ่ายรูปพระด้านหน้า-หลัง แล้วส่งทางแชท Facebook หรือ TikTok บอกงบที่ตั้งไว้ได้เลย"),
+    ("ช่างประเมินราคา", "ช่างดูพิมพ์และขนาด แจ้งราคา ลาย และระยะเวลาให้ก่อนเริ่มงาน ขึ้นงานตามงบได้"),
+    ("ช่างลงมือทำ", "มาส่งพระที่หน้าร้าน หรือส่งพระทางไปรษณีย์ ช่างวัดขนาดแล้วส่งกลับให้ถึงบ้าน"),
 ]
 
-GALLERY = [("arch", "g"), ("tear", "g"), ("round", "s"), ("sema", "g"), ("arch", "s"), ("round", "g")]
+GALLERY = [("arch", "g"), ("tear", "n"), ("round", "s"), ("sema", "g"), ("arch", "p"), ("round", "g")]
 
 PH = "ภาพวาดตัวอย่าง · รอรูปจริงจากร้าน"
 
@@ -41,7 +48,7 @@ def svg_defs():
     # round: circle centered (100,148) r=102 -> use circle element instead of path
     out = ['<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>',
            '<linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7E6A8"/><stop offset=".35" stop-color="#D1A24A"/><stop offset=".62" stop-color="#8E6526"/><stop offset="1" stop-color="#E8CB80"/></linearGradient>',
-           '<linearGradient id="ms" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F5F5F3"/><stop offset=".4" stop-color="#B4B4B6"/><stop offset=".65" stop-color="#6F6F74"/><stop offset="1" stop-color="#DCDCDF"/></linearGradient>',
+           '<linearGradient id="mn" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6D3BE"/><stop offset=".4" stop-color="#C08066"/><stop offset=".65" stop-color="#7E4936"/><stop offset="1" stop-color="#E9B49A"/></linearGradient><linearGradient id="mp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F4FAFC" stop-opacity=".9"/><stop offset=".5" stop-color="#B9CBD2" stop-opacity=".55"/><stop offset="1" stop-color="#E6F0F3" stop-opacity=".85"/></linearGradient><linearGradient id="ms" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F5F5F3"/><stop offset=".4" stop-color="#B4B4B6"/><stop offset=".65" stop-color="#6F6F74"/><stop offset="1" stop-color="#DCDCDF"/></linearGradient>',
            '<radialGradient id="clay" cx=".45" cy=".35" r=".8"><stop offset="0" stop-color="#6A5A45"/><stop offset=".7" stop-color="#3A3127"/><stop offset="1" stop-color="#211C16"/></radialGradient>',
            '</defs>']
     figure = ('<g fill="#8A7558" opacity=".55">'
@@ -49,7 +56,7 @@ def svg_defs():
               '<ellipse cx="100" cy="138" rx="26" ry="30"/><ellipse cx="100" cy="166" rx="42" ry="12"/>'
               '<rect x="62" y="182" width="76" height="8" rx="2"/><rect x="56" y="194" width="88" height="8" rx="2"/><rect x="50" y="206" width="100" height="8" rx="2"/></g>')
     for name, d in shapes.items():
-        for m, grad in (("g", "mg"), ("s", "ms")):
+        for m, grad in (("g", "mg"), ("s", "ms"), ("n", "mn"), ("p", "mp")):
             if name == "round":
                 outer = f'<circle cx="100" cy="148" r="100" fill="url(#{grad})"/>'
                 inner = '<circle cx="100" cy="148" r="84" fill="url(#clay)"/>'

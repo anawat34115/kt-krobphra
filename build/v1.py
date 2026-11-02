@@ -160,9 +160,9 @@ def build():
 <main id="main">
 <section class="hero" id="hero"><div class="wrap grid">
   <div class="stagger">
-    <p class="eyebrow">กรอบพระ · กรอบทอง · กรอบเงิน · กระทุ่มแบน</p>
+    <p class="eyebrow">กรอบพระงานพรีเมี่ยม · กระทุ่มแบน สมุทรสาคร</p>
     <h1>เลี่ยมกรอบพระ<br>ด้วยฝีมือ<em>ช่างทองหลวง</em></h1>
-    <p class="lead">รับเลี่ยมกรอบพระทุกพิมพ์ งานซ่อม และลายสั่งทำเฉพาะองค์ ส่งรูปพระมาให้ช่างดูก่อน แจ้งราคาให้ก่อนเริ่มงานทุกครั้ง</p>
+    <p class="lead">กรอบพระงานพรีเมี่ยม {SHOP["services"]} ส่งรูปพระมาให้ช่างดู แจ้งราคาก่อนเริ่มงานทุกครั้ง</p>
     <div class="ctas">
       <a class="btn btn-gold" href="{SHOP["chat"]}" target="_blank" rel="noopener"><i class="ph ph-camera"></i>ส่งรูปพระ ขอประเมินราคา</a>
       <a class="btn btn-line" href="#products">ดูสินค้า</a>
@@ -213,8 +213,9 @@ def build():
     <h2 style="font-size:clamp(28px,3.4vw,40px);margin-bottom:40px">มาที่ร้าน หรือทักแชทได้เลย</h2>
     <dl>
       <div><dt>ที่อยู่</dt><dd>{SHOP["addr"]}</dd></div>
-      <div><dt>โทร</dt><dd><a href="{SHOP["tel_href"]}">{SHOP["tel"]}</a></dd></div>
-      <div><dt>เวลาเปิด</dt><dd><span class="todo">รอข้อมูลเวลาเปิด-ปิด</span></dd></div>
+      <div><dt>โทร</dt><dd><a href="{SHOP["tel_href"]}">{SHOP["tel"]}</a> · <a href="{SHOP["tel2_href"]}">{SHOP["tel2"]}</a></dd></div>
+      <div><dt>เวลาเปิด</dt><dd>{SHOP["hours"]}</dd></div>
+      <div><dt>หน้าร้าน</dt><dd><a href="{SHOP["gmaps"]}" target="_blank" rel="noopener">{SHOP["store"]}</a></dd></div>
     </dl>
     <div style="display:flex;flex-wrap:wrap;gap:16px">
       <a class="btn btn-gold" href="{SHOP["chat"]}" target="_blank" rel="noopener"><i class="ph ph-messenger-logo"></i>ทักแชท Facebook</a>
