@@ -305,8 +305,34 @@ def logo_C3(bg=True):
     return page(inner, BEVEL + vel + grad("gD", GOLD, 250, 150, 950, 850) + grad("gDt", GOLD, 300, 330, 900, 760), bg)
 
 
+
+# ---------- C4 · เหมือน C3 แต่กรอบ KT เป็นสี่เหลี่ยม (ทรงสมเด็จ)
+def logo_C4(bg=True):
+    body, br, gaps = brush_ring2(600, 500, 322, 84, 236, -322, seed=5, peak=0.17)
+    T = "translate(852 645) scale(.34) translate(-600 -500)"
+    inner = f"""
+<g filter="url(#bevel)">{ring_svg(body, br, 'url(#gD)', gaps)}</g>
+<g filter="url(#bevel)" fill="url(#gDt)" text-anchor="middle" stroke="#1A1006" stroke-width="7" paint-order="stroke" stroke-linejoin="round" font-family="Charmonman" font-weight="700">
+  <text x="575" y="520" font-size="156">กรอบพระ</text>
+  <text x="535" y="672" font-size="112">ไทยแลนด์</text>
+</g>
+<path transform="{T}" d="M474,364 H726 V696 H474 Z" fill="url(#velvetR)"/>
+<g transform="{T}" filter="url(#bevel)">
+  <path d="M440,330 H760 V730 H440 Z M474,364 H726 V696 H474 Z" fill="url(#gD)" fill-rule="evenodd" stroke="#1A1006" stroke-width="10"/>
+  <rect x="455" y="345" width="290" height="370" fill="none" stroke="url(#gD)" stroke-width="4" opacity=".0"/>
+  <circle cx="600" cy="282" r="26" fill="none" stroke="url(#gD)" stroke-width="14"/>
+  <path d="M600 304 C586 314 584 322 600 332 C616 322 614 314 600 304Z" fill="url(#gD)"/>
+  <text x="600" y="598" text-anchor="middle" font-family="Cinzel" font-size="175" letter-spacing="-6" fill="url(#gD)" stroke="#1A1006" stroke-width="6" paint-order="stroke">KT</text>
+</g>
+<text x="600" y="935" text-anchor="middle" font-family="Cinzel" font-size="34" letter-spacing="12" fill="#D8B66A">THAI AMULET FRAMES</text>
+<g fill="#C99A3E"><path d="M600 968 l7 8 -7 8 -7 -8z"/><rect x="420" y="975" width="160" height="1.5"/><rect x="620" y="975" width="160" height="1.5"/></g>
+"""
+    vel = '<radialGradient id="velvetR" cx="50%" cy="40%" r="65%"><stop offset="0" stop-color="#7A1A12"/><stop offset="1" stop-color="#2A0604"/></radialGradient>'
+    return page(inner, BEVEL + vel + grad("gD", GOLD, 250, 150, 950, 850) + grad("gDt", GOLD, 300, 330, 900, 760), bg)
+
+
 if __name__ == "__main__":
-    for name, fn in [("A", logo_A), ("B", logo_B), ("C", logo_C), ("C2", logo_C2), ("C3", logo_C3)]:
+    for name, fn in [("A", logo_A), ("B", logo_B), ("C", logo_C), ("C2", logo_C2), ("C3", logo_C3), ("C4", logo_C4)]:
         (OUT / f"logo-{name}.html").write_text(fn(True))
         (OUT / f"logo-{name}-transparent.html").write_text(fn(False))
     print("ok")
