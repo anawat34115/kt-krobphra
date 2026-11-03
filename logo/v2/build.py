@@ -82,6 +82,7 @@ FONT_CSS = f"""
 @font-face{{font-family:Kanit;font-weight:500;src:url(file://{FONTS}/Kanit-Medium.ttf)}}
 @font-face{{font-family:Charmonman;font-weight:700;src:url(file://{FONTS}/Charmonman-Bold.ttf)}}
 @font-face{{font-family:'Cormorant Garamond';font-style:italic;font-weight:300 700;src:url(file://{FONTS}/CormorantGaramond-Italic.ttf)}}
+@font-face{{font-family:'Ms Madi';src:url(file://{FONTS}/MsMadi-Regular.ttf)}}
 @font-face{{font-family:Cinzel;src:url(file://{FONTS}/Cinzel.ttf)}}
 """
 
@@ -331,8 +332,37 @@ def logo_C4(bg=True):
     return page(inner, BEVEL + vel + grad("gD", GOLD, 250, 150, 950, 850) + grad("gDt", GOLD, 300, 330, 900, 760), bg)
 
 
+# ---------- S1 · วงพู่กันทอง + KT ลายเซ็นเส้นบาง (Ms Madi)
+def logo_S1(bg=True):
+    body, br, gaps = brush_ring2(600, 500, 322, 84, 236, -322, seed=5, peak=0.17)
+    inner = f"""
+<g filter="url(#bevel)">{ring_svg(body, br, 'url(#gD)', gaps)}</g>
+<g filter="url(#glowG)" fill="url(#gDt)" text-anchor="middle">
+  <text x="560" y="585" font-family="Ms Madi" font-size="300">KT</text>
+</g>
+<g filter="url(#bevel)" fill="url(#gDt)" text-anchor="middle" stroke="#1A1006" stroke-width="6" paint-order="stroke" stroke-linejoin="round">
+  <text x="600" y="725" font-family="Charmonman" font-weight="700" font-size="76">กรอบพระไทยแลนด์</text>
+</g>
+<text x="600" y="935" text-anchor="middle" font-family="Cinzel" font-size="34" letter-spacing="12" fill="#D8B66A">THAI AMULET FRAMES</text>
+<g fill="#C99A3E"><path d="M600 968 l7 8 -7 8 -7 -8z"/><rect x="420" y="975" width="160" height="1.5"/><rect x="620" y="975" width="160" height="1.5"/></g>
+"""
+    return page(inner, BEVEL + grad("gD", GOLD, 250, 150, 950, 850) + grad("gDt", GOLD, 300, 330, 900, 760), bg)
+
+
+# ---------- S2 · มินิมอลแบบภาพอ้างอิง ith: วงกลมเรียบ + KT ลายเซ็น + ชื่อตัวเล็ก (ครีม/ดำทอง)
+def logo_S2(bg=True):
+    def badge(cx, fill, ink, sub):
+        return f"""
+<circle cx="{cx}" cy="560" r="250" fill="{fill}"/>
+<text x="{cx-48}" y="598" text-anchor="middle" font-family="Ms Madi" font-size="196" fill="{ink}">KT</text>
+<text x="{cx}" y="660" text-anchor="middle" font-family="Cinzel" font-size="15" letter-spacing="6" fill="{sub}">KROBPHRA THAILAND</text>
+<text x="{cx}" y="690" text-anchor="middle" font-family="Charmonman" font-weight="700" font-size="22" fill="{sub}">กรอบพระไทยแลนด์</text>"""
+    inner = '<rect width="1200" height="1200" fill="#F7F4EE"/>' + badge(320, "#EDE4D3", "#1E1A15", "#3A332A") + badge(880, "#14110D", "url(#gDt)", "#D8B66A")
+    return page(inner, grad("gDt", GOLD, 700, 380, 1060, 640), False)
+
+
 if __name__ == "__main__":
-    for name, fn in [("A", logo_A), ("B", logo_B), ("C", logo_C), ("C2", logo_C2), ("C3", logo_C3), ("C4", logo_C4)]:
+    for name, fn in [("A", logo_A), ("B", logo_B), ("C", logo_C), ("C2", logo_C2), ("C3", logo_C3), ("C4", logo_C4), ("S1", logo_S1), ("S2", logo_S2)]:
         (OUT / f"logo-{name}.html").write_text(fn(True))
         (OUT / f"logo-{name}-transparent.html").write_text(fn(False))
     print("ok")
