@@ -81,6 +81,7 @@ FONT_CSS = f"""
 @font-face{{font-family:Kanit;font-weight:600;src:url(file://{FONTS}/Kanit-SemiBold.ttf)}}
 @font-face{{font-family:Kanit;font-weight:500;src:url(file://{FONTS}/Kanit-Medium.ttf)}}
 @font-face{{font-family:Charmonman;font-weight:700;src:url(file://{FONTS}/Charmonman-Bold.ttf)}}
+@font-face{{font-family:'Cormorant Garamond';font-style:italic;font-weight:300 700;src:url(file://{FONTS}/CormorantGaramond-Italic.ttf)}}
 @font-face{{font-family:Cinzel;src:url(file://{FONTS}/Cinzel.ttf)}}
 """
 
@@ -214,8 +215,72 @@ def logo_C(bg=True):
     return page(inner, grad("gC", GOLD) + grad("gCt", GOLD, 0, 280, 0, 860), bg)
 
 
+def brush_ring2(cx, cy, R, W, a0, sweep, seed, peak=0.22, n_bristle=26):
+    """Brush ring whose thickest point sits at t=peak (pressed stroke), thin flicks at both ends."""
+    rnd = random.Random(seed); N = 260; k = math.log(0.5) / math.log(peak)
+    def w_at(t):
+        return W * max(0.02, math.sin(math.pi * t ** k)) ** 0.75 * (1 + 0.05 * math.sin(t * 23 + seed))
+    def rad(t): return R + 3 * math.sin(t * 6 + seed)
+    o, i_ = [], []
+    for j in range(N + 1):
+        t = j / N; a = math.radians(a0 + sweep * t); w = w_at(t)
+        o.append((cx + (rad(t) + w / 2) * math.cos(a), cy + (rad(t) + w / 2) * math.sin(a)))
+        i_.append((cx + (rad(t) - w / 2) * math.cos(a), cy + (rad(t) - w / 2) * math.sin(a)))
+    body = "M" + " L".join(f"{x:.1f},{y:.1f}" for x, y in o + i_[::-1]) + "Z"
+    br, gaps = [], []
+    for n in range(n_bristle):
+        off = rnd.uniform(-0.48, 0.48); t1 = rnd.uniform(0.35, 0.6); t2 = rnd.uniform(0.9, 1.02)
+        seg = []
+        for j in range(61):
+            t = t1 + (t2 - t1) * j / 60; a = math.radians(a0 + sweep * t)
+            seg.append((cx + (rad(t) + off * w_at(min(t, .999)) * 1.6) * math.cos(a), cy + (rad(t) + off * w_at(min(t, .999)) * 1.6) * math.sin(a)))
+        br.append(("M" + " L".join(f"{x:.1f},{y:.1f}" for x, y in seg), rnd.uniform(1.2, 3.5), rnd.uniform(.5, 1)))
+    for n in range(16):
+        off = rnd.uniform(-0.4, 0.4); t1 = rnd.uniform(0.3, 0.75); t2 = min(1, t1 + rnd.uniform(.1, .4))
+        seg = []
+        for j in range(41):
+            t = t1 + (t2 - t1) * j / 40; a = math.radians(a0 + sweep * t)
+            seg.append((cx + (rad(t) + off * w_at(t)) * math.cos(a), cy + (rad(t) + off * w_at(t)) * math.sin(a)))
+        gaps.append(("M" + " L".join(f"{x:.1f},{y:.1f}" for x, y in seg), rnd.uniform(1.0, 3.0)))
+    return body, br, gaps
+
+
+BEVEL = """
+<filter id="bevel" x="-10%" y="-10%" width="120%" height="120%">
+  <feGaussianBlur in="SourceAlpha" stdDeviation="3.2" result="b"/>
+  <feSpecularLighting in="b" surfaceScale="6" specularConstant="1.1" specularExponent="22" lighting-color="#FFF6D8" result="s">
+    <feDistantLight azimuth="235" elevation="42"/></feSpecularLighting>
+  <feComposite in="s" in2="SourceAlpha" operator="in" result="s2"/>
+  <feComposite in="SourceGraphic" in2="s2" operator="arithmetic" k2="1" k3=".85" result="lit"/>
+  <feGaussianBlur in="SourceAlpha" stdDeviation="9" result="sh"/><feOffset in="sh" dx="4" dy="10" result="sh2"/>
+  <feFlood flood-color="#000" flood-opacity=".8"/><feComposite in2="sh2" operator="in" result="shadow"/>
+  <feGaussianBlur in="SourceAlpha" stdDeviation="22" result="gl"/><feFlood flood-color="#E8B858" flood-opacity=".28"/><feComposite in2="gl" operator="in" result="glow"/>
+  <feMerge><feMergeNode in="glow"/><feMergeNode in="shadow"/><feMergeNode in="lit"/></feMerge>
+</filter>"""
+
+
+# ---------- C2 · ใกล้ภาพอ้างอิง Luxury 3: วงพู่กันหนา + KT ทองนูน + ชื่อในวง + ตราแดง
+def logo_C2(bg=True):
+    body, br, gaps = brush_ring2(600, 500, 322, 84, 236, -322, seed=5, peak=0.17)
+    inner = f"""
+<g filter="url(#bevel)">{ring_svg(body, br, 'url(#gD)', gaps)}</g>
+<g filter="url(#bevel)" fill="url(#gDt)" text-anchor="middle" stroke="#1A1006" stroke-width="7" paint-order="stroke" stroke-linejoin="round">
+  <text x="585" y="580" font-family="Cormorant Garamond" font-style="italic" font-weight="700" font-size="330" letter-spacing="-10">KT</text>
+  <text x="600" y="705" font-family="Charmonman" font-weight="700" font-size="80">กรอบพระไทยแลนด์</text>
+</g>
+<g transform="translate(842 530) rotate(-3)">
+  <rect x="-26" y="-34" width="52" height="68" rx="5" fill="#A8231A"/>
+  <rect x="-21" y="-29" width="42" height="58" rx="3" fill="none" stroke="#F4D6C2" stroke-width="1.4" opacity=".75"/>
+  <g font-family="Charmonman" font-weight="700" font-size="18" fill="#F7E2D0" text-anchor="middle"><text y="-4">กรอบ</text><text y="20">พระ</text></g>
+</g>
+<text x="600" y="935" text-anchor="middle" font-family="Cinzel" font-size="34" letter-spacing="12" fill="#D8B66A">THAI AMULET FRAMES</text>
+<g fill="#C99A3E"><path d="M600 968 l7 8 -7 8 -7 -8z"/><rect x="420" y="975" width="160" height="1.5"/><rect x="620" y="975" width="160" height="1.5"/></g>
+"""
+    return page(inner, BEVEL + grad("gD", GOLD, 250, 150, 950, 850) + grad("gDt", GOLD, 300, 330, 900, 760) + grad("gDt2", GOLD, 400, 0, 800, 0), bg)
+
+
 if __name__ == "__main__":
-    for name, fn in [("A", logo_A), ("B", logo_B), ("C", logo_C)]:
+    for name, fn in [("A", logo_A), ("B", logo_B), ("C", logo_C), ("C2", logo_C2)]:
         (OUT / f"logo-{name}.html").write_text(fn(True))
         (OUT / f"logo-{name}-transparent.html").write_text(fn(False))
     print("ok")
