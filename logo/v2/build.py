@@ -361,8 +361,36 @@ def logo_S2(bg=True):
     return page(inner, grad("gDt", GOLD, 700, 380, 1060, 640), False)
 
 
+import base64 as _b64
+_EMB = "data:image/png;base64," + _b64.b64encode((OUT / "src/old-emblem.png").read_bytes()).decode()
+
+
+# ---------- E · 3e + สัญลักษณ์เดิมของร้านจางๆ ในวง, ตัด 2 บรรทัดล่าง; small=True ใช้สัญลักษณ์เดิมแทนกรอบแดง
+def logo_E(bg=True, small=True):
+    body, br, gaps = brush_ring2(600, 500, 322, 84, 236, -322, seed=5, peak=0.17)
+    ew, eh = 487, 855
+    H = 600; W = H * ew / eh
+    water = f'<image href="{_EMB}" x="{600 - W/2:.1f}" y="{505 - H/2:.1f}" width="{W:.1f}" height="{H}" opacity=".2"/>'
+    h2 = 235; w2 = h2 * ew / eh
+    sm = f'<image href="{_EMB}" x="{846 - w2/2:.1f}" y="{620 - h2/2:.1f}" width="{w2:.1f}" height="{h2}" filter="url(#glowG)"/>' if small else ""
+    inner = f"""
+<g transform="translate(0 85)">
+{water}
+<g filter="url(#bevel)">{ring_svg(body, br, 'url(#gD)', gaps)}</g>
+<g filter="url(#bevel)" fill="url(#gDt)" text-anchor="middle" stroke="#1A1006" stroke-width="7" paint-order="stroke" stroke-linejoin="round" font-family="Charmonman" font-weight="700">
+  <text x="{575 if small else 600}" y="520" font-size="156">กรอบพระ</text>
+  <text x="{535 if small else 600}" y="672" font-size="112">ไทยแลนด์</text>
+</g>
+{sm}
+</g>"""
+    return page(inner, BEVEL + grad("gD", GOLD, 250, 150, 950, 850) + grad("gDt", GOLD, 300, 330, 900, 760), bg)
+
+logo_E1 = lambda bg=True: logo_E(bg, True)
+logo_E2 = lambda bg=True: logo_E(bg, False)
+
+
 if __name__ == "__main__":
-    for name, fn in [("A", logo_A), ("B", logo_B), ("C", logo_C), ("C2", logo_C2), ("C3", logo_C3), ("C4", logo_C4), ("S1", logo_S1), ("S2", logo_S2)]:
+    for name, fn in [("A", logo_A), ("B", logo_B), ("C", logo_C), ("C2", logo_C2), ("C3", logo_C3), ("C4", logo_C4), ("S1", logo_S1), ("S2", logo_S2), ("E1", logo_E1), ("E2", logo_E2)]:
         (OUT / f"logo-{name}.html").write_text(fn(True))
         (OUT / f"logo-{name}-transparent.html").write_text(fn(False))
     print("ok")
