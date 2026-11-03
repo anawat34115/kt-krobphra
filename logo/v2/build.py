@@ -281,8 +281,32 @@ def logo_C2(bg=True):
     return page(inner, BEVEL + '<radialGradient id="velvetR" cx="50%" cy="40%" r="65%"><stop offset="0" stop-color="#7A1A12"/><stop offset="1" stop-color="#2A0604"/></radialGradient>' + grad("gD", GOLD, 250, 150, 950, 850) + grad("gDt", GOLD, 300, 330, 900, 760) + grad("gDt2", GOLD, 400, 0, 800, 0), bg)
 
 
+# ---------- C3 · ชื่อไทยตัวใหญ่ในวง + KT อยู่ในกรอบพระเล็ก
+def logo_C3(bg=True):
+    body, br, gaps = brush_ring2(600, 500, 322, 84, 236, -322, seed=5, peak=0.17)
+    T = "translate(858 662) scale(.3) translate(-600 -470)"
+    inner = f"""
+<g filter="url(#bevel)">{ring_svg(body, br, 'url(#gD)', gaps)}</g>
+<g filter="url(#bevel)" fill="url(#gDt)" text-anchor="middle" stroke="#1A1006" stroke-width="7" paint-order="stroke" stroke-linejoin="round" font-family="Charmonman" font-weight="700">
+  <text x="575" y="520" font-size="156">กรอบพระ</text>
+  <text x="535" y="672" font-size="112">ไทยแลนด์</text>
+</g>
+<path transform="{T}" d="{_arch_d(474, 726, 716, 442, 245, 104)}" fill="url(#velvetR)"/>
+<g transform="{T}" filter="url(#bevel)">
+  <path d="{_arch_d(430, 770, 760, 430, 175, 120)} {_arch_d(474, 726, 716, 442, 245, 104)}" fill="url(#gD)" fill-rule="evenodd" stroke="#1A1006" stroke-width="10"/>
+  <circle cx="600" cy="128" r="26" fill="none" stroke="url(#gD)" stroke-width="14"/>
+  <path d="M600 150 C586 162 584 172 600 184 C616 172 614 162 600 150Z" fill="url(#gD)"/>
+  <text x="600" y="625" text-anchor="middle" font-family="Cinzel" font-size="185" letter-spacing="-6" fill="url(#gD)" stroke="#1A1006" stroke-width="6" paint-order="stroke">KT</text>
+</g>
+<text x="600" y="935" text-anchor="middle" font-family="Cinzel" font-size="34" letter-spacing="12" fill="#D8B66A">THAI AMULET FRAMES</text>
+<g fill="#C99A3E"><path d="M600 968 l7 8 -7 8 -7 -8z"/><rect x="420" y="975" width="160" height="1.5"/><rect x="620" y="975" width="160" height="1.5"/></g>
+"""
+    vel = '<radialGradient id="velvetR" cx="50%" cy="40%" r="65%"><stop offset="0" stop-color="#7A1A12"/><stop offset="1" stop-color="#2A0604"/></radialGradient>'
+    return page(inner, BEVEL + vel + grad("gD", GOLD, 250, 150, 950, 850) + grad("gDt", GOLD, 300, 330, 900, 760), bg)
+
+
 if __name__ == "__main__":
-    for name, fn in [("A", logo_A), ("B", logo_B), ("C", logo_C), ("C2", logo_C2)]:
+    for name, fn in [("A", logo_A), ("B", logo_B), ("C", logo_C), ("C2", logo_C2), ("C3", logo_C3)]:
         (OUT / f"logo-{name}.html").write_text(fn(True))
         (OUT / f"logo-{name}-transparent.html").write_text(fn(False))
     print("ok")
