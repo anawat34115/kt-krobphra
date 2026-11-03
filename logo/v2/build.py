@@ -268,15 +268,17 @@ def logo_C2(bg=True):
   <text x="585" y="580" font-family="Cormorant Garamond" font-style="italic" font-weight="700" font-size="330" letter-spacing="-10">KT</text>
   <text x="600" y="705" font-family="Charmonman" font-weight="700" font-size="80">กรอบพระไทยแลนด์</text>
 </g>
-<g transform="translate(842 530) rotate(-3)">
-  <rect x="-26" y="-34" width="52" height="68" rx="5" fill="#A8231A"/>
-  <rect x="-21" y="-29" width="42" height="58" rx="3" fill="none" stroke="#F4D6C2" stroke-width="1.4" opacity=".75"/>
-  <g font-family="Charmonman" font-weight="700" font-size="18" fill="#F7E2D0" text-anchor="middle"><text y="-4">กรอบ</text><text y="20">พระ</text></g>
+<path transform="translate(848 515) scale(.27) translate(-600 -470)" d="{_arch_d(474, 726, 716, 442, 245, 104)}" fill="url(#velvetR)"/>
+<g transform="translate(848 515) scale(.27) translate(-600 -470)" filter="url(#bevel)">
+  <path d="{_arch_d(430, 770, 760, 430, 175, 120)} {_arch_d(474, 726, 716, 442, 245, 104)}" fill="url(#gD)" fill-rule="evenodd" stroke="#1A1006" stroke-width="10"/>
+  <circle cx="600" cy="128" r="26" fill="none" stroke="url(#gD)" stroke-width="14"/>
+  <path d="M600 150 C586 162 584 172 600 184 C616 172 614 162 600 150Z" fill="url(#gD)"/>
+  <path d="M600 420 C560 470 560 560 600 640 C640 560 640 470 600 420Z" fill="url(#gD)" opacity=".9"/>
 </g>
 <text x="600" y="935" text-anchor="middle" font-family="Cinzel" font-size="34" letter-spacing="12" fill="#D8B66A">THAI AMULET FRAMES</text>
 <g fill="#C99A3E"><path d="M600 968 l7 8 -7 8 -7 -8z"/><rect x="420" y="975" width="160" height="1.5"/><rect x="620" y="975" width="160" height="1.5"/></g>
 """
-    return page(inner, BEVEL + grad("gD", GOLD, 250, 150, 950, 850) + grad("gDt", GOLD, 300, 330, 900, 760) + grad("gDt2", GOLD, 400, 0, 800, 0), bg)
+    return page(inner, BEVEL + '<radialGradient id="velvetR" cx="50%" cy="40%" r="65%"><stop offset="0" stop-color="#7A1A12"/><stop offset="1" stop-color="#2A0604"/></radialGradient>' + grad("gD", GOLD, 250, 150, 950, 850) + grad("gDt", GOLD, 300, 330, 900, 760) + grad("gDt2", GOLD, 400, 0, 800, 0), bg)
 
 
 if __name__ == "__main__":
