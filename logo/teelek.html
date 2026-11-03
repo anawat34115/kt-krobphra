@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="th"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Charm;src:url(fonts/Charm-Bold.ttf)}
+@font-face{font-family:Kanit;src:url(fonts/Kanit-SemiBold.ttf);font-weight:600}
+@font-face{font-family:Kanit;src:url(fonts/Kanit-Medium.ttf);font-weight:500}
+@font-face{font-family:Cinzel;src:url(fonts/Cinzel.ttf)}
+body{margin:0;background:#000}
+.art{width:1500px;height:1500px;position:relative;overflow:hidden}
+svg{display:block}
+</style></head><body>
+
+<!-- ============ L3 : brush gold ============ -->
+<div class="art" id="L3" style="background:radial-gradient(60% 55% at 50% 45%,#211b12 0%,#0b0907 70%,#050404 100%)">
+<svg width="1500" height="1500" viewBox="0 0 1500 1500">
+ <defs>
+  <linearGradient id="g" x1="300" y1="300" x2="1200" y2="1150" gradientUnits="userSpaceOnUse">
+   <stop offset="0" stop-color="#FFF1C4"/><stop offset=".22" stop-color="#E6C177"/>
+   <stop offset=".48" stop-color="#A9772F"/><stop offset=".66" stop-color="#F3D58E"/>
+   <stop offset=".85" stop-color="#B98A3E"/><stop offset="1" stop-color="#7A5420"/>
+  </linearGradient>
+  <filter id="brush" x="-10%" y="-10%" width="120%" height="120%">
+   <feTurbulence type="fractalNoise" baseFrequency="0.9 0.03" numOctaves="2" seed="7" result="n"/>
+   <feDisplacementMap in="SourceGraphic" in2="n" scale="14" xChannelSelector="R" yChannelSelector="G" result="d"/>
+   <feTurbulence type="fractalNoise" baseFrequency="0.02 0.6" numOctaves="2" seed="3" result="n2"/>
+   <feColorMatrix in="n2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.2 1.55" result="m"/>
+   <feComposite in="d" in2="m" operator="in"/>
+  </filter>
+  <filter id="glow"><feGaussianBlur stdDeviation="6" result="b"/><feColorMatrix in="b" values="1 0 0 0 0 0 .8 0 0 0 0 0 .4 0 0 0 0 0 .55 0"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ </defs>
+ <g id="ringL3"></g>
+ <g filter="url(#glow)" fill="url(#g)">
+  <text x="770" y="770" text-anchor="middle" font-family="Charm" font-size="330">ตี๋เล็ก</text>
+  <text x="790" y="975" text-anchor="middle" font-family="Charm" font-size="170">เลี่ยมพระ</text>
+ </g>
+ <!-- red seal -->
+ <g transform="translate(1088 900) rotate(-3)">
+  <rect width="58" height="70" rx="6" fill="#A3241C"/>
+  <rect x="6" y="6" width="46" height="58" rx="3" fill="none" stroke="#F1C9A8" stroke-width="2"/>
+  <text x="29" y="45" text-anchor="middle" font-family="Charm" font-size="30" fill="#F6DCC3">ตล</text>
+ </g>
+ <text x="750" y="1300" text-anchor="middle" font-family="Cinzel" font-size="44" letter-spacing="14" fill="url(#g)">TEE LEK AMULET FRAME</text>
+</svg>
+</div>
+
+<!-- ============ M2 : silver modern ============ -->
+<div class="art" id="M2" style="background:radial-gradient(60% 55% at 50% 45%,#22252a 0%,#0c0d10 70%,#050506 100%)">
+<svg width="1500" height="1500" viewBox="0 0 1500 1500">
+ <defs>
+  <linearGradient id="s" x1="300" y1="250" x2="1200" y2="1200" gradientUnits="userSpaceOnUse">
+   <stop offset="0" stop-color="#FFFFFF"/><stop offset=".25" stop-color="#C9CDD3"/>
+   <stop offset=".5" stop-color="#7C828B"/><stop offset=".68" stop-color="#F1F3F6"/>
+   <stop offset=".88" stop-color="#9AA0A8"/><stop offset="1" stop-color="#5D636B"/>
+  </linearGradient>
+  <linearGradient id="st" x1="0" y1="500" x2="0" y2="1000" gradientUnits="userSpaceOnUse">
+   <stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#DADDE2"/><stop offset=".55" stop-color="#8E949C"/><stop offset="1" stop-color="#E8EAED"/>
+  </linearGradient>
+  <filter id="brush2" x="-10%" y="-10%" width="120%" height="120%">
+   <feTurbulence type="fractalNoise" baseFrequency="0.7 0.025" numOctaves="2" seed="11" result="n"/>
+   <feDisplacementMap in="SourceGraphic" in2="n" scale="16" xChannelSelector="R" yChannelSelector="G" result="d"/>
+   <feTurbulence type="fractalNoise" baseFrequency="0.015 0.5" numOctaves="2" seed="5" result="n2"/>
+   <feColorMatrix in="n2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.4 1.6" result="m"/>
+   <feComposite in="d" in2="m" operator="in"/>
+  </filter>
+  <filter id="sh"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity=".7"/></filter>
+  <mask id="gap"><rect width="1500" height="1500" fill="#fff"/><path d="M750 735 L1500 820 L1500 1180 Z" fill="#000"/></mask>
+ </defs>
+ <g id="ringM2"></g>
+ <g filter="url(#sh)" fill="url(#st)">
+  <text x="750" y="720" text-anchor="middle" font-family="Kanit" font-weight="600" font-size="250" letter-spacing="-4">ตี๋เล็ก</text>
+  <text x="750" y="880" text-anchor="middle" font-family="Kanit" font-weight="500" font-size="128">เลี่ยมพระ</text>
+ </g>
+ <text x="750" y="985" text-anchor="middle" font-family="Cinzel" font-size="30" letter-spacing="10" fill="#B9BEC5">TEE LEK AMULET FRAME</text>
+ <path d="M750 1040 l10 15 l-10 15 l-10 -15 Z" fill="url(#s)"/>
+ <path d="M670 1055 H730 M770 1055 H830" stroke="#8E949C" stroke-width="2"/>
+</svg>
+</div>
+
+<script>
+function rng(s){return()=>{s=(s*16807)%2147483647;return s/2147483647}}
+function ring(id,o){const r=rng(o.seed),g=document.getElementById(id),ns='http://www.w3.org/2000/svg';
+ for(let i=0;i<o.n;i++){const u=r()*2-1,au=Math.abs(u);
+  // span where taper profile >= |u|
+  const need=Math.pow(au,1/o.k); // sin(pi t)>=need
+  let ts=Math.asin(Math.min(need,0.999))/Math.PI; let t0=ts+(r()-.5)*o.jit, t1=1-ts+(r()-.5)*o.jit;
+  if(r()<o.brk){const m=t0+(t1-t0)*r(); if(r()<.5)t1=m; else t0=m;}
+  if(t1-t0<.01)continue;
+  const a0=o.a0+(o.a1-o.a0)*t0,a1=o.a0+(o.a1-o.a0)*t1;
+  const rad=o.R+u*o.W/2;
+  let d='';const steps=90;
+  for(let s=0;s<=steps;s++){const a=(a0+(a1-a0)*s/steps)*Math.PI/180;
+   const tt=t0+(t1-t0)*s/steps;
+   const off=o.wob*Math.sin(tt*9+i)+ (o.shift?o.shift(tt):0);
+   const x=o.cx+(rad+off)*Math.cos(a),y=o.cy+(rad+off)*Math.sin(a);d+=(s?'L':'M')+x.toFixed(1)+' '+y.toFixed(1);}
+  const p=document.createElementNS(ns,'path');p.setAttribute('d',d);p.setAttribute('fill','none');
+  p.setAttribute('stroke',o.fill);p.setAttribute('stroke-width',(o.sw[0]+r()*(o.sw[1]-o.sw[0])).toFixed(2));
+  p.setAttribute('stroke-linecap','round');p.setAttribute('opacity',(.35+r()*.65).toFixed(2));g.appendChild(p);}
+}
+// L3: crescent, thick at left, starts top-right goes CCW around left to bottom-right
+ring('ringL3',{seed:7,n:260,cx:750,cy:710,R:470,W:70,k:1.6,a0:-40,a1:-310,jit:.05,brk:.12,wob:2,sw:[1.2,3.4],fill:'url(#g)'});
+// M2: near full circle, gap at lower right
+ring('ringM2',{seed:11,n:280,cx:750,cy:700,R:455,W:46,k:1.9,a0:20,a1:-310,jit:.03,brk:.1,wob:1.5,sw:[1,2.6],fill:'url(#s)'});
+</script>
+</body></html>
