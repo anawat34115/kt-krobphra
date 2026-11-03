@@ -114,39 +114,89 @@ html,body{{margin:0;background:{'#000' if bg else 'transparent'}}}svg{{display:b
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200"><defs>{DEFS_COMMON}{extra_defs}</defs>{bgl}{svg_inner}</svg></body></html>"""
 
 
-# ---------- A · Luxury 3 adaptation: gold brush ring + calligraphic Thai + red KT seal
+def _bez(p0, p1, p2, p3, n):
+    out = []
+    for i in range(n):
+        t = i / n; u = 1 - t
+        out.append((u**3*p0[0]+3*u*u*t*p1[0]+3*u*t*t*p2[0]+t**3*p3[0], u**3*p0[1]+3*u*u*t*p1[1]+3*u*t*t*p2[1]+t**3*p3[1]))
+    return out
+
+
+def _arch_pts(l, r, bot, sh, peak, ctrl):
+    """Sample a Thai arch (ซุ้ม) outline: straight sides + ogee top."""
+    cx = (l + r) / 2; pts = []
+    pts += [(l, bot - (bot - sh) * i / 20) for i in range(20)]
+    pts += _bez((l, sh), (l, sh - ctrl), (cx - (r - l) * .15, sh - ctrl * .9), (cx, peak), 30)
+    pts += _bez((cx, peak), (cx + (r - l) * .15, sh - ctrl * .9), (r, sh - ctrl), (r, sh), 30)
+    pts += [(r, sh + (bot - sh) * i / 20) for i in range(21)]
+    return pts
+
+
+def _arch_d(*a):
+    l, r, bot, sh, peak, ctrl = a; cx = (l + r) / 2
+    return (f"M{l},{bot} L{l},{sh} C{l},{sh-ctrl} {cx-(r-l)*.15},{sh-ctrl*.9} {cx},{peak} "
+            f"C{cx+(r-l)*.15},{sh-ctrl*.9} {r},{sh-ctrl} {r},{sh} L{r},{bot} Z")
+
+
+# ---------- A · กรอบพระทรงซุ้ม (ทอง) + KT ข้างใน
 def logo_A(bg=True):
-    body, br = brush_ring(600, 520, 330, 74, 118, 318, seed=3)
-    inner = f"""
-<g filter="url(#glowG)">{ring_svg(body, br, 'url(#gA)', gap_lines(600,520,330,74,118,318,3,14))}</g>
-<g filter="url(#emboss)" fill="url(#gAt)" font-family="Charmonman" font-weight="700" text-anchor="middle">
-  <text x="585" y="505" font-size="150">กรอบพระ</text>
-  <text x="625" y="640" font-size="100">ไทยแลนด์</text>
+    outer = (430, 770, 760, 430, 175, 120)
+    mid = (452, 748, 738, 436, 210, 112)
+    inner = (474, 726, 716, 442, 245, 104)
+    beads = _arch_pts(463, 737, 727, 439, 228, 108)[::3]
+    bead_svg = "".join(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="4.2"/>' for x, y in beads)
+    inner_svg = f"""
+<g filter="url(#glowG)">
+  <path d="{_arch_d(*outer)} {_arch_d(*inner)}" fill="url(#gA)" fill-rule="evenodd"/>
+  <path d="{_arch_d(*mid)}" fill="none" stroke="#3A2A10" stroke-width="18" opacity=".55"/>
+  <g fill="url(#gA)">{bead_svg}</g>
+  <path d="{_arch_d(*inner)}" fill="url(#velvet)"/>
+  <path d="{_arch_d(*inner)}" fill="none" stroke="url(#gA)" stroke-width="2"/>
+  <!-- ห่วง + ยอดบัว -->
+  <circle cx="600" cy="128" r="24" fill="none" stroke="url(#gA)" stroke-width="9"/>
+  <path d="M600 150 C588 162 586 172 600 182 C614 172 612 162 600 150Z" fill="url(#gA)"/>
+  <!-- ฐาน -->
+  <path d="M410 760 H790 L770 792 H430Z" fill="url(#gA)"/>
+  <rect x="440" y="798" width="320" height="6" rx="3" fill="url(#gA)"/>
+  <!-- กนกหัวไหล่ -->
+  <g fill="none" stroke="url(#gA)" stroke-width="5" stroke-linecap="round">
+    <path d="M430 420 C395 410 385 375 405 360 C420 350 432 365 422 375"/>
+    <path d="M770 420 C805 410 815 375 795 360 C780 350 768 365 778 375"/>
+  </g>
 </g>
-<g transform="translate(845 760) rotate(-4)">
-  <rect x="-30" y="-30" width="60" height="60" rx="7" fill="#A3241B"/>
-  <rect x="-25" y="-25" width="50" height="50" rx="4" fill="none" stroke="#F3D9C4" stroke-width="1.6" opacity=".8"/>
-  <text x="0" y="11" text-anchor="middle" font-family="Cinzel" font-size="30" fill="#F7E4D2">KT</text>
+<g filter="url(#emboss)" fill="url(#gAt)" text-anchor="middle">
+  <text x="600" y="610" font-family="Cinzel" font-size="168" letter-spacing="-6">KT</text>
+  <path d="M600 650 l8 9 -8 9 -8 -9z"/>
+  <text x="600" y="948" font-family="Charmonman" font-weight="700" font-size="104">กรอบพระไทยแลนด์</text>
 </g>
-<text x="600" y="955" text-anchor="middle" font-family="Cinzel" font-size="34" letter-spacing="9" fill="url(#gAt)">KT · THAI AMULET FRAMES</text>
-<g fill="#C99A3E"><path d="M600 990 l7 8 -7 8 -7 -8z"/><rect x="470" y="997" width="105" height="1.5"/><rect x="625" y="997" width="105" height="1.5"/></g>
+<text x="600" y="1015" text-anchor="middle" font-family="Cinzel" font-size="28" letter-spacing="11" fill="#D8B66A">THAI AMULET FRAMES</text>
 """
-    return page(inner, grad("gA", GOLD) + grad("gAt", GOLD, 0, 300, 0, 1000), bg)
+    vel = '<radialGradient id="velvet" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#2A241C"/><stop offset="1" stop-color="#0A0806"/></radialGradient>'
+    return page(inner_svg, grad("gA", GOLD, 300, 100, 900, 820) + grad("gAt", GOLD, 0, 450, 0, 960) + vel, bg)
 
 
-# ---------- B · Modern 2 adaptation: chrome brush ring + bold sans Thai + diamond
+# ---------- B · กรอบพระทรงหยดน้ำ (เงิน ลายเส้น) + KT ข้างใน
 def logo_B(bg=True):
-    body, br = brush_ring(600, 540, 345, 46, 200, 330, seed=11, n_bristle=16)
-    inner = f"""
-<g filter="url(#glowS)">{ring_svg(body, br, 'url(#gB)', gap_lines(600,540,345,46,200,330,11,8))}</g>
-<g filter="url(#emboss)" fill="url(#gBt)" font-family="Kanit" text-anchor="middle">
-  <text x="600" y="530" font-size="136" font-weight="700" letter-spacing="1">กรอบพระ</text>
-  <text x="600" y="640" font-size="86" font-weight="500" letter-spacing="4">ไทยแลนด์</text>
+    drop = "M600 230 C705 285 770 410 770 530 C770 665 695 750 600 750 C505 750 430 665 430 530 C430 410 495 285 600 230Z"
+    sc = lambda k: f'transform="translate(600 520) scale({k}) translate(-600 -520)"'
+    inner_svg = f"""
+<g filter="url(#glowS)">
+  <path d="{drop}" fill="none" stroke="url(#gB)" stroke-width="16"/>
+  <path d="{drop}" {sc(.9)} fill="none" stroke="url(#gB)" stroke-width="3.3"/>
+  <path d="{drop}" {sc(.84)} fill="none" stroke="url(#gB)" stroke-width="1.6" stroke-dasharray="2 9" stroke-linecap="round"/>
+  <circle cx="600" cy="180" r="27" fill="none" stroke="url(#gB)" stroke-width="10"/>
+  <rect x="588" y="203" width="24" height="26" rx="5" fill="url(#gB)"/>
+  <path d="M600 742 l14 18 -14 18 -14 -18z" fill="url(#gB)"/>
 </g>
-<text x="600" y="730" text-anchor="middle" font-family="Cinzel" font-size="22" letter-spacing="7" fill="#C9CBD0">KT · THAI AMULET FRAMES</text>
-<g transform="translate(600 886)" filter="url(#glowS)"><path d="M0 -30 L18 0 L0 30 L-18 0Z" fill="#111" /><path d="M0 -24 L13 0 L0 24 L-13 0Z" fill="url(#gB)"/></g>
+<g filter="url(#emboss)" fill="url(#gBt)" text-anchor="middle" font-family="Kanit">
+  <text x="600" y="590" font-size="176" font-weight="700" letter-spacing="2">KT</text>
+</g>
+<g filter="url(#emboss)" fill="url(#gBn)" text-anchor="middle" font-family="Kanit">
+  <text x="600" y="905" font-size="104" font-weight="700" letter-spacing="2">กรอบพระไทยแลนด์</text>
+</g>
+<text x="600" y="975" text-anchor="middle" font-family="Cinzel" font-size="28" letter-spacing="11" fill="#C9CBD0">THAI AMULET FRAMES</text>
 """
-    return page(inner, grad("gB", SILVER) + grad("gBt", SILVER, 0, 380, 0, 680), bg)
+    return page(inner_svg, grad("gB", SILVER, 300, 150, 900, 800) + grad("gBt", SILVER, 0, 440, 0, 600) + grad("gBn", SILVER, 0, 800, 0, 915), bg)
 
 
 # ---------- C · hybrid: gold ring with KT monogram, Thai name below (Modern 2 layout in gold)
