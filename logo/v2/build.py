@@ -394,8 +394,10 @@ def logo_S2_full(variant, shape):
     fill, ink, sub = ("#EDE4D3", "#1E1A15", "#3A332A") if variant == "cream" else ("#14110D", "url(#gDt)", "#D8B66A")
     k = 600 / 250  # scale from the 250px-radius badge
     bgshape = f'<circle cx="600" cy="600" r="600" fill="{fill}"/>' if shape == "circle" else f'<rect width="1200" height="1200" fill="{fill}"/>'
+    if shape == "ring":
+        bgshape = f'<rect width="1200" height="1200" fill="{fill}"/><circle cx="600" cy="600" r="530" fill="none" stroke="#EDE4D3" stroke-width="16"/><circle cx="600" cy="600" r="500" fill="none" stroke="#EDE4D3" stroke-width="2.5" opacity=".7"/>'
     inner = f"""{bgshape}
-<g transform="translate(600 600) scale({k*0.88:.3f}) translate(-320 -560)">
+<g transform="translate(600 600) scale({k*(0.76 if shape == "ring" else 0.88):.3f}) translate(-320 -560)">
 <text x="272" y="598" text-anchor="middle" font-family="Ms Madi" font-size="196" fill="{ink}">KT</text>
 <text x="320" y="660" text-anchor="middle" font-family="Cinzel" font-size="15" letter-spacing="6" fill="{sub}">KROBPHRA THAILAND</text>
 <text x="320" y="690" text-anchor="middle" font-family="Charmonman" font-weight="700" font-size="22" fill="{sub}">กรอบพระไทยแลนด์</text>
@@ -408,6 +410,6 @@ if __name__ == "__main__":
         (OUT / f"logo-{name}.html").write_text(fn(True))
         (OUT / f"logo-{name}-transparent.html").write_text(fn(False))
     for v in ("cream", "dark"):
-        for sh in ("circle", "square"):
+        for sh in ("circle", "square", "ring"):
             (OUT / f"logo-S2-{v}-{sh}-transparent.html").write_text(logo_S2_full(v, sh))
     print("ok")
