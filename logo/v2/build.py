@@ -389,8 +389,25 @@ logo_E1 = lambda bg=True: logo_E(bg, True)
 logo_E2 = lambda bg=True: logo_E(bg, False)
 
 
+# ---------- S2 แยกเดี่ยวเต็มภาพ: variant cream/dark, shape circle (พื้นใส) หรือ square (เต็มภาพ)
+def logo_S2_full(variant, shape):
+    fill, ink, sub = ("#EDE4D3", "#1E1A15", "#3A332A") if variant == "cream" else ("#14110D", "url(#gDt)", "#D8B66A")
+    k = 600 / 250  # scale from the 250px-radius badge
+    bgshape = f'<circle cx="600" cy="600" r="600" fill="{fill}"/>' if shape == "circle" else f'<rect width="1200" height="1200" fill="{fill}"/>'
+    inner = f"""{bgshape}
+<g transform="translate(600 600) scale({k*0.88:.3f}) translate(-320 -560)">
+<text x="272" y="598" text-anchor="middle" font-family="Ms Madi" font-size="196" fill="{ink}">KT</text>
+<text x="320" y="660" text-anchor="middle" font-family="Cinzel" font-size="15" letter-spacing="6" fill="{sub}">KROBPHRA THAILAND</text>
+<text x="320" y="690" text-anchor="middle" font-family="Charmonman" font-weight="700" font-size="22" fill="{sub}">กรอบพระไทยแลนด์</text>
+</g>"""
+    return page(inner, grad("gDt", GOLD, 120, 380, 480, 640), False)
+
+
 if __name__ == "__main__":
     for name, fn in [("A", logo_A), ("B", logo_B), ("C", logo_C), ("C2", logo_C2), ("C3", logo_C3), ("C4", logo_C4), ("S1", logo_S1), ("S2", logo_S2), ("E1", logo_E1), ("E2", logo_E2)]:
         (OUT / f"logo-{name}.html").write_text(fn(True))
         (OUT / f"logo-{name}-transparent.html").write_text(fn(False))
+    for v in ("cream", "dark"):
+        for sh in ("circle", "square"):
+            (OUT / f"logo-S2-{v}-{sh}-transparent.html").write_text(logo_S2_full(v, sh))
     print("ok")
