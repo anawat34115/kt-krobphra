@@ -106,6 +106,11 @@ section.block{padding-block:96px;border-top:1px solid var(--line)}
 .craft h2{font-size:clamp(28px,3.4vw,40px);margin-bottom:24px}
 .craft blockquote{margin:0 0 24px;padding-left:24px;border-left:2px solid var(--gold);font:500 20px/1.6 var(--f-head);color:var(--gold)}
 .craft p{color:var(--muted);margin:0 0 16px}
+.facts{list-style:none;padding:0;margin:8px 0 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.facts li{border:1px solid var(--line);border-radius:8px;padding:14px 12px;background:var(--surface)}
+.facts b{display:block;font:600 22px/1.3 var(--f-head);color:var(--gold)}
+.facts span{font-size:13px;color:var(--muted)}
+@media(max-width:520px){.facts{grid-template-columns:1fr}}
 .todo{display:inline-block;background:rgba(214,176,106,.12);color:var(--gold);border:1px dashed var(--gold-deep);border-radius:4px;padding:2px 8px;font-size:14px}
 
 .social{display:grid;grid-template-columns:7fr 5fr;gap:48px}
@@ -208,9 +213,15 @@ img.photo{display:block;object-fit:cover}
   <img class="photo reveal craftimg" src="../assets/img/p06.jpg" alt="อะไหล่กรอบพระและห่วงบนโต๊ะช่าง" loading="lazy" decoding="async">
   <div class="reveal">
     <p class="eyebrow">เกี่ยวกับเรา</p>
-    <h2>ทีมช่างทองหลวง</h2>
+    <h2>งานช่างทองสองรุ่น<br>ตั้งแต่ปี 2533</h2>
     <blockquote>ทุกงานซ่อม ลายสั่งทำ โดยทีมช่างทองหลวง</blockquote>
-    <p><span class="todo">ประวัติร้านและจุดเด่นของช่าง รอข้อมูลจากร้าน</span></p>
+    <p>KT กรอบพระไทยแลนด์ เป็นแบรนด์ร้านเลี่ยมพระของคนไทย เริ่มจากคุณพ่อและคุณแม่ที่เคยเป็นช่างทองและพนักงานขายในร้านทอง ก่อตั้งร้านขึ้นในปี 2533</p>
+    <p>วันนี้รุ่นลูกสานต่อด้วยฝีมือช่างทองหลวง ผสมเทคนิคช่างทองโบราณเข้ากับเครื่องมือและเทคโนโลยีสมัยใหม่ ทุกลวดลายจึงเป็นทั้งการอนุรักษ์งานช่างไทยและงานศิลปะที่มีคุณค่า</p>
+    <ul class="facts">
+      <li><b>2533</b><span>ปีที่ก่อตั้งร้าน</span></li>
+      <li><b>2 รุ่น</b><span>ช่างทองในครอบครัว</span></li>
+      <li><b>ทอง เงิน นาก</b><span>รับทำทุกเนื้อโลหะ</span></li>
+    </ul>
     <a class="btn btn-line" href="https://www.facebook.com/krobphrathailand" target="_blank" rel="noopener"><i class="ph ph-facebook-logo"></i>ดูเพจ Facebook</a>
   </div>
 </div></section>
