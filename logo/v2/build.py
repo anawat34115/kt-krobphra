@@ -407,8 +407,51 @@ def logo_S2_full(variant, shape):
     return page(inner, grad("gDt", GOLD, 120, 380, 480, 640), False)
 
 
+# ---------- F · 3e รอบลูกค้า 5 พ.ย.: บรรทัดล่าง KROBPHRATHAILAND
+#   F1 = สัญลักษณ์เดิมจางๆ ลอยกลางวง (ไม่ติดขอบล่าง) + กรอบแดง KT เดิม
+#   F2 = สัญลักษณ์เดิมบนพื้นแดง วางแทนกรอบ KT สี่เหลี่ยม
+def logo_F(bg=True, mode=1):
+    body, br, gaps = brush_ring2(600, 500, 322, 84, 236, -322, seed=5, peak=0.17)
+    T = "translate(852 645) scale(.34) translate(-600 -500)"
+    ew, eh = 487, 855
+    water = ""
+    if mode == 1:
+        H = 470; W = H * ew / eh
+        water = f'<image href="{_EMB}" x="{600 - W/2:.1f}" y="{455 - H/2:.1f}" width="{W:.1f}" height="{H}" opacity=".17"/>'
+    if mode == 1:
+        icon = '<text x="600" y="598" text-anchor="middle" font-family="Cinzel" font-size="175" letter-spacing="-6" fill="url(#gD)" stroke="#1A1006" stroke-width="6" paint-order="stroke">KT</text>'
+        icon_out = ""
+    else:
+        icon = ""
+        h = 300; w = h * ew / eh
+        icon_out = f'<image transform="{T}" href="{_EMB}" x="{600 - w/2:.1f}" y="{530 - h/2:.1f}" width="{w:.1f}" height="{h}"/>'
+    inner = f"""
+{water}
+<g filter="url(#bevel)">{ring_svg(body, br, 'url(#gD)', gaps)}</g>
+<g filter="url(#bevel)" fill="url(#gDt)" text-anchor="middle" stroke="#1A1006" stroke-width="7" paint-order="stroke" stroke-linejoin="round" font-family="Charmonman" font-weight="700">
+  <text x="575" y="520" font-size="156">กรอบพระ</text>
+  <text x="535" y="672" font-size="112">ไทยแลนด์</text>
+</g>
+<path transform="{T}" d="M474,364 H726 V696 H474 Z" fill="url(#velvetR)"/>
+{icon_out}
+<g transform="{T}" filter="url(#bevel)">
+  <path d="M440,330 H760 V730 H440 Z M474,364 H726 V696 H474 Z" fill="url(#gD)" fill-rule="evenodd" stroke="#1A1006" stroke-width="10"/>
+  <circle cx="600" cy="282" r="26" fill="none" stroke="url(#gD)" stroke-width="14"/>
+  <path d="M600 304 C586 314 584 322 600 332 C616 322 614 314 600 304Z" fill="url(#gD)"/>
+  {icon}
+</g>
+<text x="600" y="935" text-anchor="middle" font-family="Cinzel" font-size="34" letter-spacing="12" fill="#D8B66A">KROBPHRATHAILAND</text>
+<g fill="#C99A3E"><path d="M600 968 l7 8 -7 8 -7 -8z"/><rect x="420" y="975" width="160" height="1.5"/><rect x="620" y="975" width="160" height="1.5"/></g>
+"""
+    vel = '<radialGradient id="velvetR" cx="50%" cy="40%" r="65%"><stop offset="0" stop-color="#7A1A12"/><stop offset="1" stop-color="#2A0604"/></radialGradient>'
+    return page(inner, BEVEL + vel + grad("gD", GOLD, 250, 150, 950, 850) + grad("gDt", GOLD, 300, 330, 900, 760), bg)
+
+logo_F1 = lambda bg=True: logo_F(bg, 1)
+logo_F2 = lambda bg=True: logo_F(bg, 2)
+
+
 if __name__ == "__main__":
-    for name, fn in [("A", logo_A), ("B", logo_B), ("C", logo_C), ("C2", logo_C2), ("C3", logo_C3), ("C4", logo_C4), ("S1", logo_S1), ("S2", logo_S2), ("E1", logo_E1), ("E2", logo_E2)]:
+    for name, fn in [("A", logo_A), ("B", logo_B), ("C", logo_C), ("C2", logo_C2), ("C3", logo_C3), ("C4", logo_C4), ("S1", logo_S1), ("S2", logo_S2), ("E1", logo_E1), ("E2", logo_E2), ("F1", logo_F1), ("F2", logo_F2)]:
         (OUT / f"logo-{name}.html").write_text(fn(True))
         (OUT / f"logo-{name}-transparent.html").write_text(fn(False))
     for v in ("cream", "dark"):
