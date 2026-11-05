@@ -416,8 +416,8 @@ def logo_F(bg=True, mode=1):
     ew, eh = 487, 855
     water = ""
     if mode == 1:
-        H = 470; W = H * ew / eh
-        water = f'<image href="{_EMB}" x="{600 - W/2:.1f}" y="{455 - H/2:.1f}" width="{W:.1f}" height="{H}" opacity=".17"/>'
+        H = 560; W = H * ew / eh
+        water = f'<image href="{_EMB}" x="{600 - W/2:.1f}" y="{495 - H/2:.1f}" width="{W:.1f}" height="{H}" opacity=".17"/>'
     if mode == 1:
         icon = '<text x="600" y="598" text-anchor="middle" font-family="Cinzel" font-size="175" letter-spacing="-6" fill="url(#gD)" stroke="#1A1006" stroke-width="6" paint-order="stroke">KT</text>'
         icon_out = ""
@@ -440,8 +440,8 @@ def logo_F(bg=True, mode=1):
   <path d="M600 304 C586 314 584 322 600 332 C616 322 614 314 600 304Z" fill="url(#gD)"/>
   {icon}
 </g>
-<text x="600" y="935" text-anchor="middle" font-family="Cinzel" font-size="34" letter-spacing="12" fill="#D8B66A">KROBPHRATHAILAND</text>
-<g fill="#C99A3E"><path d="M600 968 l7 8 -7 8 -7 -8z"/><rect x="420" y="975" width="160" height="1.5"/><rect x="620" y="975" width="160" height="1.5"/></g>
+<text x="600" y="935" text-anchor="middle" font-family="Cinzel" font-size="34" letter-spacing="12" fill="#D8B66A">KROBPHRA THAILAND</text>
+<g fill="#C99A3E"><path d="M600 968 l7 8 -7 8 -7 -8z"/><rect x="300" y="975" width="282" height="1.5"/><rect x="618" y="975" width="282" height="1.5"/></g>
 """
     vel = '<radialGradient id="velvetR" cx="50%" cy="40%" r="65%"><stop offset="0" stop-color="#7A1A12"/><stop offset="1" stop-color="#2A0604"/></radialGradient>'
     return page(inner, BEVEL + vel + grad("gD", GOLD, 250, 150, 950, 850) + grad("gDt", GOLD, 300, 330, 900, 760), bg)
