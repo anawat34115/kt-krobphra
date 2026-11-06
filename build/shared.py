@@ -114,7 +114,7 @@ def draft_bar(n, name, bg, fg):
     return (f'<div style="background:{bg};color:{fg};font:500 13px/1.4 system-ui,sans-serif;padding:8px 16px;'
             f'display:flex;gap:8px 16px;flex-wrap:wrap;justify-content:center;align-items:center;text-align:center">'
             f'<span>ดราฟต์แบบที่ {n}/3 · {name} · ภาพเป็นงานจริงจากร้าน</span>'
-            f'<a href="../" style="color:inherit;text-decoration:underline">ดูแบบอื่น</a></div>')
+            f'<a href="/drafts/" style="color:inherit;text-decoration:underline">ดูแบบอื่น</a> · <a href="/" style="color:inherit;text-decoration:underline">เว็บจริง</a></div>')
 
 
 def reviews_html(n=4):

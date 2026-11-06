@@ -1,7 +1,7 @@
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
 from shared import svg_defs, frame
-import v1, v2, v3
+import v1, v2, v3, kt_site
 
 ROOT = os.path.join(os.path.dirname(__file__), "..", "site")
 
@@ -65,7 +65,8 @@ def write(path, html):
 
 idx = (INDEX.replace("DEFS", svg_defs())
        .replace("F1", frame("arch", "g")).replace("F2", frame("tear", "g")).replace("F3", frame("sema", "g")))
-write("index.html", idx)
+write("drafts/index.html", idx.replace('href="v1-showcase/"','href="/v1-showcase/"').replace('href="v2-heritage/"','href="/v2-heritage/"').replace('href="v3-modern/"','href="/v3-modern/"'))
+kt_site.build_all(write)
 write("v1-showcase/index.html", v1.build())
 write("v2-heritage/index.html", v2.build())
 write("v3-modern/index.html", v3.build())

@@ -4,45 +4,332 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>KT กรอบพระไทยแลนด์ · เลือกแบบหน้าแรก</title>
+<title>KT กรอบพระไทยแลนด์ · เลี่ยมกรอบพระ กรอบทอง กรอบเงิน กรอบนาก กระทุ่มแบน</title>
+<meta name="description" content="KT กรอบพระไทยแลนด์ รับเลี่ยมกรอบพระ กรอบเงิน กรอบทอง กรอบนาก งานซ่อมและลายสั่งทำ โดยทีมช่างทองหลวง ตั้งแต่ปี 2533 กระทุ่มแบน สมุทรสาคร">
+<link rel="canonical" href="https://kt-krobphra.vercel.app/">
+<meta property="og:type" content="website"><meta property="og:title" content="KT กรอบพระไทยแลนด์ · เลี่ยมกรอบพระ กรอบทอง กรอบเงิน กรอบนาก กระทุ่มแบน"><meta property="og:description" content="KT กรอบพระไทยแลนด์ รับเลี่ยมกรอบพระ กรอบเงิน กรอบทอง กรอบนาก งานซ่อมและลายสั่งทำ โดยทีมช่างทองหลวง ตั้งแต่ปี 2533 กระทุ่มแบน สมุทรสาคร">
+<meta property="og:image" content="https://kt-krobphra.vercel.app/assets/logo/og-image.jpg"><meta property="og:url" content="https://kt-krobphra.vercel.app/"><meta property="og:locale" content="th_TH">
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/assets/logo/favicon-32.png"><link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png">
+<meta name="theme-color" content="#0E0C09">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Noto+Serif+Thai:wght@600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Noto+Serif+Thai:wght@500;600&display=swap">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 <style>
-:root{--bg:#0E0C09;--card:#17140F;--line:#2A251C;--text:#EFE7D6;--muted:#A59C88;--gold:#D6B06A}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.7 "IBM Plex Sans Thai",sans-serif}
-.wrap{max-width:1120px;margin:0 auto;padding:56px 24px 80px}
-h1{font:600 clamp(28px,4vw,40px)/1.35 "Noto Serif Thai",serif;margin:0 0 8px}
-.sub{color:var(--muted);margin:0 0 40px;max-width:40em}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-@media(max-width:860px){.grid{grid-template-columns:1fr}}
-a.opt{display:flex;flex-direction:column;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;transition:border-color .3s}
-a.opt:hover,a.opt:focus-visible{border-color:var(--gold);outline:none}
-.sw{height:200px;display:grid;place-items:center;position:relative}
-.sw svg{height:150px}
-.sw .chips{position:absolute;left:16px;bottom:16px;display:flex;gap:8px}
-.sw .chips i{width:20px;height:20px;border-radius:50%;border:1px solid rgba(255,255,255,.3)}
-.body{padding:24px;display:grid;gap:8px;flex:1}
-.body b{font:600 20px "Noto Serif Thai",serif}
-.body span{color:var(--muted);font-size:15px}
-.tag{justify-self:start;font-size:12px;color:#16120A;background:var(--gold);padding:2px 10px;border-radius:999px}
-.go{margin-top:8px;color:var(--gold);font-weight:500}
-footer{color:var(--muted);font-size:14px;margin-top:48px}
+:root{--bg:#0E0C09;--surface:#17140F;--line:#2A251C;--text:#EFE7D6;--muted:#A59C88;--gold:#D6B06A;--gold-deep:#9C7A3C;
+--f-head:"Noto Serif Thai",serif;--f-body:"IBM Plex Sans Thai",sans-serif;--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.75 var(--f-body);-webkit-font-smoothing:antialiased}
+a{color:inherit}img,svg{max-width:100%}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:24px}
+h1,h2,h3{font-family:var(--f-head);font-weight:600;line-height:1.35;margin:0}
+.eyebrow{font:500 13px/1.4 var(--f-body);letter-spacing:.12em;color:var(--gold);margin:0 0 16px}
+.btn{display:inline-flex;align-items:center;gap:8px;height:56px;padding:0 24px;border-radius:8px;font:600 16px var(--f-body);text-decoration:none;transition:background .3s var(--ease),color .3s var(--ease),transform .3s var(--ease)}
+.btn-gold{background:var(--gold);color:#16120A}.btn-gold:hover{background:#E6C484}
+.btn-line{border:1px solid var(--line);color:var(--text)}.btn-line:hover{border-color:var(--gold);color:var(--gold)}
+.btn:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.btn i{font-size:20px}
+.skip{position:absolute;left:-999px}.skip:focus{left:16px;top:16px;background:var(--gold);color:#000;padding:8px 16px;z-index:99}
+
+/* header */
+header.site{position:sticky;top:0;z-index:20;background:rgba(14,12,9,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand .mark{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--gold);display:grid;place-items:center;font:600 14px var(--f-head);color:var(--gold)}
+.brand b{font:600 17px var(--f-head);color:var(--text)}
+.nav ul{display:flex;gap:32px;list-style:none;margin:0;padding:0;font-size:15px;color:var(--muted)}
+.nav ul a{text-decoration:none}.nav ul a:hover{color:var(--gold)}
+.nav .call{height:40px;font-size:14px;padding:0 16px}
+@media(max-width:960px){.nav ul{display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding-block:96px 120px;--mx:65%;--my:35%}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(520px 420px at var(--mx) var(--my),rgba(214,176,106,.22),transparent 70%);pointer-events:none;transition:background .2s}
+.hero .grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(30px,5.2vw,60px);font-weight:600}
+.hero h1 em{display:inline-block}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p.lead{color:var(--muted);font-size:18px;max-width:30em;margin:24px 0 40px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:16px}
+.hero .trust{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:40px;color:var(--muted);font-size:14px}
+.hero .trust span{display:inline-flex;align-items:center;gap:8px}.hero .trust i{color:var(--gold);font-size:18px}
+.case{position:relative;aspect-ratio:4/5;max-width:440px;justify-self:center;width:100%}
+.case .shelf{position:absolute;left:4%;right:4%;bottom:6%;height:14px;border-radius:2px;background:linear-gradient(#3a3226,#1a1611);box-shadow:0 1px 0 rgba(255,255,255,.08) inset}
+.case .glow{position:absolute;left:10%;right:10%;bottom:8%;height:40%;background:radial-gradient(closest-side,rgba(214,176,106,.25),transparent);filter:blur(8px)}
+.case .frame{position:absolute;left:18%;width:64%;bottom:9%;filter:drop-shadow(0 24px 32px rgba(0,0,0,.6))}
+.case .tag{position:absolute;right:0;top:12%;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--muted);line-height:1.5}
+.case .tag b{display:block;color:var(--text);font:600 15px var(--f-head)}
+.stagger>*{animation:rise .9s var(--ease) both}.stagger>*:nth-child(2){animation-delay:.12s}.stagger>*:nth-child(3){animation-delay:.24s}.stagger>*:nth-child(4){animation-delay:.36s}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}}
+@media(max-width:860px){.hero{padding-block:56px 72px}.hero .grid{grid-template-columns:1fr}.case{max-width:320px;order:-1}}
+
+/* sections */
+section.block{padding-block:96px;border-top:1px solid var(--line)}
+@media(max-width:860px){section.block{padding-block:56px}}
+.head-row{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:48px}
+.head-row h2{font-size:clamp(28px,3.4vw,40px)}
+.head-row p{color:var(--muted);max-width:28em;margin:0}
+
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:960px){.cats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.cats{gap:8px}.cat .body{padding:16px}.cat h3{font-size:19px}.cat p{font-size:14px}}
+@media(max-width:520px){.brand b{font-size:15px}.nav .call{width:40px;padding:0;justify-content:center}.nav .call .t{display:none}}
+.brand b,.nav .btn{white-space:nowrap}
+
+.cat{position:relative;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden;text-decoration:none;transition:border-color .3s var(--ease)}
+.cat:hover{border-color:var(--gold-deep)}
+.cat .pic{position:relative;aspect-ratio:1/1;display:grid;place-items:center;background:radial-gradient(60% 55% at 50% 0%,rgba(214,176,106,.18),transparent 70%)}
+.cat .pic::after{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.6}
+.cat .frame{width:48%;transition:transform .5s var(--ease)}
+.cat:hover .frame{transform:translateY(-6px)}
+.cat .body{padding:24px;display:flex;flex-direction:column;gap:8px;flex:1}
+.cat h3{font-size:22px}
+.cat p{margin:0;color:var(--muted);font-size:15px}
+.cat .go{margin-top:auto;padding-top:16px;display:flex;align-items:center;gap:8px;color:var(--gold);font-size:14px;font-weight:500}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;counter-reset:s;list-style:none;margin:0;padding:0}
+@media(max-width:860px){.steps{grid-template-columns:1fr;gap:32px}}
+.steps li{border-top:1px solid var(--gold-deep);padding-top:24px}
+.steps .n{font:600 14px var(--f-body);color:var(--gold);letter-spacing:.12em}
+.steps h3{font-size:22px;margin:8px 0}
+.steps p{margin:0;color:var(--muted)}
+.steps-cta{margin-top:48px}
+
+.gal{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:160px;gap:16px}
+.gal figure{margin:0;position:relative;border-radius:8px;overflow:hidden;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center}
+.gal figure:nth-child(1){grid-column:span 3;grid-row:span 2}.gal figure:nth-child(2){grid-column:span 3}
+.gal figure:nth-child(3){grid-column:span 2}.gal figure:nth-child(4){grid-column:span 1;grid-row:span 2}
+.gal figure:nth-child(5){grid-column:span 2;grid-row:span 1}.gal figure:nth-child(6){grid-column:span 2}
+.gal .frame{height:78%;width:auto}
+.gal figcaption{position:absolute;left:8px;bottom:8px;font-size:12px;color:var(--muted);background:rgba(14,12,9,.7);padding:2px 8px;border-radius:4px}
+@media(max-width:760px){.gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px}.gal figure{grid-column:auto!important;grid-row:auto!important}.gal figure:nth-child(1){grid-column:span 2!important}}
+
+.craft{display:grid;grid-template-columns:5fr 7fr;gap:56px;align-items:center}
+@media(max-width:860px){.craft{grid-template-columns:1fr;gap:32px}}
+.craft .photo{aspect-ratio:4/5;border-radius:8px;background:repeating-linear-gradient(135deg,#17140F 0 16px,#1B1812 16px 32px);border:1px solid var(--line);display:grid;place-items:center;color:var(--muted);text-align:center;font-size:14px;padding:24px}
+.craft .photo i{font-size:48px;color:var(--gold-deep);display:block;margin-bottom:8px}
+.craft h2{font-size:clamp(28px,3.4vw,40px);margin-bottom:24px}
+.craft blockquote{margin:0 0 24px;padding-left:24px;border-left:2px solid var(--gold);font:500 20px/1.6 var(--f-head);color:var(--gold)}
+.craft p{color:var(--muted);margin:0 0 16px}
+.facts{list-style:none;padding:0;margin:8px 0 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.facts li{border:1px solid var(--line);border-radius:8px;padding:14px 12px;background:var(--surface)}
+.facts b{display:block;font:600 22px/1.3 var(--f-head);color:var(--gold)}
+.facts span{font-size:13px;color:var(--muted)}
+@media(max-width:520px){.facts{grid-template-columns:1fr}}
+.todo{display:inline-block;background:rgba(214,176,106,.12);color:var(--gold);border:1px dashed var(--gold-deep);border-radius:4px;padding:2px 8px;font-size:14px}
+
+.social{display:grid;grid-template-columns:7fr 5fr;gap:48px}
+@media(max-width:960px){.social{grid-template-columns:1fr}}
+.clips{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:520px){.clips{grid-template-columns:repeat(2,1fr)}}
+.clip{aspect-ratio:9/16;border-radius:8px;background:linear-gradient(180deg,#1E1A13,#0E0C09);border:1px solid var(--line);position:relative;display:grid;place-items:center;text-decoration:none}
+.clip i{font-size:40px;color:var(--gold)}
+.clip span{position:absolute;left:8px;right:8px;bottom:8px;font-size:12px;color:var(--muted)}
+.reviews{display:grid;gap:16px}
+.review{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:24px}
+.review .sk{height:10px;border-radius:4px;background:#2A251C;margin-bottom:8px}
+.review .sk.s{width:60%}
+.review small{color:var(--muted);font-size:13px}
+.social h3{font-size:22px;margin-bottom:24px;display:flex;align-items:center;gap:8px}
+
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+@media(max-width:860px){.contact{grid-template-columns:1fr}}
+.contact dl{margin:0 0 40px;display:grid;gap:24px}
+.contact dt{color:var(--gold);font-size:13px;letter-spacing:.12em;margin-bottom:4px}
+.contact dd{margin:0;font-size:18px}
+.contact dd a{text-decoration:none}.contact dd a:hover{color:var(--gold)}
+.map{border:1px solid var(--line);border-radius:8px;overflow:hidden;min-height:360px}
+.map iframe{width:100%;height:100%;min-height:360px;border:0;filter:grayscale(.6) invert(.9) hue-rotate(180deg) contrast(.9)}
+
+footer{border-top:1px solid var(--line);padding-block:40px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+.rv{width:100%;display:block;border-radius:8px}
+img.photo{display:block;object-fit:cover}
+
+.gal figure,.strip figure,.cat .pic,.rowc .thumb{position:relative;overflow:hidden}
+.gal .frame.photo,.strip .frame.photo,.cat .pic .frame.photo,.rowc .thumb .frame.photo{position:absolute;inset:0;width:100%;height:100%;max-width:none}
+.case .frame.photo{position:absolute;left:12%;width:76%;top:4%;height:84%;border-radius:8px;border:1px solid var(--gold-deep);filter:none;box-shadow:0 24px 48px rgba(0,0,0,.6)}
+.cat .pic .frame.photo{width:100%;height:100%}.cat:hover .frame.photo{transform:scale(1.04)}
+.gal .frame.photo{width:100%;height:100%}
+.craftimg{width:100%;aspect-ratio:4/5;border-radius:8px;border:1px solid var(--line)}
+.reviews{grid-template-columns:repeat(2,1fr)}
+.fab{position:fixed;right:16px;bottom:16px;z-index:30;width:56px;height:56px;border-radius:50%;background:var(--gold);color:#16120A;display:grid;place-items:center;font-size:26px;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+@media(min-width:861px){
+.rv{width:100%;display:block;border-radius:8px}
+img.photo{display:block;object-fit:cover}
+.case .frame.photo{position:absolute;left:12%;width:76%;top:4%;height:84%;border-radius:8px;border:1px solid var(--gold-deep);filter:none;box-shadow:0 24px 48px rgba(0,0,0,.6)}
+.cat .pic .frame.photo{width:100%;height:100%}.cat:hover .frame.photo{transform:scale(1.04)}
+.gal .frame.photo{width:100%;height:100%}
+.craftimg{width:100%;aspect-ratio:4/5;border-radius:8px;border:1px solid var(--line)}
+.reviews{grid-template-columns:repeat(2,1fr)}
+.fab{display:none}}
+
+.brand img{width:44px;height:44px;display:block}
+.nav ul{gap:24px;font-size:14.5px}.nav ul a[aria-current=page]{color:var(--gold)}
+@media(max-width:1120px){.nav ul{gap:16px;font-size:14px}}
+.menu{display:none;position:relative}
+.menu summary{list-style:none;cursor:pointer;width:40px;height:40px;border:1px solid var(--line);border-radius:8px;display:grid;place-items:center;font-size:22px}
+.menu summary::-webkit-details-marker{display:none}
+.menu ul{display:grid!important;position:absolute;right:0;top:48px;min-width:220px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px!important;gap:0!important}
+.menu ul a{display:block;padding:12px 16px;border-radius:6px;font-size:16px}.menu ul a:hover{background:#201C15}
+@media(max-width:960px){.menu{display:block}.nav>nav{display:none}.nav .right{display:flex;gap:8px;align-items:center}}
+.nav .right{display:flex;gap:8px;align-items:center}
+.page-head{padding-block:72px 48px;position:relative;overflow:hidden}
+.page-head::before{content:"";position:absolute;inset:0;background:radial-gradient(520px 320px at 70% 0%,rgba(214,176,106,.16),transparent 70%);pointer-events:none}
+.page-head h1{font-size:clamp(30px,4.4vw,48px);position:relative}
+.page-head p.lead{color:var(--muted);font-size:18px;max-width:36em;margin:16px 0 0;position:relative}
+.crumbs{font-size:13px;color:var(--muted);margin-bottom:16px;position:relative}.crumbs a{text-decoration:none}.crumbs a:hover{color:var(--gold)}
+/* shape tiles (home) */
+.shapes{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:960px){.shapes{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:620px){.shapes{grid-template-columns:repeat(2,1fr);gap:10px}}
+.shape{position:relative;display:block;aspect-ratio:4/5;border-radius:8px;overflow:hidden;border:1px solid var(--line);text-decoration:none;background:var(--surface)}
+.shape img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.shape:hover img{transform:scale(1.05)}.shape:hover{border-color:var(--gold-deep)}
+.shape .lbl{position:absolute;left:0;right:0;bottom:0;padding:40px 14px 14px;background:linear-gradient(transparent,rgba(8,7,5,.92));display:flex;justify-content:space-between;align-items:end;gap:8px}
+.shape .lbl b{font:600 17px/1.35 var(--f-head)}.shape .lbl small{display:block;font-size:12px;color:var(--gold);letter-spacing:.08em}
+.shape .lbl i{color:var(--gold);font-size:18px;flex:none}
+.group-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:-24px 0 32px}
+.group-tabs a{padding:8px 16px;border:1px solid var(--line);border-radius:999px;font-size:14px;text-decoration:none;color:var(--muted)}.group-tabs a:hover{border-color:var(--gold);color:var(--gold)}
+/* products */
+.pgroup+.pgroup{margin-top:72px}
+.pgroup>h2{font-size:clamp(26px,3vw,34px)}.pgroup>p{color:var(--muted);margin:8px 0 32px;max-width:40em}
+.prod{display:grid;grid-template-columns:320px 1fr;gap:32px;padding:32px 0;border-top:1px solid var(--line);scroll-margin-top:96px}
+@media(max-width:760px){.prod{grid-template-columns:1fr;gap:20px}}
+.prod .main{aspect-ratio:4/5;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.prod .main img{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:760px){.prod .main{aspect-ratio:1/1;max-width:420px}}
+.prod h3{font-size:26px;margin-bottom:8px}.prod .desc{color:var(--muted);margin:0 0 20px}
+.opts{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0 0 20px}
+.opts li{font-size:14px;padding:6px 12px;border:1px solid var(--gold-deep);border-radius:6px;color:var(--gold)}
+.sizes{width:100%;border-collapse:collapse;font-size:15px;margin:0 0 20px}
+.sizes caption{text-align:left;font:600 15px var(--f-body);color:var(--text);margin-bottom:8px}
+.sizes th,.sizes td{border:1px solid var(--line);padding:8px 12px;text-align:left}.sizes th{color:var(--muted);font-weight:500;background:var(--surface)}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 0 24px}
+.thumbs img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px;border:1px solid var(--line);display:block}
+.thumbs .more{aspect-ratio:1;border-radius:6px;border:1px dashed var(--line);display:grid;place-items:center;font-size:12px;color:var(--muted);text-align:center;padding:8px}
+.prod .acts{display:flex;flex-wrap:wrap;gap:12px}
+/* works */
+.wgrid{columns:4 220px;column-gap:16px}
+.wgrid img{width:100%;display:block;border-radius:8px;border:1px solid var(--line);margin-bottom:16px;break-inside:avoid}
+.rgrid{columns:3 260px;column-gap:16px}.rgrid img{width:100%;display:block;border-radius:8px;margin-bottom:16px;break-inside:avoid}
+/* custom */
+.measure{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+@media(max-width:860px){.measure{grid-template-columns:1fr;gap:32px}}
+.measure ol{margin:0;padding-left:20px;display:grid;gap:12px;color:var(--muted)}.measure ol b{color:var(--text)}
+.note{border:1px solid var(--line);border-left:2px solid var(--gold);background:var(--surface);border-radius:8px;padding:20px 24px;color:var(--muted)}
+.note b{color:var(--text)}
+.mats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:760px){.mats{grid-template-columns:1fr}}
+.mat{display:block;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface);text-decoration:none}
+.mat img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}.mat div{padding:20px}.mat h3{font-size:22px;margin-bottom:6px}.mat p{margin:0;color:var(--muted);font-size:15px}
+/* articles */
+.arts{display:grid;gap:24px;max-width:820px}
+.art{border:1px solid var(--line);border-radius:8px;background:var(--surface);padding:32px;scroll-margin-top:96px}
+.art h2{font-size:26px;margin-bottom:8px}.art .ex{color:var(--gold);margin:0 0 16px}.art ul{margin:0;padding-left:20px;display:grid;gap:10px;color:var(--muted)}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.cta-band{border-top:1px solid var(--line);padding-block:72px;text-align:center;position:relative;overflow:hidden}
+.cta-band::before{content:"";position:absolute;inset:0;background:radial-gradient(480px 240px at 50% 100%,rgba(214,176,106,.16),transparent 70%)}
+.cta-band h2{font-size:clamp(26px,3.2vw,36px);position:relative}.cta-band p{color:var(--muted);margin:12px auto 32px;max-width:32em;position:relative}
+.cta-band .ctas{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;position:relative}
+footer .flogo{width:88px;height:auto}
+footer .wrap{align-items:center}
+footer nav ul{display:flex;flex-wrap:wrap;gap:8px 20px;list-style:none;margin:0;padding:0}footer nav a{text-decoration:none}footer nav a:hover{color:var(--gold)}
+.foot-top{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+
+.js-reveal .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.js-reveal .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7E6A8"/><stop offset=".35" stop-color="#D1A24A"/><stop offset=".62" stop-color="#8E6526"/><stop offset="1" stop-color="#E8CB80"/></linearGradient><linearGradient id="mn" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6D3BE"/><stop offset=".4" stop-color="#C08066"/><stop offset=".65" stop-color="#7E4936"/><stop offset="1" stop-color="#E9B49A"/></linearGradient><linearGradient id="mp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F4FAFC" stop-opacity=".9"/><stop offset=".5" stop-color="#B9CBD2" stop-opacity=".55"/><stop offset="1" stop-color="#E6F0<svg class="frame" viewBox="0 0 200 260" aria-hidden="true"><use href="#f-sema-g"/></svg>" stop-opacity=".85"/></linearGradient><linearGradient id="ms" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F5F5<svg class="frame" viewBox="0 0 200 260" aria-hidden="true"><use href="#f-sema-g"/></svg>"/><stop offset=".4" stop-color="#B4B4B6"/><stop offset=".65" stop-color="#6F6F74"/><stop offset="1" stop-color="#DCDCDF"/></linearGradient><radialGradient id="clay" cx=".45" cy=".35" r=".8"><stop offset="0" stop-color="#6A5A45"/><stop offset=".7" stop-color="#3A3127"/><stop offset="1" stop-color="#211C16"/></radialGradient></defs><symbol id="f-arch-g" viewBox="0 0 200 260"><circle cx="100" cy="14" r="11" fill="none" stroke="url(#mg)" stroke-width="6"/><path d="M40 250 L40 96 Q40 26 100 26 Q160 26 160 96 L160 250 Z" fill="url(#mg)"/><path d="M40 250 L40 96 Q40 26 100 26 Q160 26 160 96 L160 250 Z" fill="url(#clay)" transform="translate(100 140) scale(.84) translate(-100 -140)"/><g fill="#8A7558" opacity=".55"><circle cx="100" cy="98" r="11"/><circle cx="100" cy="83" r="5"/><ellipse cx="100" cy="138" rx="26" ry="30"/><ellipse cx="100" cy="166" rx="42" ry="12"/><rect x="62" y="182" width="76" height="8" rx="2"/><rect x="56" y="194" width="88" height="8" rx="2"/><rect x="50" y="206" width="100" height="8" rx="2"/></g><path d="M70 60 Q100 40 130 60" stroke="#fff" stroke-opacity=".25" stroke-width="3" fill="none"/></symbol><symbol id="f-arch-s" viewBox="0 0 200 260"><circle cx="100" cy="14" r="11" fill="none" stroke="url(#ms)" stroke-width="6"/><path d="M40 250 L40 96 Q40 26 100 26 Q160 26 160 96 L160 250 Z" fill="url(#ms)"/><path d="M40 250 L40 96 Q40 26 100 26 Q160 26 160 96 L160 250 Z" fill="url(#clay)" transform="translate(100 140) scale(.84) translate(-100 -140)"/><g fill="#8A7558" opacity=".55"><circle cx="100" cy="98" r="11"/><circle cx="100" cy="83" r="5"/><ellipse cx="100" cy="138" rx="26" ry="30"/><ellipse cx="100" cy="166" rx="42" ry="12"/><rect x="62" y="182" width="76" height="8" rx="2"/><rect x="56" y="194" width="88" height="8" rx="2"/><rect x="50" y="206" width="100" height="8" rx="2"/></g><path d="M70 60 Q100 40 130 60" stroke="#fff" stroke-opacity=".25" stroke-width="3" fill="none"/></symbol><symbol id="f-arch-n" viewBox="0 0 200 260"><circle cx="100" cy="14" r="11" fill="none" stroke="url(#mn)" stroke-width="6"/><path d="M40 250 L40 96 Q40 26 100 26 Q160 26 160 96 L160 250 Z" fill="url(#mn)"/><path d="M40 250 L40 96 Q40 26 100 26 Q160 26 160 96 L160 250 Z" fill="url(#clay)" transform="translate(100 140) scale(.84) translate(-100 -140)"/><g fill="#8A7558" opacity=".55"><circle cx="100" cy="98" r="11"/><circle cx="100" cy="83" r="5"/><ellipse cx="100" cy="138" rx="26" ry="30"/><ellipse cx="100" cy="166" rx="42" ry="12"/><rect x="62" y="182" width="76" height="8" rx="2"/><rect x="56" y="194" width="88" height="8" rx="2"/><rect x="50" y="206" width="100" height="8" rx="2"/></g><path d="M70 60 Q100 40 130 60" stroke="#fff" stroke-opacity=".25" stroke-width="3" fill="none"/></symbol><symbol id="f-arch-p" viewBox="0 0 200 260"><circle cx="100" cy="14" r="11" fill="none" stroke="url(#mp)" stroke-width="6"/><path d="M40 250 L40 96 Q40 26 100 26 Q160 26 160 96 L160 250 Z" fill="url(#mp)"/><path d="M40 250 L40 96 Q40 26 100 26 Q160 26 160 96 L160 250 Z" fill="url(#clay)" transform="translate(100 140) scale(.84) translate(-100 -140)"/><g fill="#8A7558" opacity=".55"><circle cx="100" cy="98" r="11"/><circle cx="100" cy="83" r="5"/><ellipse cx="100" cy="138" rx="26" ry="30"/><ellipse cx="100" cy="166" rx="42" ry="12"/><rect x="62" y="182" width="76" height="8" rx="2"/><rect x="56" y="194" width="88" height="8" rx="2"/><rect x="50" y="206" width="100" height="8" rx="2"/></g><path d="M70 60 Q100 40 130 60" stroke="#fff" stroke-opacity=".25" stroke-width="3" fill="none"/></symbol><symbol id="f-tear-g" viewBox="0 0 200 260"><circle cx="100" cy="14" r="11" fill="none" stroke="url(#mg)" stroke-width="6"/><path d="M100 22 C146 84 170 150 166 196 Q160 250 100 250 Q40 250 34 196 C30 150 54 84 100 22 Z" fill="url(#mg)"/><path d="M100 22 C146 84 170 150 166 196 Q160 250 100 250 Q40 250 34 196 C30 150 54 84 100 22 Z" fill="url(#clay)" transform="translate(100 140) scale(.84) translate(-100 -140)"/><g fill="#8A7558" opacity=".55"><circle cx="100" cy="98" r="11"/><circle cx="100" cy="83" r="5"/><ellipse cx="100" cy="138" rx="26" ry="30"/><ellipse cx="100" cy="166" rx="42" ry="12"/><rect x="62" y="182" width="76" height="8" rx="2"/><rect x="56" y="194" width="88" height="8" rx="2"/><rect x="50" y="206" width="100" height="8" rx="2"/></g><path d="M70 60 Q100 40 130 60" stroke="#fff" stroke-opacity=".25" stroke-width="3" fill="none"/></symbol><symbol id="f-tear-s" viewBox="0 0 200 260"><circle cx="100" cy="14" r="11" fill="none" stroke="url(#ms)" stroke-width="6"/><path d="M100 22 C146 84 170 150 166 196 Q160 250 100 250 Q40 250 34 196 C30 150 54 84 100 22 Z" fill="url(#ms)"/><path d="M100 22 C146 84 170 150 166 196 Q160 250 100 250 Q40 250 34 196 C30 150 54 84 100 22 Z" fill="url(#clay)" transform="translate(100 140) scale(.84) translate(-100 -140)"/><g fill="#8A7558" opacity=".55"><circle cx="100" cy="98" r="11"/><circle cx="100" cy="83" r="5"/><ellipse cx="100" cy="138" rx="26" ry="30"/><ellipse cx="100" cy="166" rx="42" ry="12"/><rect x="62" y="182" width="76" height="8" rx="2"/><rect x="56" y="194" width="88" height="8" rx="2"/><rect x="50" y="206" width="100" height="8" rx="2"/></g><path d="M70 60 Q100 40 130 60" stroke="#fff" stroke-opacity=".25" stroke-width="3" fill="none"/></symbol><symbol id="f-tear-n" viewBox="0 0 200 260"><circle cx="100" cy="14" r="11" fill="none" stroke="url(#mn)" stroke-width="6"/><path d="M100 22 C146 84 170 150 166 196 Q160 250 100 250 Q40 250 34 196 C30 150 54 84 100 22 Z" fill="url(#mn)"/><path d="M100 22 C146 84 170 150 166 196 Q160 250 100 250 Q40 250 34 196 C30 150 54 84 100 22 Z" fill="url(#clay)" transform="translate(100 140) scale(.84) translate(-100 -140)"/><g fill="#8A7558" opacity=".55"><circle cx="100" cy="98" r="11"/><circle cx="100" cy="83" r="5"/><ellipse cx="100" cy="138" rx="26" ry="30"/><ellipse cx="100" cy="166" rx="42" ry="12"/><rect x="62" y="182" width="76" height="8" rx="2"/><rect x="56" y="194" width="88" height="8" rx="2"/><rect x="50" y="206" width="100" height="8" rx="2"/></g><path d="M70 60 Q100 40 130 60" stroke="#fff" stroke-opacity=".25" stroke-width="3" fill="none"/></symbol><symbol id="f-tear-p" viewBox="0 0 200 260"><circle cx="100" cy="14" r="11" fill="none" stroke="url(#mp)" stroke-width="6"/><path d="M100 22 C146 84 170 150 166 196 Q160 250 100 250 Q40 250 34 196 C30 150 54 84 100 22 Z" fill="url(#mp)"/><path d="M100 22 C146 84 170 150 166 196 Q160 250 100 250 Q40 250 34 196 C30 150 54 84 100 22 Z" fill="url(#clay)" transform="translate(100 140) scale(.84) translate(-100 -140)"/><g fill="#8A7558" opacity=".55"><circle cx="100" cy="98" r="11"/><circle cx="100" cy="83" r="5"/><ellipse cx="100" cy="138" rx="26" ry="30"/><ellipse cx="100" cy="166" rx="42" ry="12"/><rect x="62" y="182" width="76" height="8" rx="2"/><rect x="56" y="194" width="88" height="8" rx="2"/><rect x="50" y="206" width="100" height="8" rx="2"/></g><path d="M70 60 Q100 40 130 60" stroke="#fff" stroke-opacity=".25" stroke-width="3" fill="none"/></symbol><symbol id="f-round-g" viewBox="0 0 200 260"><circle cx="100" cy="40" r="11" fill="none" stroke="url(#mg)" stroke-width="6"/><circle cx="100" cy="148" r="100" fill="url(#mg)"/><circle cx="100" cy="148" r="84" fill="url(#clay)"/><g transform="translate(18 14) scale(.82)"><g fill="#8A7558" opacity=".55"><circle cx="100" cy="98" r="11"/><circle cx="100" cy="83" r="5"/><ellipse cx="100" cy="138" rx="26" ry="30"/><ellipse cx="100" cy="166" rx="42" ry="12"/><rect x="62" y="182" width="76" height="8" rx="2"/><rect x="56" y="194" width="88" height="8" rx="2"/><rect x="50" y="206" width="100" height="8" rx="2"/></g></g><path d="M70 60 Q100 40 130 60" stroke="#fff" stroke-opacity=".25" stroke-width="3" fill="none"/></symbol><symbol id="f-round-s" viewBox="0 0 200 260"><circle cx="100" cy="40" r="11" fill="none" stroke="url(#ms)" stroke-width="6"/><circle cx="100" cy="148" r="100" fill="url(#ms)"/><circle cx="100" cy="148" r="84" fill="url(#clay)"/><g transform="translate(18 14) scale(.82)"><g fill="#8A7558" opacity=".55"><circle cx="100" cy="98" r="11"/><circle cx="100" cy="83" r="5"/><ellipse cx="100" cy="138" rx="26" ry="30"/><ellipse cx="100" cy="166" rx="42" ry="12"/><rect x="62" y="182" width="76" height="8" rx="2"/><rect x="56" y="194" width="88" height="8" rx="2"/><rect x="50" y="206" width="100" height="8" rx="2"/></g></g><path d="M70 60 Q100 40 130 60" stroke="#fff" stroke-opacity=".25" stroke-width="3" fill="none"/></symbol><symbol id="f-round-n" viewBox="0 0 200 260"><circle cx="100" cy="40" r="11" fill="none" stroke="url(#mn)" stroke-width="6"/><circle cx="100" cy="148" r="100" fill="url(#mn)"/><circle cx="100" cy="148" r="84" fill="url(#clay)"/><g transform="translate(18 14) scale(.82)"><g fill="#8A7558" opacity=".55"><circle cx="100" cy="98" r="11"/><circle cx="100" cy="83" r="5"/><ellipse cx="100" cy="138" rx="26" ry="30"/><ellipse cx="100" cy="166" rx="42" ry="12"/><rect x="62" y="182" width="76" height="8" rx="2"/><rect x="56" y="194" width="88" height="8" rx="2"/><rect x="50" y="206" width="100" height="8" rx="2"/></g></g><path d="M70 60 Q100 40 130 60" stroke="#fff" stroke-opacity=".25" stroke-width="3" fill="none"/></symbol><symbol id="f-round-p" viewBox="0 0 200 260"><circle cx="100" cy="40" r="11" fill="none" stroke="url(#mp)" stroke-width="6"/><circle cx="100" cy="148" r="100" fill="url(#mp)"/><circle cx="100" cy="148" r="84" fill="url(#clay)"/><g transform="translate(18 14) scale(.82)"><g fill="#8A7558" opacity=".55"><circle cx="100" cy="98" r="11"/><circle cx="100" cy="83" r="5"/><ellipse cx="100" cy="138" rx="26" ry="30"/><ellipse cx="100" cy="166" rx="42" ry="12"/><rect x="62" y="182" width="76" height="8" rx="2"/><rect x="56" y="194" width="88" height="8" rx="2"/><rect x="50" y="206" width="100" height="8" rx="2"/></g></g><path d="M70 60 Q100 40 130 60" stroke="#fff" stroke-opacity=".25" stroke-width="3" fill="none"/></symbol><symbol id="f-sema-g" viewBox="0 0 200 260"><circle cx="100" cy="14" r="11" fill="none" stroke="url(#mg)" stroke-width="6"/><path d="M100 24 Q150 46 164 116 Q172 184 140 250 L60 250 Q28 184 36 116 Q50 46 100 24 Z" fill="url(#mg)"/><path d="M100 24 Q150 46 164 116 Q172 184 140 250 L60 250 Q28 184 36 116 Q50 46 100 24 Z" fill="url(#clay)" transform="translate(100 140) scale(.84) translate(-100 -140)"/><g fill="#8A7558" opacity=".55"><circle cx="100" cy="98" r="11"/><circle cx="100" cy="83" r="5"/><ellipse cx="100" cy="138" rx="26" ry="30"/><ellipse cx="100" cy="166" rx="42" ry="12"/><rect x="62" y="182" width="76" height="8" rx="2"/><rect x="56" y="194" width="88" height="8" rx="2"/><rect x="50" y="206" width="100" height="8" rx="2"/></g><path d="M70 60 Q100 40 130 60" stroke="#fff" stroke-opacity=".25" stroke-width="3" fill="none"/></symbol><symbol id="f-sema-s" viewBox="0 0 200 260"><circle cx="100" cy="14" r="11" fill="none" stroke="url(#ms)" stroke-width="6"/><path d="M100 24 Q150 46 164 116 Q172 184 140 250 L60 250 Q28 184 36 116 Q50 46 100 24 Z" fill="url(#ms)"/><path d="M100 24 Q150 46 164 116 Q172 184 140 250 L60 250 Q28 184 36 116 Q50 46 100 24 Z" fill="url(#clay)" transform="translate(100 140) scale(.84) translate(-100 -140)"/><g fill="#8A7558" opacity=".55"><circle cx="100" cy="98" r="11"/><circle cx="100" cy="83" r="5"/><ellipse cx="100" cy="138" rx="26" ry="30"/><ellipse cx="100" cy="166" rx="42" ry="12"/><rect x="62" y="182" width="76" height="8" rx="2"/><rect x="56" y="194" width="88" height="8" rx="2"/><rect x="50" y="206" width="100" height="8" rx="2"/></g><path d="M70 60 Q100 40 130 60" stroke="#fff" stroke-opacity=".25" stroke-width="3" fill="none"/></symbol><symbol id="f-sema-n" viewBox="0 0 200 260"><circle cx="100" cy="14" r="11" fill="none" stroke="url(#mn)" stroke-width="6"/><path d="M100 24 Q150 46 164 116 Q172 184 140 250 L60 250 Q28 184 36 116 Q50 46 100 24 Z" fill="url(#mn)"/><path d="M100 24 Q150 46 164 116 Q172 184 140 250 L60 250 Q28 184 36 116 Q50 46 100 24 Z" fill="url(#clay)" transform="translate(100 140) scale(.84) translate(-100 -140)"/><g fill="#8A7558" opacity=".55"><circle cx="100" cy="98" r="11"/><circle cx="100" cy="83" r="5"/><ellipse cx="100" cy="138" rx="26" ry="30"/><ellipse cx="100" cy="166" rx="42" ry="12"/><rect x="62" y="182" width="76" height="8" rx="2"/><rect x="56" y="194" width="88" height="8" rx="2"/><rect x="50" y="206" width="100" height="8" rx="2"/></g><path d="M70 60 Q100 40 130 60" stroke="#fff" stroke-opacity=".25" stroke-width="3" fill="none"/></symbol><symbol id="f-sema-p" viewBox="0 0 200 260"><circle cx="100" cy="14" r="11" fill="none" stroke="url(#mp)" stroke-width="6"/><path d="M100 24 Q150 46 164 116 Q172 184 140 250 L60 250 Q28 184 36 116 Q50 46 100 24 Z" fill="url(#mp)"/><path d="M100 24 Q150 46 164 116 Q172 184 140 250 L60 250 Q28 184 36 116 Q50 46 100 24 Z" fill="url(#clay)" transform="translate(100 140) scale(.84) translate(-100 -140)"/><g fill="#8A7558" opacity=".55"><circle cx="100" cy="98" r="11"/><circle cx="100" cy="83" r="5"/><ellipse cx="100" cy="138" rx="26" ry="30"/><ellipse cx="100" cy="166" rx="42" ry="12"/><rect x="62" y="182" width="76" height="8" rx="2"/><rect x="56" y="194" width="88" height="8" rx="2"/><rect x="50" y="206" width="100" height="8" rx="2"/></g><path d="M70 60 Q100 40 130 60" stroke="#fff" stroke-opacity=".25" stroke-width="3" fill="none"/></symbol></svg>
-<div class="wrap">
-  <h1>KT กรอบพระไทยแลนด์ · แบบหน้าแรก 3 แบบ</h1>
-  <p class="sub">ทุกแบบใช้โครงหน้าเดียวกัน ต่างกันที่อารมณ์และการจัดวาง ภาพสินค้าและรีวิวเป็นของจริงที่ร้านส่งมา</p>
-  <div class="grid">
-    <a class="opt" href="v1-showcase/"><div class="sw" style="background:radial-gradient(60% 70% at 50% 30%,rgba(214,176,106,.25),#0E0C09)"><svg class="frame" viewBox="0 0 200 260" aria-hidden="true"><use href="#f-arch-g"/></svg><div class="chips"><i style="background:#0E0C09"></i><i style="background:#D6B06A"></i><i style="background:#EFE7D6"></i></div></div>
-      <div class="body"><span class="tag">แนะนำ</span><b>1 · ตู้โชว์ร้านทอง</b><span>พื้นดำ ไฟส่องสีทอง กรอบพระเด่นเหมือนวางในตู้กระจก ตรงกับโทนเพจของร้าน</span><span class="go">ดูแบบนี้ →</span></div></a>
-    <a class="opt" href="v2-heritage/"><div class="sw" style="background:#4A0<svg class="frame" viewBox="0 0 200 260" aria-hidden="true"><use href="#f-arch-g"/></svg>2"><svg class="frame" viewBox="0 0 200 260" aria-hidden="true"><use href="#f-tear-g"/></svg><div class="chips"><i style="background:#4A0<svg class="frame" viewBox="0 0 200 260" aria-hidden="true"><use href="#f-arch-g"/></svg>2"></i><i style="background:#E4BC62"></i><i style="background:#F5EAD3"></i></div></div>
-      <div class="body"><b>2 · ช่างหลวง</b><span>แดงชาดกับทองคำเปลว ลายประจำยามคั่นหัวข้อ ให้ความรู้สึกงานช่างไทยโบราณ</span><span class="go">ดูแบบนี้ →</span></div></a>
-    <a class="opt" href="v3-modern/"><div class="sw" style="background:#0B0B0C"><svg class="frame" viewBox="0 0 200 260" aria-hidden="true"><use href="#f-sema-g"/></svg><div class="chips"><i style="background:#0B0B0C"></i><i style="background:#CBB58C"></i><i style="background:#<svg class="frame" viewBox="0 0 200 260" aria-hidden="true"><use href="#f-sema-g"/></svg>EFE8"></i></div></div>
-      <div class="body"><b>3 · จิวเวลรีสมัยใหม่</b><span>ดำกับทองแชมเปญ ตัวอักษรใหญ่นำ เรียบหรูแบบร้านเครื่องประดับ</span><span class="go">ดูแบบนี้ →</span></div></a>
+<a class="skip" href="#main">ข้ามไปเนื้อหา</a>
+<header class="site"><div class="wrap nav">
+  <a class="brand" href="/" aria-label="KT กรอบพระไทยแลนด์ หน้าแรก"><img src="/assets/logo/kt-mark-96.png" alt="" width="44" height="44"><b>KT กรอบพระไทยแลนด์</b></a>
+  <nav aria-label="เมนูหลัก"><ul><li><a href="/" aria-current=page>หน้าแรก</a></li><li><a href="/products/">สินค้า</a></li><li><a href="/custom/">งานสั่งทำ</a></li><li><a href="/works/">ผลงาน · รีวิว</a></li><li><a href="/about/">เกี่ยวกับเรา</a></li><li><a href="/articles/">บทความ</a></li><li><a href="/contact/">ติดต่อ</a></li></ul></nav>
+  <div class="right">
+    <a class="btn btn-line call" href="tel:0625899383" aria-label="โทร 062 589 9383"><i class="ph ph-phone"></i><span class="t">062 589 9383</span></a>
+    <details class="menu"><summary aria-label="เปิดเมนู"><i class="ph ph-list"></i></summary><ul><li><a href="/" aria-current=page>หน้าแรก</a></li><li><a href="/products/">สินค้า</a></li><li><a href="/custom/">งานสั่งทำ</a></li><li><a href="/works/">ผลงาน · รีวิว</a></li><li><a href="/about/">เกี่ยวกับเรา</a></li><li><a href="/articles/">บทความ</a></li><li><a href="/contact/">ติดต่อ</a></li></ul></details>
   </div>
-  <footer>ดราฟต์โดย ApeDev · 2 พ.ย. 2569</footer>
-</div>
+</div></header>
+<main id="main">
+
+<section class="hero" id="hero"><div class="wrap grid">
+  <div class="stagger">
+    <p class="eyebrow">กรอบพระงานพรีเมี่ยม · กระทุ่มแบน สมุทรสาคร</p>
+    <h1>เลี่ยมกรอบพระ<br>ด้วยฝีมือ<em>ช่างทองหลวง</em></h1>
+    <p class="lead">กรอบพระงานพรีเมี่ยม รับสั่งทำ ซื้อ ซ่อม กรอบพระ ทอง เงิน นาก พลาสติก และเครื่องประดับทุกชนิด ส่งรูปพระมาให้ช่างดู แจ้งราคาก่อนเริ่มงานทุกครั้ง</p>
+    <div class="ctas"><a class="btn btn-gold" href="https://m.me/krobphrathailand" target="_blank" rel="noopener"><i class="ph ph-camera"></i>ส่งรูปพระ ขอประเมินราคา</a><a class="btn btn-line" href="#shapes">ดูผลงานแยกตามทรง</a></div>
+    <div class="trust"><span><i class="ph ph-seal-check"></i>ก่อตั้งปี 2533</span><span><i class="ph ph-hand"></i>ช่างทองสองรุ่น</span><span><i class="ph ph-truck"></i>งานเสร็จ 7–14 วัน</span></div>
+  </div>
+  <div class="case" aria-hidden="true">
+    <div class="glow"></div><div class="shelf"></div>
+    <img class="frame photo" src="/assets/img/p02.jpg" alt="" fetchpriority="high">
+    <div class="tag"><b>งานจริงจากร้าน</b>ทุกงานซ่อม ลายสั่งทำ</div>
+  </div>
+</div></section>
+
+<section class="block" id="shapes"><div class="wrap">
+  <div class="head-row reveal"><div><p class="eyebrow">ผลงานจริง แยกตามทรง</p><h2>เลือกทรงกรอบที่ใช่</h2></div><p>รูปทั้งหมดเป็นงานจริงจากโต๊ะช่างของร้าน กดที่ทรงเพื่อดูขนาดและผลงานเพิ่ม</p></div>
+  <div class="group-tabs reveal"><a href="/products/#silver">กรอบเงิน</a><a href="/products/#other">ทรงอื่นๆ</a><a href="/products/#custom">งานสั่งทำ</a></div>
+  <div class="shapes"><a class="shape reveal" href="/products/#egg"><img src="/assets/img/p08.jpg" alt="กรอบพระทรงไข่ งานจริงจากร้าน" loading="lazy" decoding="async"><span class="lbl"><span><small>กรอบเงิน</small><b>ทรงไข่</b></span><i class="ph ph-arrow-right"></i></span></a><a class="shape reveal" href="/products/#round"><img src="/assets/img/p05.jpg" alt="กรอบพระทรงกลม งานจริงจากร้าน" loading="lazy" decoding="async"><span class="lbl"><span><small>กรอบเงิน</small><b>ทรงกลม</b></span><i class="ph ph-arrow-right"></i></span></a><a class="shape reveal" href="/products/#somdej"><img src="/assets/img/p18.jpg" alt="กรอบพระทรงสมเด็จ · สี่เหลี่ยม งานจริงจากร้าน" loading="lazy" decoding="async"><span class="lbl"><span><small>กรอบเงิน</small><b>ทรงสมเด็จ · สี่เหลี่ยม</b></span><i class="ph ph-arrow-right"></i></span></a><a class="shape reveal" href="/products/#thaowes"><img src="/assets/img/p03.jpg" alt="กรอบพระทรงท้าวเวส งานจริงจากร้าน" loading="lazy" decoding="async"><span class="lbl"><span><small>กรอบเงิน</small><b>ทรงท้าวเวส</b></span><i class="ph ph-arrow-right"></i></span></a><a class="shape reveal" href="/products/#sema"><img src="/assets/img/p07.jpg" alt="กรอบพระทรงเสมา งานจริงจากร้าน" loading="lazy" decoding="async"><span class="lbl"><span><small>กรอบเงิน</small><b>ทรงเสมา</b></span><i class="ph ph-arrow-right"></i></span></a><a class="shape reveal" href="/products/#rooplor"><img src="/assets/img/p01.jpg" alt="กรอบพระทรงรูปหล่อ งานจริงจากร้าน" loading="lazy" decoding="async"><span class="lbl"><span><small>กรอบเงิน</small><b>ทรงรูปหล่อ</b></span><i class="ph ph-arrow-right"></i></span></a><a class="shape reveal" href="/products/#phorung"><img src="/assets/img/p02.jpg" alt="กรอบพระทรงพ่อรุ่ง งานจริงจากร้าน" loading="lazy" decoding="async"><span class="lbl"><span><small>ทรงอื่นๆ</small><b>ทรงพ่อรุ่ง</b></span><i class="ph ph-arrow-right"></i></span></a><a class="shape reveal" href="/products/#tao"><img src="/assets/img/p12.jpg" alt="กรอบพระทรงเต่า งานจริงจากร้าน" loading="lazy" decoding="async"><span class="lbl"><span><small>ทรงอื่นๆ</small><b>ทรงเต่า</b></span><i class="ph ph-arrow-right"></i></span></a><a class="shape reveal" href="/products/#other"><img src="/assets/img/p06.jpg" alt="กรอบพระงานตามสั่งทรงอื่นๆ งานจริงจากร้าน" loading="lazy" decoding="async"><span class="lbl"><span><small>ทรงอื่นๆ</small><b>งานตามสั่งทรงอื่นๆ</b></span><i class="ph ph-arrow-right"></i></span></a><a class="shape reveal" href="/products/#nak"><img src="/assets/img/p19.jpg" alt="กรอบพระกรอบนาก งานจริงจากร้าน" loading="lazy" decoding="async"><span class="lbl"><span><small>งานสั่งทำ</small><b>กรอบนาก</b></span><i class="ph ph-arrow-right"></i></span></a><a class="shape reveal" href="/products/#gold"><img src="/assets/img/p11.jpg" alt="กรอบพระกรอบทอง งานจริงจากร้าน" loading="lazy" decoding="async"><span class="lbl"><span><small>งานสั่งทำ</small><b>กรอบทอง</b></span><i class="ph ph-arrow-right"></i></span></a><a class="shape reveal" href="/products/#design"><img src="/assets/img/p13.jpg" alt="กรอบพระงานตามแบบ งานจริงจากร้าน" loading="lazy" decoding="async"><span class="lbl"><span><small>งานสั่งทำ</small><b>งานตามแบบ</b></span><i class="ph ph-arrow-right"></i></span></a></div>
+</div></section>
+
+<section class="block" id="repair"><div class="wrap">
+  <div class="head-row reveal"><div><p class="eyebrow">งานซ่อม · ลายสั่งทำ</p><h2>สั่งทำง่าย 3 ขั้นตอน</h2></div><p>ไม่ต้องเดินทางมาร้าน เริ่มจากส่งรูปพระทางแชท</p></div>
+  <ol class="steps"><li class="reveal"><span class="n">ขั้นที่ 1</span><h3>ส่งรูปพระ</h3><p>ถ่ายรูปพระด้านหน้า-หลัง แล้วส่งทางแชท Facebook หรือ TikTok บอกงบที่ตั้งไว้ได้เลย</p></li><li class="reveal"><span class="n">ขั้นที่ 2</span><h3>ช่างประเมินราคา</h3><p>ช่างดูพิมพ์และขนาด แจ้งราคา ลาย และระยะเวลาให้ก่อนเริ่มงาน ขึ้นงานตามงบได้</p></li><li class="reveal"><span class="n">ขั้นที่ 3</span><h3>ช่างลงมือทำ</h3><p>งานเสร็จประมาณ 7–14 วัน มารับที่หน้าร้าน หรือส่งพระทางไปรษณีย์ ช่างวัดขนาดแล้วส่งกลับให้ถึงบ้าน</p></li></ol>
+  <div class="steps-cta reveal" style="display:flex;flex-wrap:wrap;gap:16px"><a class="btn btn-gold" href="https://m.me/krobphrathailand" target="_blank" rel="noopener"><i class="ph ph-camera"></i>ส่งรูปพระ ขอประเมินราคา</a><a class="btn btn-line" href="/custom/">วิธีวัดขนาดพระ</a></div>
+</div></section>
+
+<section class="block" id="about"><div class="wrap craft">
+  <img class="photo reveal craftimg" src="/assets/img/p06.jpg" alt="อะไหล่กรอบพระและห่วงบนโต๊ะช่าง" loading="lazy" decoding="async">
+  <div class="reveal">
+    <p class="eyebrow">เกี่ยวกับเรา</p>
+    <h2>งานช่างทองสองรุ่น<br>ตั้งแต่ปี 2533</h2>
+    <blockquote>ทุกงานซ่อม ลายสั่งทำ โดยทีมช่างทองหลวง</blockquote>
+    <p>เริ่มจากคุณพ่อและคุณแม่ที่เคยเป็นช่างทองและพนักงานขายในร้านทอง วันนี้รุ่นลูกสานต่อด้วยฝีมือช่างทองหลวง ผสมเทคนิคโบราณเข้ากับเครื่องมือสมัยใหม่</p>
+    <a class="btn btn-line" href="/about/">อ่านเรื่องของร้าน</a>
+  </div>
+</div></section>
+
+<section class="block"><div class="wrap">
+  <div class="head-row reveal"><div><p class="eyebrow">TikTok</p><h2>ดูคลิปงานจากโต๊ะช่าง</h2></div><p><a href="/works/" style="color:var(--gold)">ดูผลงานและรีวิวทั้งหมด →</a></p></div>
+  <div class="clips" style="grid-template-columns:repeat(4,1fr)"><a class="clip reveal" href="https://www.tiktok.com/@lhimbing" target="_blank" rel="noopener"><i class="ph-fill ph-play-circle"></i><span>คลิป TikTok 1</span></a><a class="clip reveal" href="https://www.tiktok.com/@lhimbing" target="_blank" rel="noopener"><i class="ph-fill ph-play-circle"></i><span>คลิป TikTok 2</span></a><a class="clip reveal" href="https://www.tiktok.com/@lhimbing" target="_blank" rel="noopener"><i class="ph-fill ph-play-circle"></i><span>คลิป TikTok 3</span></a><a class="clip reveal" href="https://www.tiktok.com/@lhimbing" target="_blank" rel="noopener"><i class="ph-fill ph-play-circle"></i><span>คลิป TikTok 4</span></a></div>
+</div></section>
+
+<section class="block" id="contact"><div class="wrap contact">
+  <div class="reveal">
+    <p class="eyebrow">ติดต่อ</p>
+    <h2 style="font-size:clamp(28px,3.4vw,40px);margin-bottom:40px">มาที่ร้าน หรือทักแชทได้เลย</h2>
+    <dl>
+      <div><dt>ที่อยู่</dt><dd>1324/2 ต.ตลาดกระทุ่มแบน อ.กระทุ่มแบน จ.สมุทรสาคร 74110</dd></div>
+      <div><dt>โทร</dt><dd><a href="tel:0625899383">062 589 9383</a> · <a href="tel:0987939353">098 793 9353</a> · <a href="tel:0626626459">062 662 6459</a></dd></div>
+      <div><dt>เวลาเปิด</dt><dd>เปิดทุกวัน 08:00–20:00 น.</dd></div>
+      <div><dt>หน้าร้าน</dt><dd><a href="https://maps.app.goo.gl/PxamyNC1pdzEWy1V8" target="_blank" rel="noopener">ตี๋เล็กเลี่ยมพระ ตลาดกระทุ่มแบน</a></dd></div>
+    </dl>
+    <div style="display:flex;flex-wrap:wrap;gap:16px">
+      <a class="btn btn-gold" href="https://m.me/krobphrathailand" target="_blank" rel="noopener"><i class="ph ph-messenger-logo"></i>ทักแชท Facebook</a>
+      <a class="btn btn-line" href="https://shopee.co.th/lhim5555" target="_blank" rel="noopener"><i class="ph ph-storefront"></i>Shopee</a>
+      <a class="btn btn-line" href="https://www.tiktok.com/@lhimbing" target="_blank" rel="noopener"><i class="ph ph-tiktok-logo"></i>TikTok</a>
+    </div>
+  </div>
+  <div class="map reveal"><iframe title="แผนที่ร้าน KT กรอบพระไทยแลนด์" src="https://maps.google.com/maps?q=13.6534902,100.2648441&z=17&output=embed" loading="lazy"></iframe></div>
+</div></section>
+</main>
+<footer><div class="wrap">
+  <div class="foot-top"><img class="flogo" src="/assets/logo/kt-mark-192.png" alt="KT กรอบพระไทยแลนด์" width="88" height="88" loading="lazy">
+    <div><b style="color:var(--text)">KT กรอบพระไทยแลนด์</b><br>1324/2 ต.ตลาดกระทุ่มแบน อ.กระทุ่มแบน จ.สมุทรสาคร 74110<br>โทร <a href="tel:0625899383">062 589 9383</a> · เปิดทุกวัน 08:00–20:00 น.</div></div>
+  <nav aria-label="เมนูท้ายเว็บ"><ul><li><a href="/">หน้าแรก</a></li><li><a href="/products/">สินค้า</a></li><li><a href="/custom/">งานสั่งทำ</a></li><li><a href="/works/">ผลงาน · รีวิว</a></li><li><a href="/about/">เกี่ยวกับเรา</a></li><li><a href="/articles/">บทความ</a></li><li><a href="/contact/">ติดต่อ</a></li></ul></nav>
+</div><div class="wrap" style="margin-top:24px"><span>© 2569 KT กรอบพระไทยแลนด์</span></div></footer>
+<a class="fab" href="https://m.me/krobphrathailand" target="_blank" rel="noopener" aria-label="ทักแชทส่งรูปพระ"><i class="ph-fill ph-messenger-logo"></i></a>
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) return;
+  document.documentElement.classList.add('js-reveal');
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); }, {rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+</script>
 </body>
 </html>
