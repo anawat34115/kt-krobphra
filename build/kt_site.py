@@ -146,7 +146,7 @@ def btn_chat(label="ส่งรูปพระ ขอประเมินร�
 def header(cur):
     links = "".join(f'<li><a href="{h}"{" aria-current=page" if h == cur else ""}>{t}</a></li>' for h, t in NAV)
     return f"""<header class="site"><div class="wrap nav">
-  <a class="brand" href="/" aria-label="{SHOP["name"]} หน้าแรก"><img src="/assets/logo/kt-mark-96.png" alt="" width="44" height="44"><b>{SHOP["name"]}</b></a>
+  <a class="brand" href="/" aria-label="{SHOP["name"]} หน้าแรก"><img src="/assets/logo/kt-mark-96.png" alt="" width="44" height="44"><b>กรอบพระไทยแลนด์</b></a>
   <nav aria-label="เมนูหลัก"><ul>{links}</ul></nav>
   <div class="right">
     <a class="btn btn-line call" href="{SHOP["tel_href"]}" aria-label="โทร {SHOP["tel"]}"><i class="ph ph-phone"></i><span class="t">{SHOP["tel"]}</span></a>
@@ -249,7 +249,7 @@ def home():
 <section class="hero" id="hero"><div class="wrap grid">
   <div class="stagger">
     <p class="eyebrow">กรอบพระงานพรีเมี่ยม · กระทุ่มแบน สมุทรสาคร</p>
-    <h1>เลี่ยมกรอบพระ<br>ด้วยฝีมือ<em>ช่างทองหลวง</em></h1>
+    <h1>เลี่ยมกรอบพระ<br>ลายสั่งทำโดย<em>ทีมช่างทองหลวง</em></h1>
     <p class="lead">กรอบพระงานพรีเมี่ยม {SHOP["services"]} ส่งรูปพระมาให้ช่างดู แจ้งราคาก่อนเริ่มงานทุกครั้ง</p>
     <div class="ctas">{btn_chat()}<a class="btn btn-line" href="#shapes">ดูผลงานแยกตามทรง</a></div>
     <div class="trust"><span><i class="ph ph-seal-check"></i>ก่อตั้งปี 2533</span><span><i class="ph ph-hand"></i>ช่างทองสองรุ่น</span><span><i class="ph ph-truck"></i>งานเสร็จ 7–14 วัน</span></div>
