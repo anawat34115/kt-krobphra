@@ -209,6 +209,17 @@ img.photo{display:block;object-fit:cover}
 .thumbs img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px;border:1px solid var(--line);display:block}
 .thumbs .more{aspect-ratio:1;border-radius:6px;border:1px dashed var(--line);display:grid;place-items:center;font-size:12px;color:var(--muted);text-align:center;padding:8px}
 .prod .acts{display:flex;flex-wrap:wrap;gap:12px}
+.thumbs a{display:block}.thumbs a:hover img{border-color:var(--gold-deep)}
+details.sz{margin:0 0 20px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+details.sz summary,details.more-w summary{cursor:pointer;padding:12px 16px;font-size:15px;color:var(--gold);list-style:none}
+details.sz summary::-webkit-details-marker,details.more-w summary::-webkit-details-marker{display:none}
+details.sz summary::before,details.more-w summary::before{content:"+ ";}
+details[open].sz summary::before,details[open].more-w summary::before{content:"− ";}
+.szwrap{display:grid;grid-template-columns:1fr 220px;gap:16px;padding:0 16px 16px;align-items:start}
+@media(max-width:620px){.szwrap{grid-template-columns:1fr}}
+.szwrap .sizes{margin:0}.szwrap .chart img{width:100%;border-radius:6px;display:block}
+details.more-w{margin:-12px 0 24px}details.more-w summary{padding:8px 0}
+
 /* works */
 .wgrid{columns:4 220px;column-gap:16px}
 .wgrid img{width:100%;display:block;border-radius:8px;border:1px solid var(--line);margin-bottom:16px;break-inside:avoid}

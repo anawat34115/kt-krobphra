@@ -1,11 +1,15 @@
 """Real multi-page site (design 1 · ตู้โชว์ร้านทอง) for Vercel, until it moves to WordPress.
 Pages: / · /products/ · /custom/ · /works/ · /about/ · /articles/ · /contact/
 Asset paths are root-absolute (/assets/...) so every page shares one header."""
-import os
+import os, json
 from shared import SHOP, STEPS, REVIEWS, REVEAL_JS, REVEAL_CSS
 from v1 import CSS as BASE_CSS
 
 ROOT = os.path.join(os.path.dirname(__file__), "..", "site")
+_D = os.path.join(os.path.dirname(__file__), "data")
+GAL = json.load(open(os.path.join(_D, "gallery.json"), encoding="utf-8"))
+SIZES = json.load(open(os.path.join(_D, "sizes.json"), encoding="utf-8"))
+GAL["thaowes"] = [f for f in GAL["thaowes"] if f != "thaowes-02.jpg"]  # customer inquiry screenshot, not shop work
 DOMAIN = "https://kt-krobphra.vercel.app"
 
 # ---- ทรงสินค้า (จากลูกค้า 3 พ.ย. ข้อ 6) · photo = รูปชั่วคราวจนกว่าจะได้รูปแยกทรงจากร้าน
@@ -103,6 +107,17 @@ EXTRA_CSS = """
 .thumbs img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px;border:1px solid var(--line);display:block}
 .thumbs .more{aspect-ratio:1;border-radius:6px;border:1px dashed var(--line);display:grid;place-items:center;font-size:12px;color:var(--muted);text-align:center;padding:8px}
 .prod .acts{display:flex;flex-wrap:wrap;gap:12px}
+.thumbs a{display:block}.thumbs a:hover img{border-color:var(--gold-deep)}
+details.sz{margin:0 0 20px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+details.sz summary,details.more-w summary{cursor:pointer;padding:12px 16px;font-size:15px;color:var(--gold);list-style:none}
+details.sz summary::-webkit-details-marker,details.more-w summary::-webkit-details-marker{display:none}
+details.sz summary::before,details.more-w summary::before{content:"+ ";}
+details[open].sz summary::before,details[open].more-w summary::before{content:"− ";}
+.szwrap{display:grid;grid-template-columns:1fr 220px;gap:16px;padding:0 16px 16px;align-items:start}
+@media(max-width:620px){.szwrap{grid-template-columns:1fr}}
+.szwrap .sizes{margin:0}.szwrap .chart img{width:100%;border-radius:6px;display:block}
+details.more-w{margin:-12px 0 24px}details.more-w summary{padding:8px 0}
+
 /* works */
 .wgrid{columns:4 220px;column-gap:16px}
 .wgrid img{width:100%;display:block;border-radius:8px;border:1px solid var(--line);margin-bottom:16px;break-inside:avoid}
@@ -137,6 +152,29 @@ def img(name, alt, cls="", eager=False):
     lazy = 'fetchpriority="high"' if eager else 'loading="lazy" decoding="async"'
     c = f' class="{cls}"' if cls else ""
     return f'<img{c} src="/assets/img/{name}" alt="{alt}" {lazy}>'
+
+
+def sizes_html(sid):
+    d = SIZES.get(sid)
+    if not d:
+        return '<p class="desc" style="margin-bottom:20px"><b style="color:var(--text)">ขนาด:</b> ทำตามขนาดองค์พระ ส่งรูปพระพร้อมไม้บรรทัดให้ช่างประเมินได้</p>'
+    th = "".join(f"<th>{c}</th>" for c in d["cols"])
+    tr = "".join("<tr>" + "".join(f"<td>{c}</td>" for c in r) + "</tr>" for r in d["rows"])
+    return (f'<details class="sz"><summary>ดูตารางขนาด ({len(d["rows"])} พิมพ์) · หน่วยมิลลิเมตร</summary>'
+            f'<div class="szwrap"><table class="sizes"><thead><tr>{th}</tr></thead><tbody>{tr}</tbody></table>'
+            f'<a href="/assets/img/{d["chart"]}" target="_blank" rel="noopener" class="chart">{img(d["chart"], "ภาพตารางขนาดพิมพ์กรอบ")}</a></div></details>')
+
+
+def gallery_html(sid, name):
+    fs = GAL.get(sid, [])
+    if not fs:
+        return ""
+    ims = "".join(f'<a href="/assets/img/w/{f}" target="_blank" rel="noopener"><img src="/assets/img/w/{f}" alt="ผลงานกรอบพระ{name}" loading="lazy" decoding="async"></a>' for f in fs[:8])
+    more = ""
+    if len(fs) > 8:
+        rest = "".join(f'<a href="/assets/img/w/{f}" target="_blank" rel="noopener"><img src="/assets/img/w/{f}" alt="ผลงานกรอบพระ{name}" loading="lazy" decoding="async"></a>' for f in fs[8:])
+        more = f'<details class="more-w"><summary>ดูผลงานเพิ่มอีก {len(fs) - 8} รูป</summary><div class="thumbs">{rest}</div></details>'
+    return f'<p style="margin:0 0 8px;font-size:15px;color:var(--text)">ผลงานที่เคยทำ ({len(fs)} รูป)</p><div class="thumbs">{ims}</div>{more}'
 
 
 def btn_chat(label="ส่งรูปพระ ขอประเมินราคา"):
@@ -305,10 +343,8 @@ def products():
   <div class="main">{img(ph, "กรอบพระ" + name)}</div>
   <div>
     <h3>{name}</h3><p class="desc">{desc}</p>{o}
-    <table class="sizes"><caption>ขนาดที่มี</caption><thead><tr><th>ขนาด</th><th>กว้าง × สูง (มม.)</th></tr></thead>
-      <tbody><tr><td colspan="2"><span class="todo">รอตารางขนาดจากร้าน</span></td></tr></tbody></table>
-    <p style="margin:0 0 8px;font-size:15px;color:var(--text)">ผลงานที่เคยทำ</p>
-    <div class="thumbs"><div class="more">รูปผลงานทรง{name.replace("ทรง","")}<br>รอเพิ่มจากร้าน</div></div>
+    {sizes_html(sid)}
+    {gallery_html(sid, name)}
     <div class="acts">{btn_chat("ส่งรูปพระ ถามขนาด")}<a class="btn btn-line" href="{SHOP["shopee"]}" target="_blank" rel="noopener"><i class="ph ph-storefront"></i>สั่งใน Shopee</a></div>
   </div>
 </article>""")
