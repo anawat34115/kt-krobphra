@@ -9,15 +9,15 @@ ROOT = os.path.join(os.path.dirname(__file__), "..", "site")
 _D = os.path.join(os.path.dirname(__file__), "data")
 GAL = json.load(open(os.path.join(_D, "gallery.json"), encoding="utf-8"))
 SIZES = json.load(open(os.path.join(_D, "sizes.json"), encoding="utf-8"))
-GAL["thaowes"] = [f for f in GAL["thaowes"] if f != "thaowes-02.jpg"]  # customer inquiry screenshot, not shop work
+GAL["thaowes"] = [f for f in GAL["thaowes"] if f != "thaowes-01.jpg"]  # customer measuring/inquiry photo, client asked to remove
 DOMAIN = "https://kt-krobphra.vercel.app"
 
 # ---- ทรงสินค้า (จากลูกค้า 3 พ.ย. ข้อ 6) · photo = รูปชั่วคราวจนกว่าจะได้รูปแยกทรงจากร้าน
 GROUPS = [
     ("silver", "กรอบเงิน", "กรอบเงินแท้ทุกทรงยอดนิยม เลือกตามพิมพ์พระ แต่ละทรงมีหลายขนาด", [
-        ("egg", "ทรงไข่", "p08.jpg", "มีหลายขนาด แยกตามความกว้างและความสูงขององค์พระ", []),
         ("round", "ทรงกลม", "s-round.jpg", "สำหรับเหรียญกลมและพระทรงกลมทุกขนาด", []),
         ("somdej", "ทรงสมเด็จ · สี่เหลี่ยม", "p18.jpg", "พระสมเด็จ พระผงสี่เหลี่ยม พระพิมพ์สี่เหลี่ยม", []),
+        ("egg", "ทรงไข่", "p08.jpg", "มีหลายขนาด แยกตามความกว้างและความสูงขององค์พระ", []),
         ("thaowes", "ทรงท้าวเวส", "s-thaowes.jpg", "สำหรับพระพิมพ์ท้าวเวสสุวรรณ", []),
         ("sema", "ทรงเสมา", "s-sema.jpg", "เหรียญเสมาและพระทรงใบเสมา", []),
         ("rooplor", "ทรงรูปหล่อ", "p01.jpg", "พระรูปหล่อ พระกริ่ง ทั้งแบบลอยองค์", []),
@@ -177,7 +177,7 @@ def gallery_html(sid, name):
     return f'<p style="margin:0 0 8px;font-size:15px;color:var(--text)">ผลงานที่เคยทำ ({len(fs)} รูป)</p><div class="thumbs">{ims}</div>{more}'
 
 
-def btn_chat(label="ส่งรูปพระ ขอประเมินราคา"):
+def btn_chat(label="ส่งขนาดพระ/แบบที่ชอบ เพื่อประเมินราคา"):
     return f'<a class="btn btn-gold" href="{SHOP["chat"]}" target="_blank" rel="noopener"><i class="ph ph-camera"></i>{label}</a>'
 
 
@@ -345,7 +345,7 @@ def products():
     <h3>{name}</h3><p class="desc">{desc}</p>{o}
     {sizes_html(sid)}
     {gallery_html(sid, name)}
-    <div class="acts">{btn_chat("ส่งรูปพระ ถามขนาด")}<a class="btn btn-line" href="{SHOP["shopee"]}" target="_blank" rel="noopener"><i class="ph ph-storefront"></i>สั่งใน Shopee</a></div>
+    <div class="acts">{btn_chat()}<a class="btn btn-line" href="{SHOP["shopee"]}" target="_blank" rel="noopener"><i class="ph ph-storefront"></i>สั่งใน Shopee</a></div>
   </div>
 </article>""")
         secs.append(f'<div class="pgroup" id="{gid}"><h2 class="reveal">{gname}</h2><p class="reveal">{gdesc}</p>{"".join(rows)}</div>')
