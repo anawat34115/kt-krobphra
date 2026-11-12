@@ -350,7 +350,7 @@ def products():
 </article>""")
         secs.append(f'<div class="pgroup" id="{gid}"><h2 class="reveal">{gname}</h2><p class="reveal">{gdesc}</p>{"".join(rows)}</div>')
     tabs = "".join(f'<a href="#{g[0]}">{g[1]}</a>' for g in GROUPS)
-    body = head("สินค้า", "สินค้า · กรอบพระทุกทรง", "เลือกตามทรงพระ ดูขนาดและผลงานจริงของแต่ละทรง สั่งซื้อได้ใน Shopee หรือส่งรูปพระมาถามช่างก่อนก็ได้") + \
+    body = head("สินค้า", "รวมงานเลี่ยมพระ 8 ทรง<br>ที่เลี่ยมบ่อยที่สุด", "ทุกภาพเป็นผลงานจริงที่ทางร้านเคยทำ สนใจงานสั่ง แนบแบบที่ชอบ เพื่อประเมินราคาที่ใกล้เคียงที่สุด<br><b>#วัดขนาดพระ</b> สูง × กว้าง × หนา ระบุตัวเลขหน่วย ซม. (ขนาดพระเป๊ะๆ ไม่เผื่อกันน้ำ) หรือสั่งซื้อใน Shopee") + \
         f'<section class="block" style="border-top:0;padding-top:0"><div class="wrap"><div class="group-tabs" style="margin-top:0">{tabs}</div>{"".join(secs)}</div></section>' + cta_band()
     return page("/products/", f"สินค้า กรอบพระทุกทรง · {SHOP['name']}",
                 "กรอบพระเงิน ทรงไข่ ทรงกลม ทรงสมเด็จ ท้าวเวส เสมา รูปหล่อ ทรงพ่อรุ่ง ทรงเต่า และงานสั่งทำกรอบนาก กรอบทอง จาก KT กรอบพระไทยแลนด์",
