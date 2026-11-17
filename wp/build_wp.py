@@ -115,7 +115,7 @@ def pills(items):
 
 def page_head(crumb, h1, lead):
     c = C({"flex_gap": GAP(16), "width": S(100, '%'), "max_width": S(820)}, [
-        P(f'<a href="/" style="color:{MU};text-decoration:none">หน้าแรก</a> / {crumb}', MU, 13, 13, 13),
+        P(f'<a href="/">หน้าแรก</a> / {crumb}', MU, 13, 13, 13),
         H(h1, 'h1', TX, 48, 600, HEAD, 1.35, 0, 40, 30),
         P(lead, MU, 18, 17, 16)])
     return band([c], BG, (72, 56, 40), top=False,
@@ -134,7 +134,7 @@ def steps_row():
 def contact_block(h2="มาที่ร้าน หรือทักแชทได้เลย", anchor="contact"):
     def item(dt, dd):
         return C({"flex_gap": GAP(4)}, [H(dt, 'p', GD, 13, 500, BODY, 1.4, 1.6), P(dd, TX, 18, 18, 17, lh=1.6)])
-    a = f'style="color:{TX};text-decoration:none"'
+    a = ''
     left = C({"flex_gap": GAP(24), "width": S(48, '%'), "width_tablet": S(100, '%'), "width_mobile": S(100, '%')}, [
         EYE('ติดต่อ'), H(h2, 'h2', TX, 40, 600, HEAD, 1.35, 0, 34, 28),
         item('ที่อยู่', SHOP["addr"]),
@@ -205,7 +205,7 @@ def header():
     return e
 
 def footer():
-    a = f'style="color:{MU};text-decoration:none"'
+    a = ''
     top = ROW([W('image', {"image": IMG('logo/kt-mark-192.png'), "image_size": "full", "width": S(88), "_element_width": "auto"}),
                C({"flex_gap": GAP(4), "_element_width": "auto", "width": S(70, '%'), "width_mobile": S(100, '%')}, [
                    H(SHOP["name"], 'p', TX, 17, 600, HEAD, 1.4),
@@ -226,7 +226,7 @@ def footer():
 
 # ---------------------------------------------------------------- pages
 def home():
-    h1 = f'เลี่ยมกรอบพระ<br>ลายสั่งทำโดย<span style="color:{GD}">ทีมช่างทองหลวง</span>'
+    h1 = 'เลี่ยมกรอบพระ<br>ลายสั่งทำโดย'
     trust = W('icon-list', {"view": "inline", "icon_list": [
         {"text": "ก่อตั้งปี 2533", "selected_icon": FA('fas fa-certificate'), "_id": nid()},
         {"text": "ช่างทองสองรุ่น", "selected_icon": FA('fas fa-hand-sparkles'), "_id": nid()},
@@ -235,7 +235,8 @@ def home():
         **typo(BODY, 14, 400, 1.6, 0, None, None, 'icon_typography'), "_margin": D(16, 0, 0, 0)})
     left = C({"flex_gap": GAP(24), "width": S(54, '%'), "width_tablet": S(100, '%'), "width_mobile": S(100, '%')}, [
         EYE('กรอบพระงานพรีเมี่ยม · กระทุ่มแบน สมุทรสาคร'),
-        H(h1, 'h1', TX, 58, 600, HEAD, 1.3, 0, 46, 32),
+        C({"flex_gap": GAP(0), "width": S(100, '%')}, [H(h1, 'h1', TX, 58, 600, HEAD, 1.3, 0, 46, 32),
+                                                        H('ทีมช่างทองหลวง', 'p', GD, 58, 600, HEAD, 1.3, 0, 46, 32)]),
         P(f'กรอบพระงานพรีเมี่ยม {SHOP["services"]} ส่งรูปพระมาให้ช่างดู แจ้งราคาก่อนเริ่มงานทุกครั้ง', MU, 18, 17, 16),
         ROW([CHAT(), BTN('ดูผลงานแยกตามทรง', '#shapes', 'line')], 16), trust])
     tag = C({"padding": D(12, 16), "background_background": "classic", "background_color": SF, "border_border": "solid",
@@ -277,18 +278,17 @@ def home():
                         "border_border": "solid", "border_width": D(1), "border_color": LN, "border_radius": D(8), "link": L(SHOP["tiktok"])}, [
             W('icon', {"selected_icon": FA('fas fa-play-circle'), "primary_color": GD, "size": S(40), "align": "center"}),
             H(f'คลิป TikTok {i}', 'p', MU, 14, 400, BODY, 1.4, 0, None, None, 'center')]))
-    tiktok = band([headrow('TikTok', 'ดูคลิปงานจากโต๊ะช่าง', f'<a href="/works/" style="color:{GD};text-decoration:none">ดูผลงานและรีวิวทั้งหมด →</a>'),
+    tiktok = band([headrow('TikTok', 'ดูคลิปงานจากโต๊ะช่าง', f'<a href="/works/">ดูผลงานและรีวิวทั้งหมด →</a>'),
                    ROW(clips, 16, True, None, 'stretch', {"flex_gap_mobile": GAP(8)})], BG)
     return [hero, shapes, steps, about, tiktok, contact_block()]
 
 def sizes_toggle(sid):
     d = K.SIZES.get(sid)
     if not d:
-        return P(f'<b style="color:{TX}">ขนาด:</b> ทำตามขนาดองค์พระ ส่งรูปพระพร้อมไม้บรรทัดให้ช่างประเมินได้', MU, 16, 16, 15)
-    cell = f'border:1px solid {LN};padding:8px 12px;text-align:left'
-    th = "".join(f'<th style="{cell};color:{MU};font-weight:500;background:{SF}">{c}</th>' for c in d["cols"])
-    tr = "".join("<tr>" + "".join(f'<td style="{cell}">{c}</td>' for c in r) + "</tr>" for r in d["rows"])
-    table = f'<table style="width:100%;border-collapse:collapse;font-size:15px;margin:0"><thead><tr>{th}</tr></thead><tbody>{tr}</tbody></table>'
+        return P(f'<b>ขนาด:</b> ทำตามขนาดองค์พระ ส่งรูปพระพร้อมไม้บรรทัดให้ช่างประเมินได้', MU, 16, 16, 15)
+    th = "".join(f'<th>{c}</th>' for c in d["cols"])
+    tr = "".join("<tr>" + "".join(f'<td>{c}</td>' for c in r) + "</tr>" for r in d["rows"])
+    table = f'<table><thead><tr>{th}</tr></thead><tbody>{tr}</tbody></table>'
     return W('toggle', {"tabs": [{"tab_title": f'ดูตารางขนาด ({len(d["rows"])} พิมพ์) · หน่วยมิลลิเมตร', "tab_content": table, "_id": nid()}],
                         "selected_icon": FA('fas fa-plus'), "selected_active_icon": FA('fas fa-minus'), "title_html_tag": "div",
                         "border_width": S(1), "border_color": LN, "title_background": SF, "title_color": GD, "tab_active_color": GD,
@@ -329,13 +329,13 @@ def products():
             H(gname, 'h2', TX, 34, 600, HEAD, 1.35, 0, 30, 26), P(gdesc, MU, 17, 16, 16, extra={"_margin": D(0, 0, 24, 0)})] + rows))
     head = page_head("สินค้า", "รวม 8 ทรงกรอบพระยอดนิยม<br>ที่ลูกค้าเลือกมากที่สุด",
                      "ทุกภาพเป็นผลงานจริงที่ทางร้านเคยทำ สนใจงานสั่ง แนบแบบที่ชอบ เพื่อประเมินราคาที่ใกล้เคียงที่สุด<br>"
-                     f'<b style="color:{TX}">#วัดขนาดพระ</b> สูง × กว้าง × หนา ระบุตัวเลขหน่วย ซม. (ขนาดพระเป๊ะๆ ไม่เผื่อกันน้ำ) หรือสั่งซื้อใน Shopee')
+                     f'<b>#วัดขนาดพระ</b> สูง × กว้าง × หนา ระบุตัวเลขหน่วย ซม. (ขนาดพระเป๊ะๆ ไม่เผื่อกันน้ำ) หรือสั่งซื้อใน Shopee')
     body = band([pills([(g[1], f'#{g[0]}') for g in K.GROUPS])] + groups, BG, (0, 0, 0), top=False, gap=32)
     body['settings'].update({"padding": D(0, 0, 72, 0), "padding_tablet": D(0, 0, 56, 0), "padding_mobile": D(0, 0, 48, 0)})
     return [head, body, cta_band()]
 
 def custom():
-    ol = "".join(f'<li style="margin-bottom:12px"><b style="color:{TX}">{b}</b> {t}</li>' for b, t in [
+    ol = "".join(f'<li><b>{b}</b> {t}</li>' for b, t in [
         ("ถ่ายรูปพระด้านหน้าและด้านหลัง", "ในที่แสงสว่าง ให้เห็นขอบพระชัด"),
         ("วางไม้บรรทัดข้างองค์พระ", "แล้วถ่ายอีกรูป ช่างจะกะขนาดจากรูปได้"),
         ("ถ้าวัดได้ ให้วัดเป็นมิลลิเมตร", "ความกว้าง ความสูง และความหนาตรงจุดที่หนาที่สุด"),
@@ -343,7 +343,7 @@ def custom():
     measure = band([ROW([
         C({"flex_gap": GAP(16), "width": S(48, '%'), "width_tablet": S(100, '%'), "width_mobile": S(100, '%')}, [
             EYE('วัดขนาดพระ'), H('ส่งขนาดมาให้ช่างแบบนี้', 'h2', TX, 34, 600, HEAD, 1.35, 0, 30, 26),
-            P(f'<ol style="margin:0;padding-left:20px">{ol}</ol>', MU, 17, 16, 16)]),
+            P(f'<ol>{ol}</ol>', MU, 17, 16, 16)]),
         C({"flex_gap": GAP(16), "width": S(46, '%'), "width_tablet": S(100, '%'), "width_mobile": S(100, '%'), "flex_align_items": "flex-start"}, [
             note('ไม่สะดวกวัดเอง?', f'นำพระมาที่หน้าร้าน {SHOP["store"]} ช่างวัดให้ที่ร้าน หรือส่งพระทางไปรษณีย์ ช่างวัดขนาดแล้วส่งกลับให้ถึงบ้าน'),
             note('ระยะเวลา', 'งานเสร็จประมาณ 7–14 วัน ขึ้นกับลายและเนื้อโลหะ'), CHAT(extra={"_margin": D(8, 0, 0, 0)})])],
@@ -363,7 +363,7 @@ def works():
     rg = W('image-gallery', {"wp_gallery": [{"id": "", "url": f'{ASSET}/img/{r}'} for r in REVIEWS], "thumbnail_size": "medium_large",
                              "gallery_columns": "3", "gallery_link": "file", "open_lightbox": "yes", "image_spacing": "custom",
                              "image_spacing_custom": S(16), "image_border_radius": D(8)})
-    b1 = band([headrow('ผลงาน', 'งานจากโต๊ะช่างของเรา', f'ดูแยกตามทรงได้ที่ <a href="/products/" style="color:{GD};text-decoration:none">หน้าสินค้า</a>'), wg], BG, gap=32, top=False)
+    b1 = band([headrow('ผลงาน', 'งานจากโต๊ะช่างของเรา', f'ดูแยกตามทรงได้ที่ <a href="/products/">หน้าสินค้า</a>'), wg], BG, gap=32, top=False)
     b1['settings'].update({"padding": D(24, 0, 96, 0), "padding_tablet": D(16, 0, 64, 0), "padding_mobile": D(8, 0, 56, 0)})
     b2 = band([headrow('รีวิว', 'ลูกค้าพูดถึงเรา', 'แคปจากแชทลูกค้าจริง'), rg], BG, anchor='reviews', gap=32)
     return [page_head("ผลงาน · รีวิว", "ผลงานและรีวิวจากลูกค้า", "งานจริงจากโต๊ะช่างของร้าน และเสียงจากลูกค้าที่ส่งพระมาเลี่ยมกับเรา"), b1, b2, cta_band()]
@@ -392,12 +392,12 @@ def about():
 def articles():
     arts = []
     for a, t, ex, pts in K.ARTICLES:
-        ul = "".join(f'<li style="margin-bottom:10px">{x}</li>' for x in pts)
+        ul = "".join(f'<li>{x}</li>' for x in pts)
         arts.append(C({"padding": D(32), "padding_mobile": D(24, 20), "background_background": "classic", "background_color": SF,
                        "border_border": "solid", "border_width": D(1), "border_color": LN, "border_radius": D(8), "flex_gap": GAP(12),
                        "width": S(100, '%'), "_element_id": a}, [
             H(t, 'h2', TX, 26, 600, HEAD, 1.4, 0, None, 22), P(ex, GD, 17, 16, 16),
-            P(f'<ul style="margin:0;padding-left:20px">{ul}</ul>', MU, 16, 16, 16)]))
+            P(f'<ul>{ul}</ul>', MU, 16, 16, 16)]))
     b = band([pills([(t, f'#{a}') for a, t, _, _ in K.ARTICLES]),
               C({"flex_gap": GAP(24), "width": S(100, '%'), "max_width": S(820)}, arts)], BG, top=False, gap=32)
     b['settings'].update({"padding": D(24, 0, 96, 0), "padding_tablet": D(16, 0, 64, 0), "padding_mobile": D(8, 0, 56, 0)})
