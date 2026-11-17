@@ -99,11 +99,13 @@ def band(children, bg=BG, pad=(96, 64, 56), anchor=None, top=True, extra=None, g
     if extra: s.update(extra)
     e = C(s, [inner], 'section'); e['isInner'] = False; return e
 
-def headrow(eye, h2, p=None):
+def headrow(eye, h2, p=None, link=None):
     left = C({"flex_gap": GAP(12), "width": S(55, '%'), "width_tablet": S(100, '%'), "width_mobile": S(100, '%')},
              [EYE(eye), H(h2, 'h2', TX, 40, 600, HEAD, 1.35, 0, 34, 28)])
     ch = [left]
-    if p: ch.append(C({"width": S(40, '%'), "width_tablet": S(100, '%'), "width_mobile": S(100, '%')}, [P(p, MU, 17, 16, 16)]))
+    if p:
+        w = H(p, 'p', GD, 17, 500, BODY, 1.6, 0, None, 16, 'start', None, link) if link else P(p, MU, 17, 16, 16)
+        ch.append(C({"width": S(40, '%'), "width_tablet": S(100, '%'), "width_mobile": S(100, '%')}, [w]))
     return ROW(ch, 24, True, 'space-between', 'flex-end')
 
 def pills(items):
@@ -115,7 +117,8 @@ def pills(items):
 
 def page_head(crumb, h1, lead):
     c = C({"flex_gap": GAP(16), "width": S(100, '%'), "max_width": S(820)}, [
-        P(f'<a href="/">หน้าแรก</a> / {crumb}', MU, 13, 13, 13),
+        ROW([H('หน้าแรก', 'p', GD, 13, 400, BODY, 1.5, 0, None, None, 'start', {"_element_width": "auto"}, '/'),
+             H(f'/ {crumb}', 'p', MU, 13, 400, BODY, 1.5, 0, None, None, 'start', {"_element_width": "auto"})], 6),
         H(h1, 'h1', TX, 48, 600, HEAD, 1.35, 0, 40, 30),
         P(lead, MU, 18, 17, 16)])
     return band([c], BG, (72, 56, 40), top=False,
@@ -132,15 +135,19 @@ def steps_row():
     return ROW(cols, 48, True, None, 'stretch', {"flex_gap_tablet": GAP(32)})
 
 def contact_block(h2="มาที่ร้าน หรือทักแชทได้เลย", anchor="contact"):
-    def item(dt, dd):
-        return C({"flex_gap": GAP(4)}, [H(dt, 'p', GD, 13, 500, BODY, 1.4, 1.6), P(dd, TX, 18, 18, 17, lh=1.6)])
+    def item(dt, dd, links=None):
+        if links:
+            body = ROW([H(t, 'p', TX, 18, 400, BODY, 1.6, 0, None, 17, 'start', {"_element_width": "auto"}, u) for t, u in links], 16)
+        else:
+            body = P(dd, TX, 18, 18, 17, lh=1.6)
+        return C({"flex_gap": GAP(4)}, [H(dt, 'p', GD, 13, 500, BODY, 1.4, 1.6), body])
     a = ''
     left = C({"flex_gap": GAP(24), "width": S(48, '%'), "width_tablet": S(100, '%'), "width_mobile": S(100, '%')}, [
         EYE('ติดต่อ'), H(h2, 'h2', TX, 40, 600, HEAD, 1.35, 0, 34, 28),
         item('ที่อยู่', SHOP["addr"]),
-        item('โทร', f'<a {a} href="{SHOP["tel_href"]}">{SHOP["tel"]}</a> · <a {a} href="{SHOP["tel2_href"]}">{SHOP["tel2"]}</a> · <a {a} href="{SHOP["tel3_href"]}">{SHOP["tel3"]}</a>'),
+        item('โทร', None, [(SHOP["tel"], SHOP["tel_href"]), (SHOP["tel2"], SHOP["tel2_href"]), (SHOP["tel3"], SHOP["tel3_href"])]),
         item('เวลาเปิด', SHOP["hours"]),
-        item('หน้าร้าน', f'<a {a} href="{SHOP["gmaps"]}" target="_blank" rel="noopener">{SHOP["store"]}</a>'),
+        item('หน้าร้าน', None, [(SHOP["store"] + ' ↗', SHOP["gmaps"])]),
         ROW([BTN('ทักแชท Facebook', SHOP["chat"], 'gold', FA('fab fa-facebook-messenger', 'fa-brands')),
              BTN('Shopee', SHOP["shopee"], 'line', FA('fas fa-store')),
              BTN('TikTok', SHOP["tiktok"], 'line', FA('fab fa-tiktok', 'fa-brands'))], 16)])
@@ -209,7 +216,8 @@ def footer():
     top = ROW([W('image', {"image": IMG('logo/kt-mark-192.png'), "image_size": "full", "width": S(88), "_element_width": "auto"}),
                C({"flex_gap": GAP(4), "_element_width": "auto", "width": S(70, '%'), "width_mobile": S(100, '%')}, [
                    H(SHOP["name"], 'p', TX, 17, 600, HEAD, 1.4),
-                   P(f'{SHOP["addr"]}<br>โทร <a {a} href="{SHOP["tel_href"]}">{SHOP["tel"]}</a> · {SHOP["hours"]}', MU, 15, 15, 14, lh=1.7)])], 24)
+                   P(f'{SHOP["addr"]}<br>{SHOP["hours"]}', MU, 15, 15, 14, lh=1.7),
+                   H(f'โทร {SHOP["tel"]}', 'p', GD, 15, 500, BODY, 1.6, 0, None, 14, 'start', None, SHOP["tel_href"])])], 24)
     links = W('icon-list', {"view": "inline", "icon_list": [{"text": t, "link": L(u), "selected_icon": {"value": "", "library": ""}, "_id": nid()} for u, t in K.NAV],
                             "space_between": S(20), "text_color": MU, "text_color_hover": GD,
                             **typo(BODY, 15, 400, 1.6, 0, None, None, 'icon_typography')})
@@ -278,7 +286,7 @@ def home():
                         "border_border": "solid", "border_width": D(1), "border_color": LN, "border_radius": D(8), "link": L(SHOP["tiktok"])}, [
             W('icon', {"selected_icon": FA('fas fa-play-circle'), "primary_color": GD, "size": S(40), "align": "center"}),
             H(f'คลิป TikTok {i}', 'p', MU, 14, 400, BODY, 1.4, 0, None, None, 'center')]))
-    tiktok = band([headrow('TikTok', 'ดูคลิปงานจากโต๊ะช่าง', f'<a href="/works/">ดูผลงานและรีวิวทั้งหมด →</a>'),
+    tiktok = band([headrow('TikTok', 'ดูคลิปงานจากโต๊ะช่าง', f'ดูผลงานและรีวิวทั้งหมด →', '/works/'),
                    ROW(clips, 16, True, None, 'stretch', {"flex_gap_mobile": GAP(8)})], BG)
     return [hero, shapes, steps, about, tiktok, contact_block()]
 
@@ -363,7 +371,7 @@ def works():
     rg = W('image-gallery', {"wp_gallery": [{"id": "", "url": f'{ASSET}/img/{r}'} for r in REVIEWS], "thumbnail_size": "medium_large",
                              "gallery_columns": "3", "gallery_link": "file", "open_lightbox": "yes", "image_spacing": "custom",
                              "image_spacing_custom": S(16), "image_border_radius": D(8)})
-    b1 = band([headrow('ผลงาน', 'งานจากโต๊ะช่างของเรา', f'ดูแยกตามทรงได้ที่ <a href="/products/">หน้าสินค้า</a>'), wg], BG, gap=32, top=False)
+    b1 = band([headrow('ผลงาน', 'งานจากโต๊ะช่างของเรา', f'ดูแยกตามทรงได้ที่หน้าสินค้า →', '/products/'), wg], BG, gap=32, top=False)
     b1['settings'].update({"padding": D(24, 0, 96, 0), "padding_tablet": D(16, 0, 64, 0), "padding_mobile": D(8, 0, 56, 0)})
     b2 = band([headrow('รีวิว', 'ลูกค้าพูดถึงเรา', 'แคปจากแชทลูกค้าจริง'), rg], BG, anchor='reviews', gap=32)
     return [page_head("ผลงาน · รีวิว", "ผลงานและรีวิวจากลูกค้า", "งานจริงจากโต๊ะช่างของร้าน และเสียงจากลูกค้าที่ส่งพระมาเลี่ยมกับเรา"), b1, b2, cta_band()]
