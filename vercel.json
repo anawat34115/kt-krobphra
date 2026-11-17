@@ -1,1 +1,17 @@
-{ "outputDirectory": "site", "buildCommand": null, "framework": null, "cleanUrls": true }
+{
+ "outputDirectory": "site",
+ "buildCommand": null,
+ "framework": null,
+ "cleanUrls": true,
+ "headers": [
+  {
+   "source": "/wp-build/(.*)",
+   "headers": [
+    {
+     "key": "Access-Control-Allow-Origin",
+     "value": "*"
+    }
+   ]
+  }
+ ]
+}
