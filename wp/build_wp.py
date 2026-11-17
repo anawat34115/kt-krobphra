@@ -13,7 +13,7 @@ OUT = os.path.join(HERE, "..", "site", "wp-build")
 BG = '#0E0C09'; SF = '#17140F'; LN = '#2A251C'; TX = '#EFE7D6'; MU = '#A59C88'
 GD = '#D6B06A'; GDD = '#9C7A3C'; ON = '#16120A'; GH = '#E6C484'
 HEAD = 'Noto Serif Thai'; BODY = 'IBM Plex Sans Thai'
-MENU = "%e0%b9%80%e0%b8%a1%e0%b8%99%e0%b8%b9%e0%b8%ab%e0%b8%a5%e0%b8%b1%e0%b8%81"
+MENU = "main-menu"
 
 _ids = set()
 def nid():
