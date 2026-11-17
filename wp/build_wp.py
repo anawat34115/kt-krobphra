@@ -418,9 +418,16 @@ def tpl(title, content, kind='page'):
     for e in content: e['isInner'] = False
     return {"version": "0.4", "title": title, "type": kind, "content": content, "page_settings": {"hide_title": "yes"}}
 
+def ascii_html(o):
+    """HFE templates lose JSON backslashes on save, so \\uXXXX escapes break. Store non-ASCII text as HTML entities."""
+    if isinstance(o, dict): return {k: ascii_html(v) for k, v in o.items()}
+    if isinstance(o, list): return [ascii_html(v) for v in o]
+    if isinstance(o, str): return "".join(c if ord(c) < 128 else f"&#{ord(c)};" for c in o)
+    return o
+
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
-    pages = {"header": tpl("KT Header", [header()], "section"), "footer": tpl("KT Footer", [footer()], "section"),
+    pages = {"header": ascii_html(tpl("KT Header", [header()], "section")), "footer": ascii_html(tpl("KT Footer", [footer()], "section")),
              "home": tpl("KT Home", home()), "products": tpl("KT Products", products()), "custom": tpl("KT Custom", custom()),
              "works": tpl("KT Works", works()), "about": tpl("KT About", about()), "articles": tpl("KT Articles", articles()),
              "contact": tpl("KT Contact", contact())}
