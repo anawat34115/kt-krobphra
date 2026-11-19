@@ -128,11 +128,18 @@ def page_head(crumb, h1, lead):
 
 def steps_row():
     cols = []
-    for i, (t, d) in enumerate(STEPS):
-        cols.append(C({"flex_gap": GAP(8), "width": S(31, '%'), "width_tablet": S(100, '%'), "width_mobile": S(100, '%'),
+    for i, (t, d, n) in enumerate(STEPS):
+        box = [H(n, 'p', GD if i else TX, 16, 500, BODY, 1.6, 0, None, 15)]
+        if i == 0:
+            box.append(W('image', {"image": IMG('img/w/thaowes-01.jpg'), "image_size": "full", "width": S(200), "align": "start",
+                                   "image_border_radius": D(6), "link_to": "file", "open_lightbox": "yes"}))
+            box.append(H('ตัวอย่างการวัดขนาดพระส่งให้ช่าง', 'p', MU, 13, 400, BODY, 1.5))
+        note_c = C({"padding": D(16, 20), "background_background": "classic", "background_color": SF, "border_border": "solid",
+                    "border_width": D(1, 1, 1, 2), "border_color": GDD if i else LN, "border_radius": D(8), "flex_gap": GAP(8), "width": S(100, '%')}, box)
+        cols.append(C({"flex_gap": GAP(12), "width": S(48, '%'), "width_tablet": S(100, '%'), "width_mobile": S(100, '%'),
                        "padding": D(24, 0, 0, 0), "border_border": "solid", "border_width": D(1, 0, 0, 0), "border_color": GDD}, [
-            H(f'ขั้นที่ {i+1}', 'p', GD, 14, 600, BODY, 1.4, 1.6), H(t, 'h3', TX, 22, 600, HEAD, 1.4), P(d, MU, 16, 16, 16)]))
-    return ROW(cols, 48, True, None, 'stretch', {"flex_gap_tablet": GAP(32)})
+            H(f'ขั้นที่ {i+1}', 'p', GD, 14, 600, BODY, 1.4, 1.6), H(t, 'h3', TX, 24, 600, HEAD, 1.4), P(d, MU, 16, 16, 16), note_c]))
+    return ROW(cols, 48, True, 'space-between', 'stretch', {"flex_gap_tablet": GAP(32)})
 
 def contact_block(h2="มาที่ร้าน หรือทักแชทได้เลย", anchor="contact"):
     def item(dt, dd, links=None):
@@ -269,7 +276,7 @@ def home():
     shapes = band([headrow('ผลงานจริง แยกตามทรง', 'เลือกทรงกรอบที่ใช่', 'รูปทั้งหมดเป็นงานจริงจากโต๊ะช่างของร้าน กดที่ทรงเพื่อดูขนาดและผลงานเพิ่ม'),
                    pills([(g[1], f'/products/#{g[0]}') for g in K.GROUPS]),
                    ROW(tiles, 16, True, None, 'stretch', {"flex_gap_mobile": GAP(8)})], BG, anchor='shapes', gap=32)
-    steps = band([headrow('งานซ่อม · ลายสั่งทำ', 'สั่งทำง่าย 3 ขั้นตอน', 'ไม่ต้องเดินทางมาร้าน เริ่มจากส่งรูปพระทางแชท'), steps_row(),
+    steps = band([headrow('งานสั่งทำ • งานซ่อม', 'สั่งทำง่าย 2 ขั้นตอน', 'ไม่สะดวกเดินทางมาหน้าร้าน ส่งรูปทางแชทได้เลย'), steps_row(),
                   ROW([CHAT(), BTN('วิธีวัดขนาดพระ', '/custom/', 'line')], 16)], BG, anchor='repair')
     quote = H(SHOP["tag"], 'p', GD, 20, 500, HEAD, 1.6, 0, None, 18, 'start',
               {"_padding": D(0, 0, 0, 24), "_border_border": "solid", "_border_width": D(0, 0, 0, 2), "_border_color": GD})
@@ -279,13 +286,17 @@ def home():
                            P('เริ่มจากคุณพ่อและคุณแม่ที่เคยเป็นช่างทองและพนักงานขายในร้านทอง วันนี้รุ่นลูกสานต่อด้วยฝีมือช่างทองหลวง ผสมเทคนิคโบราณเข้ากับเครื่องมือสมัยใหม่', MU, 17, 16, 16),
                            BTN('อ่านเรื่องของร้าน', '/about/', 'line')])], 56, True, 'space-between', 'center')], BG, anchor='about')
     clips = []
+    TT = ["7261415835028245766", "7621872279454092565", "7618776614905629973", "7618147695613463829"]
+    covers = ["p14.jpg", "p15.jpg", "p20.jpg", "p07.jpg"]
     for i in range(1, 5):
-        clips.append(C({"width": S(23.5, '%'), "width_tablet": S(48, '%'), "width_mobile": S(48, '%'), "min_height": S(360), "min_height_mobile": S(240),
+        url = f'https://www.tiktok.com/@lhimbing/video/{TT[i-1]}'
+        clips.append(C({"background_background": "classic", "background_image": IMG(f'img/wp/{covers[i-1]}'), "background_position": "center center",
+                        "background_size": "cover", "background_overlay_background": "classic", "background_overlay_color": "#0E0C09",
+                        "background_overlay_opacity": S(0.55),"width": S(23.5, '%'), "width_tablet": S(48, '%'), "width_mobile": S(48, '%'), "min_height": S(360), "min_height_mobile": S(240),
                         "flex_justify_content": "center", "flex_align_items": "center", "flex_gap": GAP(12),
-                        "background_background": "gradient", "background_color": "#1E1A13", "background_color_b": BG, "background_gradient_angle": S(180, 'deg'),
-                        "border_border": "solid", "border_width": D(1), "border_color": LN, "border_radius": D(8), "link": L(SHOP["tiktok"])}, [
-            W('icon', {"selected_icon": FA('fas fa-play-circle'), "primary_color": GD, "size": S(40), "align": "center"}),
-            H(f'คลิป TikTok {i}', 'p', MU, 14, 400, BODY, 1.4, 0, None, None, 'center')]))
+                        "border_border": "solid", "border_width": D(1), "border_color": LN, "border_radius": D(8), "link": L(url)}, [
+            W('icon', {"selected_icon": FA('fab fa-tiktok', 'fa-brands'), "primary_color": GD, "size": S(40), "align": "center", "link": L(url)}),
+            H('ดูคลิปใน TikTok', 'p', TX, 15, 500, BODY, 1.4, 0, None, 14, 'center', None, url)]))
     tiktok = band([headrow('TikTok', 'ดูคลิปงานจากโต๊ะช่าง', f'ดูผลงานและรีวิวทั้งหมด →', '/works/'),
                    ROW(clips, 16, True, None, 'stretch', {"flex_gap_mobile": GAP(8)})], BG)
     return [hero, shapes, steps, about, tiktok, contact_block()]
@@ -353,13 +364,13 @@ def custom():
             EYE('วัดขนาดพระ'), H('ส่งขนาดมาให้ช่างแบบนี้', 'h2', TX, 34, 600, HEAD, 1.35, 0, 30, 26),
             P(f'<ol>{ol}</ol>', MU, 17, 16, 16)]),
         C({"flex_gap": GAP(16), "width": S(46, '%'), "width_tablet": S(100, '%'), "width_mobile": S(100, '%'), "flex_align_items": "flex-start"}, [
-            note('ไม่สะดวกวัดเอง?', f'นำพระมาที่หน้าร้าน {SHOP["store"]} ช่างวัดให้ที่ร้าน หรือส่งพระทางไปรษณีย์ ช่างวัดขนาดแล้วส่งกลับให้ถึงบ้าน'),
+            note('ส่งพระทางไปรษณีย์', f'ร้านรับ-ส่งพระทางไปรษณีย์ สำหรับงานเลี่ยมกันน้ำและพับใส่กรอบ งานกรอบสั่งทำ ลูกค้าวัดขนาดพระแล้วส่งตัวเลขมาทางแชทได้เลย หรือนำพระมาให้ช่างวัดที่หน้าร้าน {SHOP["store"]}'),
             note('ระยะเวลา', 'งานเสร็จประมาณ 7–14 วัน ขึ้นกับลายและเนื้อโลหะ'), CHAT(extra={"_margin": D(8, 0, 0, 0)})])],
         48, True, 'space-between', 'flex-start')], BG)
     mats = ROW([card(ph, name, desc, f'/products/#{sid}') for sid, name, ph, desc, _ in K.GROUPS[2][3]], 24, True, None, 'stretch')
     matb = band([headrow('เนื้อกรอบ', 'งานสั่งทำที่รับ', 'ทุกงานทำเฉพาะองค์ ตามพิมพ์และขนาดพระจริง'), mats,
                  note('รับซ่อมกรอบทุกชนิด', 'เปลี่ยนห่วง ขัดเงา ซ่อมกรอบหลวมหรือชำรุด ทั้งทอง เงิน นาก และกรอบพลาสติกกันน้ำ')], BG, gap=32)
-    steps = band([headrow('ขั้นตอน', 'สั่งทำง่าย 3 ขั้นตอน', 'ช่างแจ้งราคาและระยะเวลาก่อนเริ่มงานทุกครั้ง'), steps_row()], BG, (24, 24, 16), top=False)
+    steps = band([headrow('ขั้นตอน', 'สั่งทำง่าย 2 ขั้นตอน', 'ช่างแจ้งราคาและระยะเวลาก่อนเริ่มงานทุกครั้ง'), steps_row()], BG, (24, 24, 16), top=False)
     steps['settings'].update({"padding": D(24, 0, 96, 0), "padding_tablet": D(16, 0, 64, 0), "padding_mobile": D(8, 0, 56, 0)})
     return [page_head("งานสั่งทำ", "งานซ่อม · ลายสั่งทำ", "วัดขนาดพระแล้วขึ้นกรอบเฉพาะองค์ ทั้งกรอบนาก กรอบทอง และลายตามแบบ รวมถึงซ่อมกรอบทุกชนิด"),
             steps, measure, matb, cta_band()]

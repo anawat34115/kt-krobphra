@@ -138,7 +138,7 @@ def build():
         for s, m, t, d in CATS)
     steps = "".join(
         f'<li class="reveal"><span class="num">{THAI_NUM[i]}</span><div><h3>{t}</h3><p>{d}</p></div></li>'
-        for i, (t, d) in enumerate(STEPS))
+        for i, (t, d, *_) in enumerate(STEPS))
     gal = "".join(f'<figure>{frame(s, m)}</figure>' for s, m in GALLERY)
     clips = "".join(f'<a class="clip reveal" href="{SHOP["tiktok"]}" target="_blank" rel="noopener"><i class="ph-fill ph-play-circle"></i><span>คลิป {i}</span></a>' for i in range(1, 4))
     rev = "".join('<div class="review reveal"><div class="sk"></div><div class="sk"></div><div class="sk s"></div><small>รอรีวิวจริงจากลูกค้าของร้าน</small></div>' for _ in range(3))

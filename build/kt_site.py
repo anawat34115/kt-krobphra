@@ -31,7 +31,7 @@ GROUPS = [
     ("custom", "งานสั่งทำ", "วัดขนาดพระแล้วขึ้นงานเฉพาะองค์ ทั้งนาก ทอง และลายตามแบบที่ต้องการ", [
         ("nak", "กรอบนาก", "p19.jpg", "สีนากอมชมพู งานละเอียดแบบช่างโบราณ", []),
         ("gold", "กรอบทอง", "p11.jpg", "ขึ้นงานทองตามพิมพ์พระและตามงบที่ตั้งไว้", []),
-        ("design", "งานตามแบบ", "p13.jpg", "มีแบบในใจ ส่งรูปตัวอย่างมา ช่างทำลายให้ตามแบบ", []),
+        ("design", "งานตามแบบ", "p21.jpg", "มีแบบในใจ ส่งรูปตัวอย่างมา ช่างทำลายให้ตามแบบ", []),
     ]),
 ]
 SHAPES = [s for g in GROUPS for s in g[3]]
@@ -251,7 +251,7 @@ def head(crumb, h1, lead):
 
 
 def steps_html():
-    return "".join(f'<li class="reveal"><span class="n">ขั้นที่ {i+1}</span><h3>{t}</h3><p>{d}</p></li>' for i, (t, d) in enumerate(STEPS))
+    return "".join(f'<li class="reveal"><span class="n">ขั้นที่ {i+1}</span><h3>{t}</h3><p>{d}</p><p style="margin-top:8px;color:var(--gold)">{n}</p></li>' for i, (t, d, n) in enumerate(STEPS))
 
 
 def contact_block(h2="มาที่ร้าน หรือทักแชทได้เลย"):
@@ -306,7 +306,7 @@ def home():
 </div></section>
 
 <section class="block" id="repair"><div class="wrap">
-  <div class="head-row reveal"><div><p class="eyebrow">งานซ่อม · ลายสั่งทำ</p><h2>สั่งทำง่าย 3 ขั้นตอน</h2></div><p>ไม่ต้องเดินทางมาร้าน เริ่มจากส่งรูปพระทางแชท</p></div>
+  <div class="head-row reveal"><div><p class="eyebrow">งานสั่งทำ • งานซ่อม</p><h2>สั่งทำง่าย 2 ขั้นตอน</h2></div><p>ไม่สะดวกเดินทางมาหน้าร้าน ส่งรูปทางแชทได้เลย</p></div>
   <ol class="steps">{steps_html()}</ol>
   <div class="steps-cta reveal" style="display:flex;flex-wrap:wrap;gap:16px">{btn_chat()}<a class="btn btn-line" href="/custom/">วิธีวัดขนาดพระ</a></div>
 </div></section>
@@ -362,7 +362,7 @@ def custom():
                    for sid, name, ph, desc, _ in GROUPS[2][3])
     body = head("งานสั่งทำ", "งานซ่อม · ลายสั่งทำ", "วัดขนาดพระแล้วขึ้นกรอบเฉพาะองค์ ทั้งกรอบนาก กรอบทอง และลายตามแบบ รวมถึงซ่อมกรอบทุกชนิด") + f"""
 <section class="block" style="border-top:0;padding-top:24px"><div class="wrap">
-  <div class="head-row reveal"><div><p class="eyebrow">ขั้นตอน</p><h2>สั่งทำง่าย 3 ขั้นตอน</h2></div><p>ช่างแจ้งราคาและระยะเวลาก่อนเริ่มงานทุกครั้ง</p></div>
+  <div class="head-row reveal"><div><p class="eyebrow">ขั้นตอน</p><h2>สั่งทำง่าย 2 ขั้นตอน</h2></div><p>ช่างแจ้งราคาและระยะเวลาก่อนเริ่มงานทุกครั้ง</p></div>
   <ol class="steps">{steps_html()}</ol>
 </div></section>
 <section class="block"><div class="wrap measure">
@@ -377,7 +377,7 @@ def custom():
     </ol>
   </div>
   <div class="reveal">
-    <div class="note"><b>ไม่สะดวกวัดเอง?</b><br>นำพระมาที่หน้าร้าน {SHOP["store"]} ช่างวัดให้ที่ร้าน หรือส่งพระทางไปรษณีย์ ช่างวัดขนาดแล้วส่งกลับให้ถึงบ้าน <span class="todo">รอร้านยืนยันเรื่องส่งไปรษณีย์</span></div>
+    <div class="note"><b>ส่งพระทางไปรษณีย์</b><br>ร้านรับ-ส่งพระทางไปรษณีย์ สำหรับงานเลี่ยมกันน้ำและพับใส่กรอบ งานกรอบสั่งทำ ลูกค้าวัดขนาดพระแล้วส่งตัวเลขมาทางแชทได้เลย หรือนำพระมาให้ช่างวัดที่หน้าร้าน {SHOP["store"]}</div>
     <div class="note" style="margin-top:16px"><b>ระยะเวลา</b><br>งานเสร็จประมาณ 7–14 วัน ขึ้นกับลายและเนื้อโลหะ</div>
     <div style="margin-top:24px">{btn_chat()}</div>
   </div>
